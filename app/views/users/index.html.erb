@@ -1,0 +1,22 @@
+<main>
+<br>
+<table style="border:1px black solid;">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <%= @users.each do |user| %>
+    <tbody style="background:#efefefef">
+      <tr>
+        <th scope="1"></th>
+        <td><%= (user.name).capitalize %></td>
+        <td><%= user.email %></td>
+        <td><%= user.status %></td>
+      </tr>
+    </tbody>
+  <% end %>
+</table>
+</main>
