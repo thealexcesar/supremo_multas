@@ -8,10 +8,9 @@
       <th>Status</th>
     </tr>
   </thead>
-  <%= @users.each do |user| %>
+  <% @users.each do |user| %>
     <tbody style="background:#efefefef">
       <tr>
-        <th scope="1"></th>
         <td><%= (user.name).capitalize %></td>
         <td><%= user.email %></td>
         <td><%= user.status %></td>
@@ -20,3 +19,6 @@
   <% end %>
 </table>
 </main>
+<div>
+  <%= link_to "New", new_user_path %>
+</div>

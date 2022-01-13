@@ -1,0 +1,12 @@
+<h1>New</h1>
+<%= form_for @user do |form| %>
+  <ul style="display:flex; flex-direction:column">
+    <li><%= form.text_field :name, placeholder:'name' %></li>
+    <li><%= form.text_field :email, placeholder:'email' %></li>
+    <li><%= form.password_field :password, placeholder:'password' %></li>
+    <li><%= form.password_field :password_confirmation, placeholder:'repassword' %></li>
+    <li><%= form.select :status, options_for_enum(:statuses) %></li>
+    <li><%= form.select :user_type, options_for_enum(:user_types) %></li>
+    <li><%= form.submit 'Save' %></li>
+  </ul>
+<% end %>
