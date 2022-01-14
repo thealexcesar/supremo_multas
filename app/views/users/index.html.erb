@@ -19,6 +19,8 @@
         <td><%= enum_to_name(user, :user_type) %></td>
         <td><%= enum_to_name(user, :status) %></td>
         <td><%= link_to "show", user_path(user) %></td>
+        <td><%= link_to "edit", edit_user_path(user) %></td>
+
       </tr>
     </tbody>
   <% end %>

@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: :show
+  before_action :set_user, only: [:show, :edit]
 
   def index
     @users = User.all
@@ -19,6 +19,18 @@ class UsersController < ApplicationController
   end
 
   def show
+  end
+
+  def edit
+  end
+
+  def update
+    @user = User.update(user_params)
+    respond_to do |format|
+      if @user.save
+        format.html { redirect_to @user, notice: "User as successfull updated" }
+      end
+    end
   end
 
   private
