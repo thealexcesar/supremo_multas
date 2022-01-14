@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit]
+  before_action :set_user, only: [:show, :edit, :update]
 
   def index
     @users = User.all
@@ -14,7 +14,11 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         format.html { redirect_to @user, notice: "User as successfull created."}
+      else
+        format.html { redirect_to edit_user_path, alert: "error"  }
       end
+    rescue
+      redirect_to edit_user_path, alert: "Exception"
     end
   end
 
@@ -25,7 +29,6 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.update(user_params)
     respond_to do |format|
       if @user.save
         format.html { redirect_to @user, notice: "User as successfull updated" }
@@ -40,6 +43,6 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation, :status, :user_type)
+    params.require(:user).permit(:name, :email, :status, :user_type)
   end
 end
