@@ -1,6 +1,23 @@
----
 pt-BR:
   activerecord:
+    models:
+      user: "Usuário"
+    attributes:
+      user:
+        name: "Nome"
+        email: "E-mail"
+        status: "Status"
+        user_type: "Tipo usuário"
+        id: "Categoria"
+        created_at: "Criado em"
+        updated_at: "Atualizado em"
+      user_types:
+        admin: "ADM"
+        users: "Usuário"
+      statuses:
+        enabled: "Habilitado"
+        disabled: "Desabilitado"
+
     errors:
       messages:
         record_invalid: 'A validação falhou: %{errors}'
@@ -144,6 +161,8 @@ pt-BR:
       header:
         one: 'Não foi possível gravar %{model}: 1 erro'
         other: 'Não foi possível gravar %{model}: %{count} erros'
+  general:
+    actions: "Ações"
   helpers:
     select:
       prompt: Por favor selecione

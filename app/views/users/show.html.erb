@@ -1,1 +1,13 @@
-show
+
+<p><strong><%= t("activerecord.attributes.user.name") %>:</strong></p>
+<%= @user.name.capitalize %>
+<p><strong><%= t("activerecord.attributes.user.email") %>:</strong></p>
+<%= @user.email %>
+<p><strong><%= t("activerecord.attributes.user.status") %>:</strong></p>
+<%= enum_to_name( @user, :status) %>
+<p><strong><%= t("activerecord.attributes.user.user_type") %>:</strong></p>
+<%= enum_to_name( @user, :user_type) %>
+<br><br>
+<%= link_to "Voltar", users_path %>
+<br>
+<%= User.inspect %>

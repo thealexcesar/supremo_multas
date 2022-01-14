@@ -1,11 +1,17 @@
 <h1>New</h1>
 <%= form_for @user do |form| %>
   <ul style="display:flex; flex-direction:column">
-    <li><%= form.text_field :name, placeholder:'name' %></li>
+    <li><%= form.label :name %></li>
+    <li><%= form.text_field :name, placeholder: t("activerecord.attributes.user.name") %></li>
+    <li><%= form.label :email %></li>
     <li><%= form.text_field :email, placeholder:'email' %></li>
+    <li><%= form.label :password %></li>
     <li><%= form.password_field :password, placeholder:'password' %></li>
+    <li><%= form.label :password_confirmation %></li>
     <li><%= form.password_field :password_confirmation, placeholder:'repassword' %></li>
+    <li><%= form.label :status %></li>
     <li><%= form.select :status, options_for_enum(:statuses) %></li>
+    <li><%= form.label :usuário %></li>
     <li><%= form.select :user_type, options_for_enum(:user_types) %></li>
     <li><%= form.submit 'Save' %></li>
   </ul>
