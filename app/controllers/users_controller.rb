@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update]
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def index
     @users = User.all
@@ -33,6 +33,13 @@ class UsersController < ApplicationController
       if @user.save
         format.html { redirect_to @user, notice: "User as successfull updated" }
       end
+    end
+  end
+
+  def destroy
+    @user.destroy
+    respond_to do |format|
+      format.html { redirect_to @user, notice: "User as successfull deleted" }
     end
   end
 

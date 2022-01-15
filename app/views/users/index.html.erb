@@ -8,7 +8,7 @@
       <th><%= t("activerecord.attributes.user.email") %></th>
       <th><%= t("activerecord.attributes.user.user_type") %></th>
       <th><%= t("activerecord.attributes.user.status") %></th>
-      <th><%= t("general.actions") %></th>
+      <th scope="2"><%= t("general.actions") %></th>
     </tr>
   </thead>
   <% @users.each do |user| %>
@@ -20,7 +20,7 @@
         <td><%= enum_to_name(user, :status) %></td>
         <td><%= link_to "show", user_path(user) %></td>
         <td><%= link_to "edit", edit_user_path(user) %></td>
-
+        <td><%= link_to "delete", user_path(user), method: :delete, data: {confirm: 'Are you sure?'} %></td>
       </tr>
     </tbody>
   <% end %>
