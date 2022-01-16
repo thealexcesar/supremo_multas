@@ -1,2 +1,3 @@
-<%= action_name %>
-<%= render 'form' %>
+<%= t('general.edit') %>
+<%= render 'form', user: @user %>
+<%= link_to t("general.back"), users_path %>

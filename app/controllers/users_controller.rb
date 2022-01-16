@@ -13,25 +13,23 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, notice: "User as successfull created."}
+        format.html { redirect_to @user, notice: "User was successfully created." }
       else
-        format.html { redirect_to edit_user_path, alert: "error"  }
+        format.html { render :new, status: :unprocessable_entity }
       end
-    rescue
-      redirect_to edit_user_path, alert: "Exception"
     end
   end
 
-  def show
-  end
+  def show;end
 
-  def edit
-  end
+  def edit;end
 
   def update
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, notice: "User as successfull updated" }
+        format.html { redirect_to @user, notice: "User as successfully updated" }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
       end
     end
   end
@@ -44,12 +42,10 @@ class UsersController < ApplicationController
   end
 
   private
-
   def set_user
     @user = User.find(params[:id])
   end
-
   def user_params
-    params.require(:user).permit(:name, :email, :status, :user_type)
+    params.require(:user).permit %i(name email password password_confirmation status, :user_type)
   end
 end

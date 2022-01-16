@@ -16,10 +16,11 @@
   <div>
     <br>
     <%= (current_user.name).capitalize if user_signed_in? %>
-    <%= user_signed_in? ? (link_to 'Log out', destroy_user_session_path, method: :delete) : (link_to "Login", new_user_session_path) %>
     <br>
   </div>
-    <%= yield %>
+    <div class="container flex-col">
+      <%= yield %>
+    </div>
   </main>
   </body>
 </html>

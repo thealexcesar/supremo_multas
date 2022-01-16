@@ -3,26 +3,29 @@ pt-BR:
     models:
       user: "Usuário"
     attributes:
-      user:
-        name: "Nome"
-        email: "E-mail"
-        status: "Status"
-        user_type: "Tipo usuário"
-        id: "Categoria"
-        created_at: "Criado em"
-        updated_at: "Atualizado em"
-      user_types:
-        admin: "ADM"
-        users: "Usuário"
-      statuses:
-        enabled: "Habilitado"
-        disabled: "Desabilitado"
       errors:
         messages:
           record_invalid: 'A validação falhou: %{errors}'
           restrict_dependent_destroy:
-            has_one: Não é possível excluir o registro pois existe um %{record} dependente
-            has_many: Não é possível excluir o registro pois existem %{record} dependentes
+            has_one: "Não é possível excluir o registro pois existe um %{record} dependente"
+            has_many: "Não é possível excluir o registro pois existem %{record} dependentes"
+      user:
+        created_at: "Criado em"
+        email: "E-mail"
+        id: "Categoria"
+        name: "Nome"
+        password: "Senha"
+        password_confirmation: "Confirmação de senha"
+        status: "Status"
+        user_type: "Tipo de usuário"
+        updated_at: "Atualizado em"
+      user_types:
+        admin: "Administrador"
+        users: "Usuário"
+      statuses:
+        enabled: "Habilitado"
+        disabled: "Desabilitado"
+
   date:
     abbr_day_names:
     - dom
@@ -122,6 +125,7 @@ pt-BR:
       day: Dia
       month: Mês
       year: Ano
+
   errors:
     format: "%{attribute} %{message}"
     messages:
@@ -160,15 +164,27 @@ pt-BR:
       header:
         one: 'Não foi possível gravar %{model}: 1 erro'
         other: 'Não foi possível gravar %{model}: %{count} erros'
+
   general:
     actions: "Ações"
+    back: "Voltar"
+    create: "Criar"
+    delete: "Apagar"
+    edit: "Editar"
+    exit: "Sair"
+    login: "Entrar"
+    new: "Novo"
+    update: "Atualizar"
+    save: "Salvar"
+    show: "Mostrar"
   helpers:
     select:
-      prompt: Por favor selecione
+      prompt: "Por favor selecione"
     submit:
-      create: Criar %{model}
-      submit: Salvar %{model}
-      update: Atualizar %{model}
+      create: "Criar %{model}"
+      submit: "Salvar %{model}"
+      update: "Atualizar %{model}"
+
   number:
     currency:
       format:
@@ -227,11 +243,13 @@ pt-BR:
     precision:
       format:
         delimiter: "."
+
   support:
     array:
       last_word_connector: " e "
       two_words_connector: " e "
       words_connector: ", "
+
   time:
     am: ''
     formats:
