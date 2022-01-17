@@ -177,6 +177,12 @@ pt-BR:
     update: "Atualizar"
     save: "Salvar"
     show: "Mostrar"
+    messages:
+      created: "%{model} criado(a) com sucesso."
+      destroyed: "%{model} deletado(a) com sucesso."
+      updated: "%{model} atualizado(a) com sucesso."
+      confirm: "Tem certeza?"
+
   helpers:
     select:
       prompt: "Por favor selecione"
