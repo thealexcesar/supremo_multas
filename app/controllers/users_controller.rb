@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :set_user_id, only: :enable_disable
+
   def index
     @users = User.all
   end

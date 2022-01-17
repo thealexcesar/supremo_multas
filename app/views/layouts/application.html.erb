@@ -15,7 +15,7 @@
   <p class="alert"><%= alert %></p>
   <div>
     <br>
-    <%= (current_user.name).capitalize if user_signed_in? %>
+    <%= "#{t("general.welcome")}, #{current_user.name.capitalize}!" if user_signed_in? %>
     <br>
   </div>
     <div class="container flex-col">

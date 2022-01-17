@@ -82,74 +82,74 @@ pt-BR:
   datetime:
     distance_in_words:
       about_x_hours:
-        one: aproximadamente 1 hora
-        other: aproximadamente %{count} horas
+        one: "aproximadamente 1 hora"
+        other: "aproximadamente %{count} horas"
       about_x_months:
-        one: aproximadamente 1 mês
-        other: aproximadamente %{count} meses
+        one: "aproximadamente 1 mês"
+        other: "aproximadamente %{count} meses"
       about_x_years:
-        one: aproximadamente 1 ano
-        other: aproximadamente %{count} anos
+        one: "aproximadamente 1 ano"
+        other: "aproximadamente %{count} anos"
       almost_x_years:
-        one: quase 1 ano
-        other: quase %{count} anos
-      half_a_minute: meio minuto
+        one: "quase 1 ano"
+        other: "quase %{count} anos"
+      half_a_minute: "meio minuto"
       less_than_x_seconds:
-        one: menos de 1 segundo
-        other: menos de %{count} segundos
+        one: "menos de 1 segundo"
+        other: "menos de %{count} segundos"
       less_than_x_minutes:
-        one: menos de um minuto
-        other: menos de %{count} minutos
+        one: "menos de um minuto"
+        other: "menos de %{count} minutos"
       over_x_years:
-        one: mais de 1 ano
-        other: mais de %{count} anos
+        one: "mais de 1 ano"
+        other: "mais de %{count} anos"
       x_seconds:
-        one: 1 segundo
+        one: "1 segundo"
         other: "%{count} segundos"
       x_minutes:
-        one: 1 minuto
+        one: "1 minuto"
         other: "%{count} minutos"
       x_days:
-        one: 1 dia
+        one: "1 dia"
         other: "%{count} dias"
       x_months:
-        one: 1 mês
+        one: "1 mês"
         other: "%{count} meses"
       x_years:
-        one: 1 ano
+        one: "1 ano"
         other: "%{count} anos"
     prompts:
-      second: Segundo
-      minute: Minuto
-      hour: Hora
-      day: Dia
-      month: Mês
-      year: Ano
+      second: "Segundo"
+      minute: "Minuto"
+      hour: "Hora"
+      day: "Dia"
+      month: "Mês"
+      year: "Ano"
 
   errors:
     format: "%{attribute} %{message}"
     messages:
-      accepted: deve ser aceito
-      blank: não pode ficar em branco
-      confirmation: não é igual a %{attribute}
-      empty: não pode ficar vazio
-      equal_to: deve ser igual a %{count}
-      even: deve ser par
-      exclusion: não está disponível
-      greater_than: deve ser maior que %{count}
-      greater_than_or_equal_to: deve ser maior ou igual a %{count}
-      inclusion: não está incluído na lista
-      invalid: não é válido
-      less_than: deve ser menor que %{count}
-      less_than_or_equal_to: deve ser menor ou igual a %{count}
+      accepted: "deve ser aceito"
+      blank: "não pode ficar em branco"
+      confirmation: "não é igual a %{attribute}"
+      empty: "não pode ficar vazio"
+      equal_to: "deve ser igual a %{count}"
+      even: "deve ser par"
+      exclusion: "não está disponível"
+      greater_than: "deve ser maior que %{count}"
+      greater_than_or_equal_to: "deve ser maior ou igual a %{count}"
+      inclusion: "não está incluído na lista"
+      invalid: "não é válido"
+      less_than: "deve ser menor que %{count}"
+      less_than_or_equal_to: "deve ser menor ou igual a %{count}"
       model_invalid: 'A validação falhou: %{errors}'
-      not_a_number: não é um número
-      not_an_integer: não é um número inteiro
-      odd: deve ser ímpar
-      other_than: deve ser diferente de %{count}
-      present: deve ficar em branco
-      required: é obrigatório(a)
-      taken: já está em uso
+      not_a_number: "não é um número"
+      not_an_integer: "não é um número inteiro"
+      odd: "deve ser ímpar"
+      other_than: "deve ser diferente de %{count}"
+      present: "deve ficar em branco"
+      required: "é obrigatório(a)"
+      taken: "já está em uso"
       too_long:
         one: 'é muito longo (máximo: 1 caracter)'
         other: 'é muito longo (máximo: %{count} caracteres)'
@@ -157,8 +157,8 @@ pt-BR:
         one: 'é muito curto (mínimo: 1 caracter)'
         other: 'é muito curto (mínimo: %{count} caracteres)'
       wrong_length:
-        one: não possui o tamanho esperado (1 caracter)
-        other: não possui o tamanho esperado (%{count} caracteres)
+        one: "não possui o tamanho esperado (1 caracter)"
+        other: "não possui o tamanho esperado (%{count} caracteres)"
     template:
       body: 'Por favor, verifique o(s) seguinte(s) campo(s):'
       header:
@@ -177,6 +177,7 @@ pt-BR:
     update: "Atualizar"
     save: "Salvar"
     show: "Mostrar"
+    welcome: "Bem vindo"
     messages:
       created: "%{model} criado(a) com sucesso."
       destroyed: "%{model} deletado(a) com sucesso."
@@ -196,53 +197,45 @@ pt-BR:
     currency:
       format:
         delimiter: "."
-        format: "%u %n"
-        precision: 2
+        format: "%u%n"
+        precision: "2"
         separator: ","
-        significant: false
-        strip_insignificant_zeros: false
-        unit: R$
+        significant: "false"
+        strip_insignificant_zeros: "falso"
+        unit: "R$"
     format:
       delimiter: "."
-      precision: 3
+      precision: "3"
       separator: ","
-      significant: false
-      strip_insignificant_zeros: false
+      significant: "falso"
+      strip_insignificant_zeros: "falso"
     human:
       decimal_units:
         format: "%n %u"
         units:
-          billion:
-            one: bilhão
-            other: bilhões
-          million:
-            one: milhão
-            other: milhões
-          quadrillion:
-            one: quatrilhão
-            other: quatrilhões
-          thousand: mil
-          trillion:
-            one: trilhão
-            other: trilhões
+          billion: "bilhão"
+          million: "milhão"
+          quadrillion: "quadrilhão"
+          thousand: "mil"
+          trillion: "trilhão"
           unit: ''
       format:
         delimiter: ''
-        precision: 3
-        significant: true
-        strip_insignificant_zeros: true
+        precision: "3"
+        significant: "verdade"
+        strip_insignificant_zeros: "verdade"
       storage_units:
         format: "%n %u"
         units:
           byte:
-            one: Byte
-            other: Bytes
-          eb: EB
-          gb: GB
-          kb: KB
-          mb: MB
-          pb: PB
-          tb: TB
+            one: "Byte"
+            other: "Bytes"
+          eb: "EB"
+          gb: "GB"
+          kb: "KB"
+          mb: "MB"
+          pb: "PB"
+          tb: "TB"
     percentage:
       format:
         delimiter: "."
@@ -253,14 +246,14 @@ pt-BR:
 
   support:
     array:
-      last_word_connector: " e "
+      last_word_connector: ", e "
       two_words_connector: " e "
       words_connector: ", "
 
   time:
-    am: ''
+    am: 'am'
     formats:
       default: "%a, %d de %B de %Y, %H:%M:%S %z"
       long: "%d de %B de %Y, %H:%M"
       short: "%d de %B, %H:%M"
-    pm: ''
+    pm: 'pm'

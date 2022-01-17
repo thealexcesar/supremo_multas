@@ -24,7 +24,7 @@
         <td><%= link_to t("general.show"), user_path(user) %></td>
         <td ><%= link_to t("general.edit"), edit_user_path(user) %></td>
         <td><%= link_to t("general.delete"), user_path(user), method: :delete, data: {confirm: I18n.t("general.messages.confirm")} %></td>
-        <td><%= link_to "habilitarDesabilitar", user_enable_disable_path(user), method: :post, remote: true %></td>
+        <td><%= link_to "Escolha status", user_enable_disable_path(user), method: :post, remote: true %></td>
       </tr>
     </tbody>
   <% end %>
