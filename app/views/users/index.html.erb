@@ -11,7 +11,7 @@
       <th><%= t('activerecord.attributes.user.email') %></th>
       <th><%= t('activerecord.attributes.user.user_type') %></th>
       <th><%= t('activerecord.attributes.user.status') %></th>
-      <th colspan="3"><%= t("general.actions") %></th>
+      <th colspan="4"><%= t("general.actions") %></th>
     </tr>
   </thead>
   <% @users.each do |user| %>
@@ -24,6 +24,7 @@
         <td><%= link_to t("general.show"), user_path(user) %></td>
         <td ><%= link_to t("general.edit"), edit_user_path(user) %></td>
         <td><%= link_to t("general.delete"), user_path(user), method: :delete, data: {confirm: I18n.t("general.messages.confirm")} %></td>
+        <td><%= link_to "habilitarDesabilitar", user_enable_disable_path(user), method: :post, remote: true %></td>
       </tr>
     </tbody>
   <% end %>

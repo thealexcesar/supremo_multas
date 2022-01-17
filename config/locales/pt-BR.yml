@@ -182,6 +182,7 @@ pt-BR:
       destroyed: "%{model} deletado(a) com sucesso."
       updated: "%{model} atualizado(a) com sucesso."
       confirm: "Tem certeza?"
+      status: "Status alterado com sucesso para %{status}."
 
   helpers:
     select:
