@@ -2,6 +2,7 @@ pt-BR:
   activerecord:
     models:
       user: "Usuário"
+      car_type: "Tipo de Carro"
     attributes:
       errors:
         messages:
@@ -9,6 +10,9 @@ pt-BR:
           restrict_dependent_destroy:
             has_one: "Não é possível excluir o registro pois existe um %{record} dependente"
             has_many: "Não é possível excluir o registro pois existem %{record} dependentes"
+      car_types:
+        edit: "Editar tipo de carro"
+        new: "Novo tipo de carro"
       user:
         created_at: "Criado em"
         email: "E-mail"
@@ -21,10 +25,12 @@ pt-BR:
         updated_at: "Atualizado em"
       user_types:
         admin: "Administrador"
+        name: "Nome"
         users: "Usuário"
       statuses:
         enabled: "Habilitado"
         disabled: "Desabilitado"
+
 
   date:
     abbr_day_names:
@@ -169,10 +175,13 @@ pt-BR:
     actions: "Ações"
     back: "Voltar"
     create: "Criar"
+    creating: "Criando %{model}"
     delete: "Apagar"
     edit: "Editar"
+    editing: "Editando %{model}"
     exit: "Sair"
     login: "Entrar"
+    name: "Nome"
     new: "Novo"
     update: "Atualizar"
     save: "Salvar"

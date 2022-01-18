@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :car_types
+
   resources :users do
     post :enable_disable
   end

@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  def create_msg
+  def created_msg
     I18n.t("general.messages.created", model: I18n.t("activerecord.models.#{controller_name.classify.underscore}"))
   end
   def destroyed_msg

@@ -1,0 +1,9 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong><%= t('general.name') %>:</strong>
+  <%= @car_type.name %>
+</p>
+
+<%= link_to t('general.edit'), edit_car_type_path(@car_type) %>
+<%= link_to t('general.back'), car_types_path %>

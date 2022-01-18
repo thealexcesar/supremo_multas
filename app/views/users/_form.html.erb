@@ -18,11 +18,11 @@
         <p><%= form.password_field :password_confirmation %></p>
       </div>
       <div>
-        <h2 class="h6 py-4"><%= form.label :statuses %></h2>
+        <h2 class="h6 py-4"><%= form.label :status %></h2>
         <p><%= form.select :status, options_for_enum(:statuses) %></p>
       </div>
       <div>
-        <h2 class="h6 py-4"><%= form.label :user_types %></h2>
+        <h2 class="h6 py-4"><%= form.label :user_type %></h2>
         <p><%= form.select :user_type, options_for_enum(:user_types) %></p>
       </div>
       <div class="py-4">

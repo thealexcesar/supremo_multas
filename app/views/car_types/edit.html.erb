@@ -1,0 +1,6 @@
+<h1><%= editing_model.capitalize %></h1>
+
+<%= render 'form', car_type: @car_type %>
+
+<%= link_to t('general.show'), @car_type %>
+<%= link_to t('general.back'), car_types_path %>
