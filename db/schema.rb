@@ -10,10 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_18_135940) do
+ActiveRecord::Schema.define(version: 2022_01_18_142509) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "car_brands", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "car_models", force: :cascade do |t|
+    t.string "name"
+    t.bigint "car_brand_id"
+    t.bigint "car_type_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["car_brand_id"], name: "index_car_models_on_car_brand_id"
+    t.index ["car_type_id"], name: "index_car_models_on_car_type_id"
+  end
 
   create_table "car_types", force: :cascade do |t|
     t.string "name"
@@ -59,6 +75,8 @@ ActiveRecord::Schema.define(version: 2022_01_18_135940) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "car_models", "car_brands"
+  add_foreign_key "car_models", "car_types"
   add_foreign_key "cities", "states"
   add_foreign_key "states", "countries"
 end
