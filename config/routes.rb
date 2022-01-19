@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :cars
   resources :car_models
   resources :car_types
 

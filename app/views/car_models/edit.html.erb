@@ -1,6 +1,6 @@
-<h1>Editing Car Model</h1>
+<h1><%= editing_model.capitalize %></h1>
 
 <%= render 'form', car_model: @car_model %>
 
-<%= link_to 'Show', @car_model %> |
-<%= link_to 'Back', car_models_path %>
+<%= link_to t("general.show"), @car_model %>
+<%= link_to t("general.back"), car_models_path %>

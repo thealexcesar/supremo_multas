@@ -26,7 +26,7 @@ class CarModelsController < ApplicationController
 
     respond_to do |format|
       if @car_model.save
-        format.html { redirect_to car_model_url(@car_model), notice: "Car model was successfully created." }
+        format.html { redirect_to car_model_url(@car_model), notice: created_msg }
         format.json { render :show, status: :created, location: @car_model }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -39,7 +39,7 @@ class CarModelsController < ApplicationController
   def update
     respond_to do |format|
       if @car_model.update(car_model_params)
-        format.html { redirect_to car_model_url(@car_model), notice: "Car model was successfully updated." }
+        format.html { redirect_to car_model_url(@car_model), notice: updated_msg }
         format.json { render :show, status: :ok, location: @car_model }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -53,7 +53,7 @@ class CarModelsController < ApplicationController
     @car_model.destroy
 
     respond_to do |format|
-      format.html { redirect_to car_models_url, notice: "Car model was successfully destroyed." }
+      format.html { redirect_to car_models_url, notice: destroyed_msg }
       format.json { head :no_content }
     end
   end

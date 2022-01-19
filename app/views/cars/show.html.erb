@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong><%= t("activerecord.attributes.car.year") %>:</strong>
+  <%= @car.year %>
+</p>
+
+<p>
+  <strong><%= t("activerecord.attributes.car.license_plate") %>:</strong>
+  <%= @car.license_plate %>
+</p>
+
+<p>
+  <strong><%= t("activerecord.attributes.car.status") %>:</strong>
+  <%= @car.status %>
+</p>
+
+<p>
+  <strong><%= t("activerecord.attributes.car.car_model_id") %>:</strong>
+  <%= @car.car_model %>
+</p>
+
+<%= link_to t("general.edit"), edit_car_path(@car) %>
+<%= link_to t("general.back"), cars_path %>

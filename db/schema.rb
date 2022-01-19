@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_18_142509) do
+ActiveRecord::Schema.define(version: 2022_01_19_141705) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,16 @@ ActiveRecord::Schema.define(version: 2022_01_18_142509) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "cars", force: :cascade do |t|
+    t.integer "year"
+    t.string "license_plate"
+    t.integer "status"
+    t.bigint "car_model_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["car_model_id"], name: "index_cars_on_car_model_id"
   end
 
   create_table "cities", force: :cascade do |t|
@@ -77,6 +87,7 @@ ActiveRecord::Schema.define(version: 2022_01_18_142509) do
 
   add_foreign_key "car_models", "car_brands"
   add_foreign_key "car_models", "car_types"
+  add_foreign_key "cars", "car_models"
   add_foreign_key "cities", "states"
   add_foreign_key "states", "countries"
 end

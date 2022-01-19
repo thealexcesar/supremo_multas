@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%= t("activerecord.models.car") %></h1>
+
+<table>
+  <thead>
+    <tr>
+      <th><%= t("activerecord.attributes.car.year") %></th>
+      <th><%= t("activerecord.attributes.car.license_plate") %></th>
+      <th><%= t("activerecord.attributes.car.status") %></th>
+      <th><%= t("activerecord.attributes.car.car_model_id") %></th>
+      <th colspan="3"><%= t("general.actions") %></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @cars.each do |car| %>
+      <tr>
+        <td><%= car.year %></td>
+        <td><%= car.license_plate %></td>
+        <td><%= car.status %></td>
+        <td><%= car.car_model.name %></td>
+        <td><%= link_to t("general.show"), car %></td>
+        <td><%= link_to t("general.edit"), edit_car_path(car) %></td>
+        <td><%= link_to t("general.delete"), car, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to t("general.new"), new_car_path %>
