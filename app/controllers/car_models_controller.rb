@@ -69,8 +69,8 @@ class CarModelsController < ApplicationController
       params.require(:car_model).permit(:name, :car_brand_id, :car_type_id)
     end
 
-  def set_cars
-    @car_brands = CarBrand.all
-    @car_types = CarType.all
-  end
+    def set_cars
+      @car_brands = CarBrand.all
+      @car_types = CarType.all
+    end
 end

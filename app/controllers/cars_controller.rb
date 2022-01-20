@@ -1,5 +1,7 @@
 class CarsController < ApplicationController
   before_action :set_car, only: %i[ show edit update destroy ]
+  before_action :set_car_models, only: [:new, :edit]
+  before_action :set_car_id, only: :enable_disable
 
   # GET /cars or /cars.json
   def index
@@ -57,10 +59,33 @@ class CarsController < ApplicationController
     end
   end
 
+  def enable_disable
+    status = "enabled" == @car.status ? "disabled" : "enabled"
+    @car.status = status
+    respond_to do |format|
+      if @car.save
+        format.html { redirect_to @car }
+        format.json { render :show, status: :ok, location: @car }
+        format.js { render layout: false, locals: { msg: enable_disable_msg(status) } }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+        format.json { render json: @car.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_car
       @car = Car.find(params[:id])
+    end
+
+    def set_car_models
+      @car_models = CarModel.all
+    end
+
+    def set_car_id
+      @car = Car.find(params[:car_id])
     end
 
     # Only allow a list of trusted parameters through.

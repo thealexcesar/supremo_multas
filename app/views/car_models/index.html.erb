@@ -20,7 +20,7 @@
         <td><%= car_model.car_type&.name %></td>
         <td><%= link_to t("general.show"), car_model %></td>
         <td><%= link_to t("general.edit"), edit_car_model_path(car_model) %></td>
-        <td><%= link_to t("general.delete"), car_model, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to t("general.delete"), car_model, method: :delete, data: { confirm: t("general.messages.confirm") } %></td>
       </tr>
     <% end %>
   </tbody>

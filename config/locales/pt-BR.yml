@@ -13,7 +13,7 @@ pt-BR:
         status: "Status"
         year: "Ano"
 
-      car_brand:
+      carbrand:
         name: "Nome"
       car_type:
         edit: "Editar tipo de carro"
@@ -43,8 +43,8 @@ pt-BR:
         name: "Nome"
         users: "Usuário"
       statuses:
-        enabled: "Habilitado"
         disabled: "Desabilitado"
+        enabled: "Habilitado"
   date:
     abbr_day_names:
     - dom
@@ -199,6 +199,8 @@ pt-BR:
     update: "Atualizar"
     save: "Salvar"
     show: "Mostrar"
+    to_disable: "Desabilitar"
+    to_enable: "Habilitar"
     welcome: "Bem vindo"
     messages:
       created: "%{model} criado(a) com sucesso."
