@@ -21,13 +21,14 @@ a {
 }
 
 table {
+    width: 90vw;
     background: #efefef;
     border: 2px solid black;
-    border-collapse:separate;
+    border-collapse: separate;
     thead {background:#333; color:#fff;}
     tbody {background:#fff;}
     td, th {
-        padding: 5px 30px;
+        padding: 5px 20px;
         :hover {color:#0969da;}
     }
 }

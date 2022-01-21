@@ -5,6 +5,7 @@ pt-BR:
       car_type: "Tipo de veículo"
       car_brand: "Marca do veículo"
       car_model: "Modelo do veículo"
+      company: "Empresa"
       user: "Usuário"
     attributes:
       car:
@@ -12,7 +13,6 @@ pt-BR:
         license_plate: "Placa"
         status: "Status"
         year: "Ano"
-
       carbrand:
         name: "Nome"
       car_type:
@@ -22,6 +22,19 @@ pt-BR:
         car_brand_id: "Marca do veículo"
         car_type_id: "Tipo de veículo"
         name: "Nome"
+      company:
+        address: "Endereço"
+        city_id: "Cidade"
+        cnpj: "CNPJ"
+        company_type: "Tipo de empresa"
+        district: "Bairro"
+        name: "Nome"
+        number: "Número"
+        phone: "Telefone"
+        zipcode: "CEP"
+      company_types:
+        main: "Matriz"
+        branch: "Filial"
       errors:
         messages:
           record_invalid: 'A validação falhou: %{errors}'

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :companies
   resources :cars do
     post :enable_disable
   end
