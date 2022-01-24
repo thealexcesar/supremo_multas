@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @fine.user %>
+</p>
+
+<p>
+  <strong>Fine date:</strong>
+  <%= @fine.fine_date %>
+</p>
+
+<p>
+  <strong>Fine status:</strong>
+  <%= @fine.fine_status %>
+</p>
+
+<p>
+  <strong>Fine number:</strong>
+  <%= @fine.fine_number %>
+</p>
+
+<p>
+  <strong>Branch:</strong>
+  <%= @fine.branch_id %>
+</p>
+
+<%= link_to 'Edit', edit_fine_path(@fine) %> |
+<%= link_to 'Back', fines_path %>

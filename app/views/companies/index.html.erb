@@ -1,5 +1,4 @@
 <p id="notice"><%= notice %></p>
-
 <h1><%= t("activerecord.models.company").pluralize %></h1>
 <table class="container">
   <thead>
@@ -16,12 +15,11 @@
       <th colspan="3"><%= t("general.actions") %></th>
     </tr>
   </thead>
-
   <tbody>
     <% @companies.each do |company| %>
       <tr>
         <td><%= company.name %></td>
-        <td><%= company.company_type %></td>
+        <td><%= enum_to_name(company, :company_type) %></td>
         <td><%= company.cnpj %></td>
         <td><%= company.phone %></td>
         <td><%= company.address %></td>
@@ -29,14 +27,12 @@
         <td><%= company.zipcode %></td>
         <td><%= company.district %></td>
         <td><%= company.city.name %></td>
-        <td><%= link_to 'Show', company %></td>
-        <td><%= link_to 'Edit', edit_company_path(company) %></td>
-        <td><%= link_to 'Destroy', company, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to t("general.show"), company %></td>
+        <td><%= link_to t("general.edit"), edit_company_path(company) %></td>
+        <td><%= link_to t("general.delete"), company, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
 <br>
-
 <%= link_to t("general.new"), new_company_path %>

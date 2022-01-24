@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  fine_date: 2022-01-24 09:40:28
+  fine_status: 1
+  fine_number: MyString
+  branch_id: 1
+
+two:
+  user: two
+  fine_date: 2022-01-24 09:40:28
+  fine_status: 1
+  fine_number: MyString
+  branch_id: 1
