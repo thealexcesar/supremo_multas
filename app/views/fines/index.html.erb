@@ -1,30 +1,30 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Fines</h1>
+<h1><%= t("activerecord.models.fine") %></h1>
 
 <table>
   <thead>
     <tr>
-      <th>User</th>
-      <th>Fine date</th>
-      <th>Fine status</th>
-      <th>Fine number</th>
-      <th>Branch</th>
-      <th colspan="3"></th>
+      <th><%= t('activerecord.attributes.fine.user') %></th>
+      <th><%= t('activerecord.attributes.fine.fine_date') %></th>
+      <th><%= t('activerecord.attributes.fine.fine_status') %></th>
+      <th><%= t('activerecord.attributes.fine.fine_number') %></th>
+      <th><%= t("activerecord.attributes.company_types.branch") %></th>
+      <th colspan="3"><%= t("general.actions") %></th>
     </tr>
   </thead>
 
   <tbody>
-    <% @fines.each do |fine| %>
+    <% @fines.each do |f| %>
       <tr>
-        <td><%= fine.user %></td>
-        <td><%= fine.fine_date %></td>
-        <td><%= fine.fine_status %></td>
-        <td><%= fine.fine_number %></td>
-        <td><%= fine.branch_id %></td>
-        <td><%= link_to 'Show', fine %></td>
-        <td><%= link_to 'Edit', edit_fine_path(fine) %></td>
-        <td><%= link_to 'Destroy', fine, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= f.user.name.capitalize %></td>
+        <td><%= f.fine_date %></td>
+        <td><%= f.fine_status %></td>
+        <td><%= f.fine_number %></td>
+        <td><%= f.branch_id %></td>
+        <td><%= link_to t('general.show'), f %></td>
+        <td><%= link_to t('general.edit'), edit_fine_path(f) %></td>
+        <td><%= link_to t('general.delete'), f, method: :delete, data: { confirm: t("general.messages.confirm") } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -32,4 +32,4 @@
 
 <br>
 
-<%= link_to 'New Fine', new_fine_path %>
+<%= link_to t("general.new"), new_fine_path %>

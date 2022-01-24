@@ -7,6 +7,7 @@ pt-BR:
       car_model: "Modelo do veículo"
       company: "Empresa"
       user: "Usuário"
+      fine: "Multa"
     attributes:
       car:
         car_model_id: "Modelo do carro"
@@ -41,6 +42,12 @@ pt-BR:
           restrict_dependent_destroy:
             has_one: "Não é possível excluir o registro pois existe um %{record} dependente"
             has_many: "Não é possível excluir o registro pois existem %{record} dependentes"
+      fine:
+        user_id: "Usuário"
+        fine_date: "Data da multa"
+        fine_status: "Status da multa"
+        fine_number: "Número da multa"
+        branch_id: "Filial"
       user:
         created_at: "Criado em"
         email: "E-mail"

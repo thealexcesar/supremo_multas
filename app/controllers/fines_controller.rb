@@ -1,6 +1,7 @@
 class FinesController < ApplicationController
   before_action :set_fine, only: %i[ show edit update destroy ]
-
+  before_action :get_user, only: [:new, :create, :edit]
+  before_action :get_branches, only: [:new, :create, :edit]
   # GET /fines or /fines.json
   def index
     @fines = Fine.all
@@ -25,7 +26,7 @@ class FinesController < ApplicationController
 
     respond_to do |format|
       if @fine.save
-        format.html { redirect_to fine_url(@fine), notice: "Fine was successfully created." }
+        format.html { redirect_to fine_url(@fine), notice: created_msg }
         format.json { render :show, status: :created, location: @fine }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +39,7 @@ class FinesController < ApplicationController
   def update
     respond_to do |format|
       if @fine.update(fine_params)
-        format.html { redirect_to fine_url(@fine), notice: "Fine was successfully updated." }
+        format.html { redirect_to fine_url(@fine), notice: updated_msg }
         format.json { render :show, status: :ok, location: @fine }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,7 +53,7 @@ class FinesController < ApplicationController
     @fine.destroy
 
     respond_to do |format|
-      format.html { redirect_to fines_url, notice: "Fine was successfully destroyed." }
+      format.html { redirect_to fines_url, notice: destroyed_msg }
       format.json { head :no_content }
     end
   end
@@ -62,6 +63,15 @@ class FinesController < ApplicationController
     def set_fine
       @fine = Fine.find(params[:id])
     end
+
+    def get_user
+      @users = User.all
+    end
+    def get_branches
+      @companies = Company.all
+      @branches = Company.company_types
+    end
+
 
     # Only allow a list of trusted parameters through.
     def fine_params

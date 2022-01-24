@@ -1,6 +1,6 @@
 class CarsController < ApplicationController
   before_action :set_car, only: %i[ show edit update destroy ]
-  before_action :set_car_models, only: [:new, :edit]
+  before_action :set_car_models, only: [ :new, :edit ]
   before_action :set_car_id, only: :enable_disable
 
   # GET /cars or /cars.json

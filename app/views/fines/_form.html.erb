@@ -2,7 +2,6 @@
   <% if fine.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(fine.errors.count, "error") %> prohibited this fine from being saved:</h2>
-
       <ul>
       <% fine.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -13,7 +12,7 @@
 
   <div class="field">
     <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
+    <%= form.select :user_id, options_from_collection_for_select(@users, :id, :name) %>
   </div>
 
   <div class="field">
@@ -23,7 +22,7 @@
 
   <div class="field">
     <%= form.label :fine_status %>
-    <%= form.number_field :fine_status %>
+    <p><%= form.select :fine_status, options_for_enum(:fine_statuses) %></p>
   </div>
 
   <div class="field">
@@ -33,7 +32,7 @@
 
   <div class="field">
     <%= form.label :branch_id %>
-    <%= form.number_field :branch_id %>
+    <%= form.select :branch_id, options_for_enum(:company_types) %>
   </div>
 
   <div class="actions">
