@@ -29,7 +29,7 @@
         <td><%= company.city.name %></td>
         <td><%= link_to t("general.show"), company %></td>
         <td><%= link_to t("general.edit"), edit_company_path(company) %></td>
-        <td><%= link_to t("general.delete"), company, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to t("general.delete"), company, method: :delete, data: { confirm: t("general.messages.confirm") } %></td>
       </tr>
     <% end %>
   </tbody>

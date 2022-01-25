@@ -1,7 +1,7 @@
 class FinesController < ApplicationController
   before_action :set_fine, only: %i[ show edit update destroy ]
-  before_action :get_user, only: [:new, :create, :edit]
-  before_action :get_branches, only: [:new, :create, :edit]
+  before_action :get_user, only: [:new, :create, :edit, :update]
+  before_action :get_branches, only: [:new, :create, :edit, :update]
   # GET /fines or /fines.json
   def index
     @fines = Fine.all
@@ -67,14 +67,13 @@ class FinesController < ApplicationController
     def get_user
       @users = User.all
     end
-    def get_branches
-      @companies = Company.all
-      @branches = Company.company_types
-    end
 
+    def get_branches
+      @branches = Company.where(company_type: :branch)
+    end
 
     # Only allow a list of trusted parameters through.
     def fine_params
-      params.require(:fine).permit(:user_id, :fine_date, :fine_status, :fine_number, :branch_id)
+      params.require(:fine).permit(:user_id, :fine_date, :fine_status, :fine_number, :branch_id, :company_type)
     end
 end
