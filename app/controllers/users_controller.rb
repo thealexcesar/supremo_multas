@@ -20,6 +20,8 @@ class UsersController < ApplicationController
         format.html { render :new, status: :unprocessable_entity }
       end
     end
+  rescue
+    redirect_to new_user_url, alert: I18n.t("errors.rescue.fields"), class: 'alert'
   end
 
   def show
@@ -38,6 +40,8 @@ class UsersController < ApplicationController
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
+  rescue
+    redirect_to edit_user_url, alert: I18n.t("errors.rescue.fields"), class: 'alert'
   end
 
   def destroy

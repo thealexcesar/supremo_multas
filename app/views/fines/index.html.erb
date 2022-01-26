@@ -1,7 +1,4 @@
-<p id="notice"><%= notice %></p>
-
 <h1><%= t("activerecord.models.fine") %></h1>
-
 <table>
   <thead>
     <tr>
@@ -9,11 +6,10 @@
       <th><%= t('activerecord.attributes.fine.fine_date') %></th>
       <th><%= t('activerecord.attributes.fine.fine_status') %></th>
       <th><%= t('activerecord.attributes.fine.fine_number') %></th>
-      <th><%= t("activerecord.attributes.company.company_type") %></th>
+      <th><%= t("activerecord.models.company") %></th>
       <th colspan="3"><%= t("general.actions") %></th>
     </tr>
   </thead>
-
   <tbody>
     <% @fines.each do |f| %>
       <tr>
@@ -22,7 +18,6 @@
         <td><%= enum_to_name(f, :fine_status) %></td>
         <td><%= f.fine_number %></td>
         <td><%= f.branch&.name %></td>
-
         <td><%= link_to t('general.show'), f %></td>
         <td><%= link_to t('general.edit'), edit_fine_path(f) %></td>
         <td><%= link_to t('general.delete'), f, method: :delete, data: { confirm: t("general.messages.confirm") } %></td>
@@ -31,5 +26,4 @@
   </tbody>
 </table>
 <br>
-
 <%= link_to t("general.new"), new_fine_path %>

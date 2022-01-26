@@ -1,6 +1,6 @@
 class CarModelsController < ApplicationController
   before_action :set_car_model, only: %i[ show edit update destroy ]
-  before_action :set_cars, only: [:new, :edit]
+  before_action :set_cars, only: [:new, :create, :edit, :update]
 
   # GET /car_models or /car_models.json
   def index
@@ -33,6 +33,8 @@ class CarModelsController < ApplicationController
         format.json { render json: @car_model.errors, status: :unprocessable_entity }
       end
     end
+  rescue
+    redirect_to new_car_model_url, alert: I18n.t("errors.rescue.fields"), class: 'alert'
   end
 
   # PATCH/PUT /car_models/1 or /car_models/1.json
@@ -46,6 +48,8 @@ class CarModelsController < ApplicationController
         format.json { render json: @car_model.errors, status: :unprocessable_entity }
       end
     end
+  rescue
+    redirect_to edit_car_model_url, alert: I18n.t("errors.rescue.fields"), class: 'alert'
   end
 
   # DELETE /car_models/1 or /car_models/1.json
@@ -64,13 +68,14 @@ class CarModelsController < ApplicationController
       @car_model = CarModel.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
-    def car_model_params
-      params.require(:car_model).permit(:name, :car_brand_id, :car_type_id)
-    end
-
     def set_cars
       @car_brands = CarBrand.all
       @car_types = CarType.all
     end
+
+  # Only allow a list of trusted parameters through.
+    def car_model_params
+      params.require(:car_model).permit(:name, :car_brand_id, :car_type_id)
+    end
+
 end

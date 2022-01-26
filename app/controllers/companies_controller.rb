@@ -32,6 +32,8 @@ class CompaniesController < ApplicationController
         format.json { render json: @company.errors, status: :unprocessable_entity }
       end
     end
+  rescue
+    redirect_to new_company_url, alert: I18n.t("errors.rescue.fields"), class: 'alert'
   end
 
   # PATCH/PUT /companies/1 or /companies/1.json
@@ -45,6 +47,8 @@ class CompaniesController < ApplicationController
         format.json { render json: @company.errors, status: :unprocessable_entity }
       end
     end
+  rescue
+    redirect_to edit_company_url, alert: I18n.t("errors.rescue.fields"), class: 'alert'
   end
 
   # DELETE /companies/1 or /companies/1.json

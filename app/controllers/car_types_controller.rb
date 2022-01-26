@@ -32,6 +32,8 @@ class CarTypesController < ApplicationController
         format.json { render json: @car_type.errors, status: :unprocessable_entity }
       end
     end
+  rescue
+    redirect_to new_car_type_url, alert: I18n.t("errors.rescue.fields"), class: 'alert'
   end
 
   # PATCH/PUT /car_types/1 or /car_types/1.json
@@ -45,6 +47,8 @@ class CarTypesController < ApplicationController
         format.json { render json: @car_type.errors, status: :unprocessable_entity }
       end
     end
+  rescue
+    redirect_to edit_car_type_url, alert: I18n.t("errors.rescue.fields"), class: 'alert'
   end
 
   # DELETE /car_types/1 or /car_types/1.json
