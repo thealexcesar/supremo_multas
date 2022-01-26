@@ -12,7 +12,7 @@
       <td><%= @user.name.capitalize %></td>
       <td><%= enum_to_name( @user, :status) %></td>
       <td><%= enum_to_name( @user, :user_type) %></td>
-      <td><%= link_to "mudar status", user_enable_disable_path(@user)  , method: :post, remote: true %></td>
+      <td><%= link_to "mudar status", user_enable_disable_path(@user), method: :post, remote: true %></td>
     </tr>
   </tbody>
 </table>

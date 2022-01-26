@@ -7,5 +7,5 @@ class User < ApplicationRecord
   enum status: [:enabled, :disabled]
   enum user_type: [:users, :admin]
 
-  validate :name, :status, user_types, presence: true
+  # validate :name, :status, user_types, presence: true
 end
