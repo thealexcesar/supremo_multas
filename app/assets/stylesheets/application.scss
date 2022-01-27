@@ -1,16 +1,18 @@
 /*
+ *= require_tree .
  *= require_self
 
  */
 
-/************************************************************ Global */
+/*
+!************************************************************ Global *!
 .flex {display:flex; justify-content:space-around; align-items:center;}
 .flex-col {display:flex; flex-direction:column; align-items:center;}
 .container {width:90vw;}
 .h6 {font-size:.9rem;}
 .py-4 {padding:.25rem 0}
 .center {text-align:center}
-/******************************************************** Global end */
+!******************************************************** Global end *!
 
 * {padding:0; margin:0; box-sizing:border-box}
 a {
@@ -38,3 +40,10 @@ table {
     :hover {color:#0969da;}
 }
 
+*/
+.alert {
+  color: red;
+}
+.notice {
+  color: green;
+}

@@ -48,6 +48,9 @@ pt-BR:
         fine_status: "Status da multa"
         fine_number: "Número da multa"
         branch_id: "Filial"
+      fine_statuses:
+        unidentified: "Não identificado"
+        identified: "Identificado"
       user:
         created_at: "Criado em"
         email: "E-mail"
@@ -203,10 +206,12 @@ pt-BR:
       header:
         one: 'Não foi possível gravar %{model}: 1 erro'
         other: 'Não foi possível gravar %{model}: %{count} erros'
-
+    rescue:
+      fields: "Há algum campo não preenchido ou já existente."
   general:
     actions: "Ações"
     back: "Voltar"
+    conductor: "Condutor"
     create: "Criar"
     creating: "Criando %{model}"
     delete: "Apagar"

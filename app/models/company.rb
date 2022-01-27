@@ -3,4 +3,6 @@ class Company < ApplicationRecord
   has_many :fines
   has_many :branches, class_name: "Company", foreign_key: :company_type
   enum company_type: [:main, :branch]
+
+  validates :address, :cnpj, :district, :name, :phone, :zipcode, presence: true
 end

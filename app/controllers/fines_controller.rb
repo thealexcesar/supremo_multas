@@ -1,7 +1,6 @@
 class FinesController < ApplicationController
   before_action :set_fine, only: %i[ show edit update destroy ]
-  before_action :get_user, only: [:new, :create, :edit]
-  before_action :get_branches, only: [:new, :create, :edit]
+  before_action :fill_fields, only: [:new, :create, :edit, :update]
   # GET /fines or /fines.json
   def index
     @fines = Fine.all
@@ -33,6 +32,8 @@ class FinesController < ApplicationController
         format.json { render json: @fine.errors, status: :unprocessable_entity }
       end
     end
+  rescue
+    redirect_to new_fine_url, alert: I18n.t("errors.rescue.fields"), class: 'alert'
   end
 
   # PATCH/PUT /fines/1 or /fines/1.json
@@ -46,6 +47,8 @@ class FinesController < ApplicationController
         format.json { render json: @fine.errors, status: :unprocessable_entity }
       end
     end
+  rescue
+    redirect_to edit_fine_url, alert: I18n.t("errors.rescue.fields"), class: 'alert'
   end
 
   # DELETE /fines/1 or /fines/1.json
@@ -64,17 +67,13 @@ class FinesController < ApplicationController
       @fine = Fine.find(params[:id])
     end
 
-    def get_user
+    def fill_fields
       @users = User.all
+      @branches = Company.where(company_type: :branch)
     end
-    def get_branches
-      @companies = Company.all
-      @branches = Company.company_types
-    end
-
 
     # Only allow a list of trusted parameters through.
     def fine_params
-      params.require(:fine).permit(:user_id, :fine_date, :fine_status, :fine_number, :branch_id)
+      params.require(:fine).permit(:user_id, :fine_date, :fine_status, :fine_number, :branch_id, :company_type)
     end
 end

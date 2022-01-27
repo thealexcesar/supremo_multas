@@ -1,7 +1,7 @@
+<div class="flex">
 <%= form_with(model: fine, local: true) do |form| %>
   <% if fine.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(fine.errors.count, "error") %> prohibited this fine from being saved:</h2>
       <ul>
       <% fine.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -31,11 +31,12 @@
   </div>
 
   <div class="field">
-    <%= form.label :branch_id %>
-    <%= form.select :branch_id, options_for_enum(:company_types) %>
+    <%= form.label t("activerecord.models.company") %>
+    <%= form.select :branch_id, options_from_collection_for_select(@branches, :id, :name) %>
   </div>
 
   <div class="actions">
     <%= form.submit %>
   </div>
 <% end %>
+</div>

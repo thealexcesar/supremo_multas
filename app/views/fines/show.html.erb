@@ -1,29 +1,27 @@
-<p id="notice"><%= notice %></p>
-
 <p>
-  <strong>User:</strong>
-  <%= @fine.user.name %>
+  <strong><%= t("general.name") %>:</strong>
+  <%= @fine.user.name.capitalize %>
 </p>
 
 <p>
-  <strong>Fine date:</strong>
+  <strong><%= t("activerecord.attributes.fine.fine_date") %>:</strong>
   <%= @fine.fine_date %>
 </p>
 
 <p>
-  <strong>Fine status:</strong>
-  <%= @fine.fine_status %>
+  <strong><%= t("activerecord.attributes.fine.fine_status") %>:</strong>
+  <%= enum_to_name(@fine, :fine_status) %>
 </p>
 
 <p>
-  <strong>Fine number:</strong>
+  <strong><%= t("activerecord.attributes.fine.fine_number") %>:</strong>
   <%= @fine.fine_number %>
 </p>
 
 <p>
-  <strong>Branch:</strong>
-  <%= @fine.branch_id %>
+  <strong><%= t("activerecord.attributes.company.company_type") %>:</strong>
+  <%= @fine.branch&.name %>
 </p>
 
-<%= link_to 'Edit', edit_fine_path(@fine) %> |
-<%= link_to 'Back', fines_path %>
+<%= link_to t("general.edit"), edit_fine_path(@fine) %>
+<%= link_to t("general.back"), fines_path %>
