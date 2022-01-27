@@ -52,6 +52,11 @@
   </div>
 
   <div class="field">
+    <%= form.label :state %>
+    <%= form.select :state, options_from_collection_for_select(@state_select, :id, :name) %>
+  </div>
+
+  <div class="field">
     <%= form.label :city_id %>
     <%= form.select :city_id, options_from_collection_for_select(@cities, :id, :name) %>
   </div>

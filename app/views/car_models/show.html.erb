@@ -13,5 +13,5 @@
   <%= @car_model.car_type&.name %>
 </p>
 
-<%= link_to 'Edit', edit_car_model_path(@car_model) %>
-<%= link_to 'Back', car_models_path %>
+<%= link_to t("general.edit"), edit_car_model_path(@car_model) %>
+<%= link_to t("general.back"), car_models_path %>

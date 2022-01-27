@@ -17,7 +17,7 @@
         <td><%= f.fine_date %></td>
         <td><%= enum_to_name(f, :fine_status) %></td>
         <td><%= f.fine_number %></td>
-        <td><%= f.branch&.name %></td>
+        <td><%= f.branch&.name %></td>  
         <td><%= link_to t('general.show'), f %></td>
         <td><%= link_to t('general.edit'), edit_fine_path(f) %></td>
         <td><%= link_to t('general.delete'), f, method: :delete, data: { confirm: t("general.messages.confirm") } %></td>

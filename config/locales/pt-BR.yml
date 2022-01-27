@@ -10,7 +10,7 @@ pt-BR:
       fine: "Multa"
     attributes:
       car:
-        car_model_id: "Modelo do carro"
+        car_model_id: "Modelo do veículo"
         license_plate: "Placa"
         status: "Status"
         year: "Ano"

@@ -68,7 +68,19 @@ class CompaniesController < ApplicationController
     end
 
     def set_city
-      @cities = State.find_by(acronym: "SC").cities.order(:name)
+      @states = State.where(acronym: ["SC", "PR"])
+      state = State.select(:id).where(acronym: ["SC", "PR"])
+      if state = 24
+        puts "SC".inspect
+        state = State.select(:id).where(acronym: "SC")
+      elsif state = 18
+        puts "PR".inspect
+        state = State.select(:id).where(acronym: "PR")
+      else
+        "errado"
+      end
+      @state_select = @states
+      @cities = City.where(state_id: state)
     end
     # Only allow a list of trusted parameters through.
     def company_params

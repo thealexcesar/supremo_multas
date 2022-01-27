@@ -8,6 +8,7 @@
       <th><%= t("activerecord.attributes.car.year") %></th>
       <th><%= t("activerecord.attributes.car.license_plate") %></th>
       <th><%= t("activerecord.attributes.car.status") %></th>
+      <th><%= t("activerecord.attributes.car_model.car_type_id") %></th>
       <th><%= t("activerecord.attributes.car.car_model_id") %></th>
       <th colspan="4"><%= t("general.actions") %></th>
     </tr>
@@ -19,7 +20,8 @@
         <td><%= car.year %></td>
         <td><%= car.license_plate %></td>
         <td><%= enum_to_name(car, :status) %></td>
-        <td><%= car.car_model.name %></td>
+        <td><%= car&.car_model&.car_type.name %></td>
+        <td><%= car.car_model&.name %></td>
         <td><%= link_to t("general.show"), car %></td>
         <td><%= link_to t("general.edit"), edit_car_path(car) %></td>
         <td><%= link_to t("general.delete"), car, method: :delete, data: { confirm: t("general.messages.confirm") } %></td>
