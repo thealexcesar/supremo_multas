@@ -1,6 +1,8 @@
 class FinesController < ApplicationController
   before_action :set_fine, only: %i[ show edit update destroy ]
   before_action :fill_fields, only: [:new, :create, :edit, :update]
+  before_action :get_states, only: [:new, :create, :edit, :update]
+
   # GET /fines or /fines.json
   def index
     @fines = Fine.all
@@ -67,6 +69,10 @@ class FinesController < ApplicationController
       @fine = Fine.find(params[:id])
     end
 
+    def get_states
+      @states = State.where(acronym: ["SC", "PR"])
+    end
+
     def fill_fields
       @users = User.all
       @branches = Company.where(company_type: :branch)
@@ -74,6 +80,6 @@ class FinesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def fine_params
-      params.require(:fine).permit(:user_id, :fine_date, :fine_status, :fine_number, :branch_id, :company_type)
+      params.require(:fine).permit(:user_id, :fine_date, :fine_status, :fine_number, :branch_id, :company_type, :detran_id)
     end
 end

@@ -1,6 +1,6 @@
 class CompaniesController < ApplicationController
   before_action :set_company, only: %i[ show edit update destroy ]
-  before_action :set_city, only: [:new, :edit]
+  before_action :get_city, only: [:new, :edit]
   # GET /companies or /companies.json
   def index
     @companies = Company.all
@@ -67,19 +67,19 @@ class CompaniesController < ApplicationController
       @company = Company.find(params[:id])
     end
 
-    def set_city
+    def get_city
       @states = State.where(acronym: ["SC", "PR"])
       state = State.select(:id).where(acronym: ["SC", "PR"])
+=begin
       if state = 24
         puts "SC".inspect
         state = State.select(:id).where(acronym: "SC")
-      elsif state = 18
+      else
         puts "PR".inspect
         state = State.select(:id).where(acronym: "PR")
-      else
-        "errado"
       end
       @state_select = @states
+=end
       @cities = City.where(state_id: state)
     end
     # Only allow a list of trusted parameters through.

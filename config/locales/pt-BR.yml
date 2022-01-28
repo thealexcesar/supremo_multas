@@ -1,4 +1,5 @@
 pt-BR:
+  hello: "<h1>Título usando H1</h1> <p><i>paragráfo em itálico!<i><p>"
   activerecord:
     models:
       car: "Carro"
@@ -6,8 +7,9 @@ pt-BR:
       car_brand: "Marca do veículo"
       car_model: "Modelo do veículo"
       company: "Empresa"
-      user: "Usuário"
       fine: "Multa"
+      user: "Usuário"
+      state: "Estado"
     attributes:
       car:
         car_model_id: "Modelo do veículo"
@@ -43,7 +45,9 @@ pt-BR:
             has_one: "Não é possível excluir o registro pois existe um %{record} dependente"
             has_many: "Não é possível excluir o registro pois existem %{record} dependentes"
       fine:
+        detran_id: "Detran"
         user_id: "Usuário"
+
         fine_date: "Data da multa"
         fine_status: "Status da multa"
         fine_number: "Número da multa"
@@ -218,6 +222,7 @@ pt-BR:
     edit: "Editar"
     editing: "Editando %{model}"
     exit: "Sair"
+    fines: "Multas"
     login: "Entrar"
     name: "Nome"
     new: "Novo"
