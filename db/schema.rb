@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_28_113656) do
+ActiveRecord::Schema.define(version: 2022_01_28_142349) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -78,6 +78,13 @@ ActiveRecord::Schema.define(version: 2022_01_28_113656) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "fine_points", force: :cascade do |t|
+    t.string "name"
+    t.integer "point"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "fines", force: :cascade do |t|
     t.bigint "user_id"
     t.datetime "fine_date"
@@ -87,6 +94,8 @@ ActiveRecord::Schema.define(version: 2022_01_28_113656) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "detran_id"
+    t.bigint "fine_point_id"
+    t.index ["fine_point_id"], name: "index_fines_on_fine_point_id"
     t.index ["user_id"], name: "index_fines_on_user_id"
   end
 
@@ -120,6 +129,7 @@ ActiveRecord::Schema.define(version: 2022_01_28_113656) do
   add_foreign_key "cities", "states"
   add_foreign_key "companies", "cities"
   add_foreign_key "companies", "companies"
+  add_foreign_key "fines", "fine_points"
   add_foreign_key "fines", "users"
   add_foreign_key "states", "countries"
 end

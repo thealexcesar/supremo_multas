@@ -1,0 +1,34 @@
+<%= form_with(model: fine_point, local: true) do |form| %>
+  <% if fine_point.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(fine_point.errors.count, "error") %> prohibited this fine_point from being saved:</h2>
+
+      <ul>
+      <% fine_point.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :point %>
+    <%= form.number_field :point %>
+  </div>
+
+<!--
+  <div class="field">
+    <%#= form.label :point %>
+    <%#= form.select :fine %>
+  </div>
+-->
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

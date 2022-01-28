@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @fine_point.name %>
+</p>
+
+<p>
+  <strong>Point:</strong>
+  <%= @fine_point.point %>
+</p>
+
+<%= link_to 'Edit', edit_fine_point_path(@fine_point) %> |
+<%= link_to 'Back', fine_points_path %>

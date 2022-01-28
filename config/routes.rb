@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :fine_points
   resources :fines
   resources :companies
   resources :cars do
