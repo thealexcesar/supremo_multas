@@ -1,29 +1,24 @@
 <p id="notice"><%= notice %></p>
-
-<h1>Fine Points</h1>
-
+<h1><%= t("activerecord.models.fine_point") %></h1>
 <table>
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Point</th>
+      <th><%= t("activerecord.attributes.fine_point.name") %></th>
+      <th><%= t("activerecord.attributes.fine_point.point") %></th>
       <th colspan="3"></th>
     </tr>
   </thead>
-
   <tbody>
     <% @fine_points.each do |fine_point| %>
       <tr>
         <td><%= fine_point.name %></td>
         <td><%= fine_point.point %></td>
-        <td><%= link_to 'Show', fine_point %></td>
-        <td><%= link_to 'Edit', edit_fine_point_path(fine_point) %></td>
-        <td><%= link_to 'Destroy', fine_point, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to t("general.show"), fine_point %></td>
+        <td><%= link_to t("general.edit"), edit_fine_point_path(fine_point) %></td>
+        <td><%= link_to t("general.delete"), fine_point, method: :delete, data: { confirm: t("general.messages.confirm") } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
 <br>
-
-<%= link_to 'New Fine Point', new_fine_point_path %>
+<%= link_to t("general.new"), new_fine_point_path %>

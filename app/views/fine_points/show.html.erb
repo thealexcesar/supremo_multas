@@ -1,14 +1,14 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
+  <strong><%= t("activerecord.attributes.fine_point.name") %>:</strong>
   <%= @fine_point.name %>
 </p>
 
 <p>
-  <strong>Point:</strong>
+  <strong><%= t("activerecord.attributes.fine_point.point") %>:</strong>
   <%= @fine_point.point %>
 </p>
 
-<%= link_to 'Edit', edit_fine_point_path(@fine_point) %> |
-<%= link_to 'Back', fine_points_path %>
+<%= link_to t("general.show"), edit_fine_point_path(@fine_point) %> |
+<%= link_to t("general.back"), fine_points_path %>

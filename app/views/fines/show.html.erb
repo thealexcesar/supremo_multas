@@ -19,6 +19,11 @@
 </p>
 
 <p>
+  <strong>PONTOS DA MULTA:</strong>
+  <%= @fine.fine_point&.name %>
+</p>
+
+<p>
   <strong><%= t("activerecord.attributes.company.company_type") %>:</strong>
   <%= @fine.branch&.name %>
 </p>

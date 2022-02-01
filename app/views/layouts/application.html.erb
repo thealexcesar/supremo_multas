@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Supremo Multas</title>
+    <title><%= t("general.supreme") %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag    'application', media: 'all' %>
@@ -10,14 +10,20 @@
 
   <body>
   <main>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
-  <div>
-    <br> <%= "#{t("general.welcome")}, #{current_user.name.capitalize}!" if user_signed_in? %> <br>
-  </div>
-    <div class="container flex-col">
-      <%= yield %>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <div>
+      <br> <%= "#{t("general.welcome")}, #{current_user.name.capitalize}!" if user_signed_in? %> <br>
     </div>
+      <div class="flex">
+      <div>
+        <%= render "layouts/menu" %>
+      </div>
+      <div class="container flex-col">
+        <%= yield %>
+      </div>
+    </div>
+
     <%#= params.inspect %>
   </main>
   </body>

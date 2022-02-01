@@ -1,0 +1,9 @@
+<nav class="flex-col">
+  <%= link_to fa_icon('user', type: :regular, text: t("activerecord.models.user")), users_path %>
+  <%= link_to fa_icon('file-alt', type: :regular, text: t("activerecord.models.fine")), fines_path %>
+  <%= link_to fa_icon('file-powerpoint', type: :regular, text: t("activerecord.models.fine_point")), fine_points_path %>
+  <%= link_to fa_icon('building', type: :regular, text: t("activerecord.models.company")), companies_path %>
+  <%= link_to fa_icon('car', text: t("activerecord.models.car")), cars_path %>
+  <%= link_to fa_icon('car-side', text: t("activerecord.models.car_type")), car_types_path %>
+  <%= link_to fa_icon('car-side', text: t("activerecord.models.car_model")), car_models_path %>
+</nav>

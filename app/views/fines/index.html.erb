@@ -4,6 +4,7 @@
     <tr>
       <th><%= t('general.conductor') %></th>
       <th><%= t('activerecord.attributes.fine.fine_date') %></th>
+      <th>PONTOS DA MULTA </th>
       <th><%= t('activerecord.attributes.fine.fine_status') %></th>
       <th><%= t('activerecord.attributes.fine.fine_number') %></th>
       <th><%= t('activerecord.attributes.fine.detran_id') %></th>
@@ -16,6 +17,7 @@
       <tr>
         <td><%= f.user.name.capitalize %></td>
         <td><%= f.fine_date %></td>
+        <td><%= f.fine_point&.name %></td>
         <td><%= enum_to_name(f, :fine_status) %></td>
         <td><%= f.fine_number %></td>
         <td><%= f.detran&.name %></td>

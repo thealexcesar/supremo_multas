@@ -1,6 +1,6 @@
-<h1>Editing Fine Point</h1>
+<h1><%= editing_model.capitalize %></h1>
 
 <%= render 'form', fine_point: @fine_point %>
 
-<%= link_to 'Show', @fine_point %> |
-<%= link_to 'Back', fine_points_path %>
+<%= link_to t("general.show"), @fine_point %> |
+<%= link_to t("general.back"), fine_points_path %>

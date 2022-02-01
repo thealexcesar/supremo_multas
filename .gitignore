@@ -28,3 +28,4 @@
 afile
 ./Gemfile.lock
 /config/database.yml
+./.idea
