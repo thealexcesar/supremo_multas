@@ -1,20 +1,20 @@
 <main>
   <div class="flex h-blue">
-    <%= user_signed_in? ? (link_to t('general.exit'), destroy_user_session_path, method: :delete) : (link_to t('general.login'), new_user_session_path) %>
+    <%= user_signed_in? ? (link_to fa_icon('sign-out-alt'), destroy_user_session_path, method: :delete, title: t("general.exit")) : (link_to fa_icon("sign-in-alt"), new_user_session_path, title: t("general.login")) %>
     <%= link_to t("general.new"), new_user_path %>
   </div>
-<br>
-<table>
-  <thead>
-    <tr>
-      <th><%= t('general.name') %></th>
-      <th><%= t('activerecord.attributes.user.email') %></th>
-      <th><%= t('activerecord.attributes.user.user_type') %></th>
-      <th><%= t('activerecord.attributes.user.status') %></th>
-      <th colspan="4"><%= t("general.actions") %></th>
-    </tr>
-  </thead>
-  <% @users.each do |user| %>
+  <br>
+  <table>
+    <thead>
+      <tr>
+        <th><%= t('general.name') %></th>
+        <th><%= t('activerecord.attributes.user.email') %></th>
+        <th><%= t('activerecord.attributes.user.user_type') %></th>
+        <th><%= t('activerecord.attributes.user.status') %></th>
+        <th colspan="4"><%= t("general.actions") %></th>
+      </tr>
+    </thead>
+    <% @users.each do |user| %>
     <tbody>
       <tr>
         <td><%= (user.name).capitalize %></td>
@@ -28,5 +28,5 @@
       </tr>
     </tbody>
   <% end %>
-</table>
+  </table>
 </main>

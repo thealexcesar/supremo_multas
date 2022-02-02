@@ -213,7 +213,7 @@ DEPENDENCIES
   chromedriver-helper
   coffee-rails (= 4.2.2)
   devise (= 4.8.1)
-  font_awesome5_rails
+  font_awesome5_rails (= 1.2.0)
   jbuilder (= 2.11.5)
   listen (>= 3.0.5, < 3.2)
   pg (= 1.2.3)
