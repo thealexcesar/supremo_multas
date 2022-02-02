@@ -25,7 +25,7 @@ class FinesController < ApplicationController
   # POST /fines or /fines.json
   def create
     @fine = Fine.new(fine_params)
-
+    @company.company = current_company
     respond_to do |format|
       if @fine.save
         format.html { redirect_to fine_url(@fine), notice: created_msg }
@@ -35,8 +35,10 @@ class FinesController < ApplicationController
         format.json { render json: @fine.errors, status: :unprocessable_entity }
       end
     end
+=begin
   rescue
     redirect_to new_fine_url, alert: I18n.t("errors.rescue.fields"), class: 'alert'
+=end
   end
 
   # PATCH/PUT /fines/1 or /fines/1.json

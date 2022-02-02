@@ -16,8 +16,8 @@
   </div>
 
   <div class="field">
-    <%= form.label "Branches" %>
-    <%= form.select @branches %>
+    <%= form.label t("activerecord.attributes.company.company_type") %>
+    <%= form.select :company_type, options_for_enum(:company_types) %>
   </div>
 
   <div class="field">

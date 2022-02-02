@@ -1,7 +1,9 @@
 class CarModel < ApplicationRecord
   belongs_to :car_brand
   belongs_to :car_type
-  has_many :cars
+  belongs_to :company
+
+  has_many :car_models
 
   validates :name, presence: true
 end

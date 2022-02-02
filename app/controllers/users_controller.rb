@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :set_user_id, only: :enable_disable
+  before_action :set_company, only: [:new, :create, :edit, :update]
 
   def index
     @users = User.all
@@ -12,6 +13,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    @user.company = current_company unless current_user.admin?
     respond_to do |format|
       if @user.save
         format.html { redirect_to @user, notice: created_msg }
@@ -20,8 +22,10 @@ class UsersController < ApplicationController
         format.html { render :new, status: :unprocessable_entity }
       end
     end
+=begin
   rescue
     redirect_to new_user_url, alert: I18n.t("errors.rescue.fields"), class: 'alert'
+=end
   end
 
   def show
@@ -67,6 +71,10 @@ class UsersController < ApplicationController
   end
 
   private
+  def set_company
+    @companies = Company.where(company_type: :main)
+  end
+
   def set_user
     @user = User.find(params[:id])
   end
@@ -74,6 +82,6 @@ class UsersController < ApplicationController
     @user = User.find(params[:user_id])
   end
   def user_params
-    params.require(:user).permit(:email, :name, :password, :password_confirmation, :status, :user_type)
+    params.require(:user).permit(:email, :name, :password, :password_confirmation, :status, :user_type, :company_id)
   end
 end

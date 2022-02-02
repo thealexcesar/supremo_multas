@@ -24,7 +24,7 @@ class CarsController < ApplicationController
   # POST /cars or /cars.json
   def create
     @car = Car.new(car_params)
-
+    @car.company = current_company
     respond_to do |format|
       if @car.save
         format.html { redirect_to car_url(@car), notice: created_msg }
@@ -34,8 +34,10 @@ class CarsController < ApplicationController
         format.json { render json: @car.errors, status: :unprocessable_entity }
       end
     end
+=begin
   rescue
     redirect_to new_car_url, alert: I18n.t("errors.rescue.fields"), class: 'alert'
+=end
   end
 
   # PATCH/PUT /cars/1 or /cars/1.json

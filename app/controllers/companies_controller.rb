@@ -22,7 +22,6 @@ class CompaniesController < ApplicationController
   # POST /companies or /companies.json
   def create
     @company = Company.new(company_params)
-
     respond_to do |format|
       if @company.save
         format.html { redirect_to company_url(@company), notice: created_msg }
@@ -32,8 +31,10 @@ class CompaniesController < ApplicationController
         format.json { render json: @company.errors, status: :unprocessable_entity }
       end
     end
+=begin
   rescue
     redirect_to new_company_url, alert: I18n.t("errors.rescue.fields"), class: 'alert'
+=end
   end
 
   # PATCH/PUT /companies/1 or /companies/1.json

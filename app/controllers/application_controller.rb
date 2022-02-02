@@ -1,4 +1,11 @@
 class ApplicationController < ActionController::Base
+  before_action :authenticate_user!
+
+
+  def current_company
+    current_user.company
+  end
+
   def created_msg
     I18n.t("general.messages.created", model: I18n.t("activerecord.models.#{controller_name.classify.underscore}"))
   end

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root "fines#index"
   resources :fine_points
   resources :fines
   resources :companies

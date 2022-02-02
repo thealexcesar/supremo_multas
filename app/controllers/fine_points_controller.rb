@@ -22,7 +22,7 @@ class FinePointsController < ApplicationController
   # POST /fine_points or /fine_points.json
   def create
     @fine_point = FinePoint.new(fine_point_params)
-
+    @fine_point.company = current_company
     respond_to do |format|
       if @fine_point.save
         format.html { redirect_to fine_point_url(@fine_point), notice: "Fine point was successfully created." }
@@ -50,7 +50,7 @@ class FinePointsController < ApplicationController
   # DELETE /fine_points/1 or /fine_points/1.json
   def destroy
     @fine_point.destroy
-
+    @company = current_company
     respond_to do |format|
       format.html { redirect_to fine_points_url, notice: "Fine point was successfully destroyed." }
       format.json { head :no_content }
