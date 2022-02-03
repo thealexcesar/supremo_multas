@@ -21,15 +21,15 @@
         <h2 class="h6 py-4"><%= form.label :status %></h2>
         <p><%= form.select :status, options_for_enum(:statuses) %></p>
       </div>
-      <div>
-        <h2 class="h6 py-4"><%= form.label :user_type %></h2>
-        <p><%= form.select :user_type, options_for_enum(:user_types) %></p>
-      </div>
       <% if current_user.admin? %>
-      <div>
-        <h2 class="h6 py-4"><%= form.label :company_id %></h2>
-        <p><%= form.select :company_id, options_from_collection_for_select(@companies, :id, :name) %></p>
-      </div>
+        <div>
+          <h2 class="h6 py-4"><%= form.label :user_type %></h2>
+          <p><%= form.select :user_type, options_for_enum(:user_types) %></p>
+        </div>
+        <div>
+          <h2 class="h6 py-4"><%= form.label :company_id %></h2>
+          <p><%= form.select :company_id, options_from_collection_for_select(@companies, :id, :name) %></p>
+        </div>
       <% end %>
       <div class="py-4">
         <%= submit_tag t("general.save") %>

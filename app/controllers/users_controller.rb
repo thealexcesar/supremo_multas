@@ -71,6 +71,7 @@ class UsersController < ApplicationController
   end
 
   private
+
   def set_company
     @companies = Company.where(company_type: :main)
   end

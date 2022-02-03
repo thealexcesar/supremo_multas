@@ -12,13 +12,13 @@
   <main>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-    <div>
-      <br> <%= "#{t("general.welcome")}, #{current_user.name.capitalize}!" if user_signed_in? %> <br>
-      <br> <%= "#{t("general.welcome")}, #{current_company.name}!" if user_signed_in? %> <br>
+    <div class="flex">
+      <br> <%= "#{t("general.welcome")}, #{current_user.name.capitalize}!" if user_signed_in? %>
+      <%= "#{t("activerecord.models.company")}, #{current_company.name}." if user_signed_in? %> <br>
     </div>
       <div class="flex">
       <div>
-        <%= render "layouts/menu" %>
+        <%= render "layouts/menu" if user_signed_in? %>
       </div>
       <div class="container flex-col">
         <%= yield %>

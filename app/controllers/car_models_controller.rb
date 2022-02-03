@@ -23,7 +23,7 @@ class CarModelsController < ApplicationController
   # POST /car_models or /car_models.json
   def create
     @car_model = CarModel.new(car_model_params)
-    @company.company = current_company
+    @car_model.company = current_company
     respond_to do |format|
       if @car_model.save
         format.html { redirect_to car_model_url(@car_model), notice: created_msg }
