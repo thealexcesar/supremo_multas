@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_02_125224) do
+ActiveRecord::Schema.define(version: 2022_02_03_131615) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 2022_02_02_125224) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "company_id"
+    t.integer "created_by"
     t.index ["company_id"], name: "index_car_brands_on_company_id"
   end
 
@@ -30,6 +31,7 @@ ActiveRecord::Schema.define(version: 2022_02_02_125224) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "company_id"
+    t.integer "created_by"
     t.index ["car_brand_id"], name: "index_car_models_on_car_brand_id"
     t.index ["car_type_id"], name: "index_car_models_on_car_type_id"
     t.index ["company_id"], name: "index_car_models_on_company_id"
@@ -40,6 +42,7 @@ ActiveRecord::Schema.define(version: 2022_02_02_125224) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "company_id"
+    t.integer "created_by"
     t.index ["company_id"], name: "index_car_types_on_company_id"
   end
 
@@ -51,6 +54,7 @@ ActiveRecord::Schema.define(version: 2022_02_02_125224) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "company_id"
+    t.integer "created_by"
     t.index ["car_model_id"], name: "index_cars_on_car_model_id"
     t.index ["company_id"], name: "index_cars_on_company_id"
   end
@@ -76,6 +80,7 @@ ActiveRecord::Schema.define(version: 2022_02_02_125224) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "company_id"
+    t.integer "created_by"
     t.index ["city_id"], name: "index_companies_on_city_id"
     t.index ["company_id"], name: "index_companies_on_company_id"
   end
@@ -92,6 +97,7 @@ ActiveRecord::Schema.define(version: 2022_02_02_125224) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "company_id"
+    t.integer "created_by"
     t.index ["company_id"], name: "index_fine_points_on_company_id"
   end
 
@@ -106,6 +112,7 @@ ActiveRecord::Schema.define(version: 2022_02_02_125224) do
     t.integer "detran_id"
     t.bigint "fine_point_id"
     t.bigint "company_id"
+    t.integer "created_by"
     t.index ["company_id"], name: "index_fines_on_company_id"
     t.index ["fine_point_id"], name: "index_fines_on_fine_point_id"
     t.index ["user_id"], name: "index_fines_on_user_id"
@@ -132,6 +139,7 @@ ActiveRecord::Schema.define(version: 2022_02_02_125224) do
     t.integer "status"
     t.integer "user_type"
     t.bigint "company_id"
+    t.integer "created_by"
     t.index ["company_id"], name: "index_users_on_company_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

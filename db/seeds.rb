@@ -5675,3 +5675,6 @@ company.save
 
 user = User.new(email: "adm@adm.com", name: "adm", password: "123123", password_confirmation: "123123", user_type: :admin, status: :enabled, company: company)
 user.save
+
+company.created_by = user
+company.save

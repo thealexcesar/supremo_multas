@@ -6,6 +6,7 @@ class CarsController < ApplicationController
   # GET /cars or /cars.json
   def index
     @cars = Car.all
+    #@cars = Car.where(company_id: current_company.id)
   end
 
   # GET /cars/1 or /cars/1.json
@@ -25,6 +26,7 @@ class CarsController < ApplicationController
   def create
     @car = Car.new(car_params)
     @car.company = current_company
+    @car.created_by = current_user
     respond_to do |format|
       if @car.save
         format.html { redirect_to car_url(@car), notice: created_msg }

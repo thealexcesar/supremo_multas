@@ -26,6 +26,7 @@ class FinesController < ApplicationController
   def create
     @fine = Fine.new(fine_params)
     @fine.company = current_company
+    @fine.created_by = current_user
     respond_to do |format|
       if @fine.save
         format.html { redirect_to fine_url(@fine), notice: created_msg }

@@ -16,18 +16,12 @@
   </div>
 
   <div class="field">
-    <%= form.label :point %>
+    <%= form.label t("activerecord.models.fine_point")%>
     <%= form.number_field :point %>
   </div>
 
-<!--
-  <div class="field">
-    <%#= form.label :point %>
-    <%#= form.select :fine %>
-  </div>
--->
-
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit t("general.save") %>
   </div>
+
 <% end %>

@@ -17,11 +17,11 @@
   <tbody>
     <% @cars.each do |car| %>
       <tr>
-        <td><%= car.year %></td>
-        <td><%= car.license_plate %></td>
+        <td><%= car&.year %></td>
+        <td><%= car&.license_plate %></td>
         <td><%= enum_to_name(car, :status) %></td>
-        <td><%= car&.car_model&.car_type.name %></td>
-        <td><%= car.car_model&.name %></td>
+        <td><%= car&.car_model&.car_type&.name %></td>
+        <td><%= car&.car_model&.name %></td>
         <td><%= link_to t("general.show"), car %></td>
         <td><%= link_to t("general.edit"), edit_car_path(car) %></td>
         <td><%= link_to t("general.delete"), car, method: :delete, data: { confirm: t("general.messages.confirm") } %></td>

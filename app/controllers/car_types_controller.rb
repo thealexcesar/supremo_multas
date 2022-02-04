@@ -23,6 +23,7 @@ class CarTypesController < ApplicationController
   def create
     @car_type = CarType.new(car_type_params)
     @car_type.company = current_company
+    @car_type.created_by = current_user
     respond_to do |format|
       if @car_type.save
         format.html { redirect_to car_type_url(@car_type), notice: created_msg }

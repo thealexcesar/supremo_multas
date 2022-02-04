@@ -23,6 +23,7 @@ class FinePointsController < ApplicationController
   def create
     @fine_point = FinePoint.new(fine_point_params)
     @fine_point.company = current_company
+    @fine_point.created_by = current_user
     respond_to do |format|
       if @fine_point.save
         format.html { redirect_to fine_point_url(@fine_point), notice: "Fine point was successfully created." }
