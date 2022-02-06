@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   before_action :set_company, only: [:new, :create, :edit, :update]
 
   def index
-    @users = User.all
+    @users = User.all.paginate(page: params[:page], per_page: 2)
   end
 
   def new

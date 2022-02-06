@@ -16,5 +16,5 @@ class User < ApplicationRecord
   def manager?
     self.user_type == "manager"
   end
-
+  self.per_page = @paginate
 end
