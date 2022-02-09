@@ -14,7 +14,7 @@
     <p class="alert"><%= alert %></p>
     <div class="flex">
       <br> <%= "#{t("general.welcome")}, #{current_user.name.capitalize}!" if user_signed_in? %>
-      <%= "#{t("activerecord.models.company")}, #{current_company&.name}." if user_signed_in? %> <br>
+      <%= "#{t("activerecord.models.company")} #{current_company&.name}." if user_signed_in? %> <br>
     </div>
       <div class="flex">
       <div>

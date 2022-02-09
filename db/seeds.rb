@@ -5670,11 +5670,10 @@ e.cities.create(:name => "Xambioá")
 
 city = City.find_by(name: "Blumenau")
 
-  company = Company.new(name: "ADM", company_type: :main, cnpj: "00887458000104", phone: "4799845624", address: "Rua XV de Novembro", number: "50", zipcode: "89000-000", district: "Centro", city: city)
+company = Company.new name: "administrador", company_type: :main, cnpj: "00887458000104", phone: "47998375756", address: "Rua Fritz Brunner", number: "87", zipcode: "89020-220", district: "Garcia", city: city
 company.save
 
-user = User.new(email: "adm@adm.com", name: "adm", password: "123123", password_confirmation: "123123", user_type: :admin, status: :enabled, company: company)
+user = User.new email: "adm@adm.com", name: "administrador", password: "123123", password_confirmation: "123123", user_type: :admin, status: :enabled, company: company
 user.save
 
 company.created_by = user
-company.save
