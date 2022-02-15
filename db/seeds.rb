@@ -5668,12 +5668,84 @@ e.cities.create(:name => "Tupiratins")
 e.cities.create(:name => "Wanderlândia")
 e.cities.create(:name => "Xambioá")
 
-city = City.find_by(name: "Blumenau")
+#-----------------------------------------------------------------------------------------------------------------------
+Curitiba = City.find_by(name: "Curitiba")
+Palhoça  = City.find_by(name: "Palhoça")
+Pomerode = City.find_by(name: "Pomerode")
+main = Company.new name: "ADM", company_type: :main, cnpj: "02.133.480/0001-94", phone: "(47)3242-2128",
+       address: "Zero", number: "1", zipcode: "89000-000", district: "Centro", city: Pomerode
+PASS = "123123"
 
-company = Company.new name: "administrador", company_type: :main, cnpj: "00887458000104", phone: "47998375756", address: "Rua Fritz Brunner", number: "87", zipcode: "89020-220", district: "Garcia", city: city
-company.save
+adm = User.new email: "adm@adm.com", name: "ADMIN", password: PASS, password_confirmation: PASS,
+      user_type: :admin, status: :enabled, company: main
+puts adm.save ? ("admin criado.") : ("Erro ao criar admin")
 
-user = User.new email: "adm@adm.com", name: "administrador", password: "123123", password_confirmation: "123123", user_type: :admin, status: :enabled, company: company
-user.save
+main = Company.new name: "Supremo Multas", company_type: :main, cnpj: "02.133.480/0001-94", phone: "47998375756", address: "Rua dos Atiradores",
+       number: "10809", zipcode: "89107-000", district: "Testo Central", city: Pomerode, created_by: adm
+puts main.save ? ("Empresa matriz #{Company.last.name} criada.") : ("Erro ao criar empresa matriz")
 
-company.created_by = user
+branches = [
+  {
+    name: "Supremo",
+    company_type: :branch,
+    cnpj: "02.133.480/0001-94",
+    phone: "(41) 3123-3900",
+    address: "Alameda Dr. Carlos de Carvalho,",
+    number: "555",
+    zipcode: "80430-180",
+    district: "Centro",
+    city: Curitiba,
+    created_by: adm
+  },
+  {
+    name: "Max Mohr",
+    company_type: :branch,
+    cnpj: "02.133.480/0001-94",
+    phone: "(48) 99968-0901",
+    address: "Avenida Ivo Lucchi",
+    number: "40",
+    zipcode: "89107-000",
+    district: " Jardim Eldorado",
+    city: Palhoça,
+    created_by: adm
+  }
+]
+branches.each do |b|
+  company = Company.new(b)
+  puts company.save ? ("Empresa filial #{Company.last.name} criada.") : ("Erro ao criar empresa filial")
+end
+
+users = [
+  {
+    email: "manuela@nucleus.com",
+    name: "Manuela Luzia Melo",
+    password: PASS,
+    password_confirmation: PASS,
+    user_type: :admin,
+    status: :enabled,
+    company: main
+  },
+  {
+    email: "elisa@nucleus.com",
+    name: "Elisa Rayssa da Paz",
+    password: PASS,
+    password_confirmation: PASS,
+    user_type: :admin,
+    status: :enabled,
+    company: main
+  },
+  {
+    email: "vicente@nucleus.com",
+    name: "Vicente Guilherme Danilo Moreira",
+    password: PASS,
+    password_confirmation: PASS,
+    user_type: :admin,
+    status: :enabled,
+    company: main
+  }
+]
+users.each do |u|
+  user = User.new(u)
+  puts user.save ? ("Usuario #{User.last.name} criado.") : ("Erro ao criar Usuario")
+end
+

@@ -3,7 +3,7 @@ class CompaniesController < ApplicationController
   before_action :get_city, only: [:new, :edit]
   # GET /companies or /companies.json
   def index
-    @companies = Company.all
+    @companies = Company.all.paginate(page: params[:page], per_page: 2)
   end
 
   # GET /companies/1 or /companies/1.json

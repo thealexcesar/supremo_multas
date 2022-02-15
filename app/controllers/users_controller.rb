@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :set_user_id, only: :enable_disable
   before_action :set_company, only: [:new, :create, :edit, :update]
+  # before_action :set_msg, only: [:new, :create, :edit, :update]
 
   def index
     @users = User.all.paginate(page: params[:page], per_page: 2)
@@ -82,6 +83,9 @@ class UsersController < ApplicationController
   def set_user_id
     @user = User.find(params[:user_id])
   end
+  # def set_msg
+  #   @test = Cliente.new
+  # end
   def user_params
     params.require(:user).permit(:email, :name, :password, :password_confirmation, :status, :user_type, :company_id)
   end

@@ -1,19 +1,16 @@
-/*
- *= require_tree .
- *= require_self
- */
+@import "bootstrap-sprockets";
+@import "bootstrap";
 
 @import 'font_awesome5.css';
 /************************************************************ Global */
 .flex {display:flex; justify-content:space-around; align-items:center; text-align:left}
 .flex-col {display:flex; flex-direction:column; text-align:left}
-.container {width:90vw;}
+.container {width:80vw;}
 .h6 {font-size:.9rem;}
 .py-4 {padding:.25rem 0}
 .center {text-align:center}
 .left {text-align:left!important; left:0!important;}
 /******************************************************** Global end */
-   /*
    * {padding:0; margin:0; box-sizing:border-box}
    a {
        text-decoration: none;
@@ -23,7 +20,8 @@
    }
 
    table {
-       width: 90vw;
+       margin: 0 2rem;
+       width: 80vw;
        background: #efefef;
        border: 2px solid black;
        border-collapse: separate;
@@ -40,7 +38,6 @@
        :hover {color:#0969da;}
    }
 
-   */
 .alert {
   color: red;
 }
