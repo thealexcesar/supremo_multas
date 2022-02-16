@@ -5676,14 +5676,17 @@ main = Company.new name: "ADM", company_type: :main, cnpj: "02.133.480/0001-94",
        address: "Zero", number: "1", zipcode: "89000-000", district: "Centro", city: Pomerode
 PASS = "123123"
 
+#------------------------------------------------
 adm = User.new email: "adm@adm.com", name: "ADMIN", password: PASS, password_confirmation: PASS,
       user_type: :admin, status: :enabled, company: main
-puts adm.save ? ("admin criado.") : ("Erro ao criar admin")
+puts adm.save ? ("Usuário admin criado.") : ("Erro ao criar admin: #{adm.errors.full_messages}")
 
+#------------------------------------------------
 main = Company.new name: "Supremo Multas", company_type: :main, cnpj: "02.133.480/0001-94", phone: "47998375756", address: "Rua dos Atiradores",
        number: "10809", zipcode: "89107-000", district: "Testo Central", city: Pomerode, created_by: adm
-puts main.save ? ("Empresa matriz #{Company.last.name} criada.") : ("Erro ao criar empresa matriz")
+puts main.save ? ("Empresa matriz #{Company.last.name} criada.") : ("Erro ao criar empresa matriz: #{main.errors.full_messages}")
 
+#------------------------------------------------
 branches = [
   {
     name: "Supremo",
@@ -5712,16 +5715,17 @@ branches = [
 ]
 branches.each do |b|
   company = Company.new(b)
-  puts company.save ? ("Empresa filial #{Company.last.name} criada.") : ("Erro ao criar empresa filial")
+  puts company.save ? ("Empresa filial #{Company.last.name} criada.") : ("Erro ao criar empresa filial: #{company.errors.full_messages}")
 end
 
+#------------------------------------------------
 users = [
   {
     email: "manuela@nucleus.com",
     name: "Manuela Luzia Melo",
     password: PASS,
     password_confirmation: PASS,
-    user_type: :admin,
+    user_type: :manager,
     status: :enabled,
     company: main
   },
@@ -5730,7 +5734,7 @@ users = [
     name: "Elisa Rayssa da Paz",
     password: PASS,
     password_confirmation: PASS,
-    user_type: :admin,
+    user_type: :users,
     status: :enabled,
     company: main
   },
@@ -5739,13 +5743,41 @@ users = [
     name: "Vicente Guilherme Danilo Moreira",
     password: PASS,
     password_confirmation: PASS,
-    user_type: :admin,
+    user_type: :users,
     status: :enabled,
     company: main
   }
 ]
 users.each do |u|
   user = User.new(u)
-  puts user.save ? ("Usuario #{User.last.name} criado.") : ("Erro ao criar Usuario")
+  puts user.save ? ("Usuário #{User.last.name.split.first} (tipo: #{User.last.user_type}) criado.") : ("Erro ao criar usuário: #{user.errors.full_messages}")
+end
+
+#------------------------------------------------
+car_types = [
+  { name: "Caminhão", company: Company.find(1) },
+  { name: "Automóvel", company: Company.find(1) }
+]
+car_types.each do |t|
+  car_type = CarType.new(t)
+  puts car_type.save ? ("Tipo de veículo: \"#{CarType.last.name}\" criado.") : ("Erro ao criar tipo de veículo: #{car_type.errors.full_messages}")
+end
+
+#------------------------------------------------
+brands = [
+  { name: "Mercedes", company_id: 1 }, { name: "Renaut", company_id: 1 }
+]
+brands.each do |b|
+  car_brand = CarBrand.new(b)
+  puts car_brand.save ? ("Marca do veículo: \"#{CarBrand.last.name}\" criada.") : ("Erro ao criar Marca do veículo: #{car_brand.errors.full_messages}")
+end
+
+car_models = [
+  {name: "Logan", car_brand_id: 2, car_type_id: 2, company_id: 1, created_by: 1},
+  {name: "1113", car_brand_id: 1, car_type_id: 1,  company_id: 1, created_by: 1}
+]
+car_models.each do |m|
+  car_model = CarModel.new(m)
+  puts car_model.save ? ("Modelo do veículo: \"#{CarModel.last.name}\" criado.") : ("Erro ao criar modelo de carro #{car_model.errors.full_messages} ")
 end
 

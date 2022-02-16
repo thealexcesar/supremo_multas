@@ -2,26 +2,31 @@
 <html>
   <head>
     <title><%= t("general.supreme") %></title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-    <%= stylesheet_link_tag    'application', media: 'all' %>
-    <%= javascript_include_tag 'application' %>
+    <%= csrf_meta_tags %> <%= csp_meta_tag %>
+    <%= stylesheet_link_tag 'application', media: 'all' %> <%= javascript_include_tag 'application' %>
   </head>
 
-  <body class="bg-dark text-danger ">
-  <main>
+  <body class="bg-danger">
+  <main class="d-flex justify-content-around" >
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-    <div class="flex">
+    <div>
       <br> <%= "#{t("general.welcome")}, #{current_user.name.capitalize}!" if user_signed_in? %>
-      <%= "#{t("activerecord.models.company")} #{current_company&.name}." if user_signed_in? %> <br>
+      <%= "#{t("activerecord.models.company")}: #{current_company&.name}." if user_signed_in? %> <br>
     </div>
       <div class="flex">
+        <div>
+          <%= render "layouts/menu" if user_signed_in? %>
+        </div>
       <div>
-        <%= render "layouts/menu" if user_signed_in? %>
-      </div>
-      <div class="container flex-col">
-        <%= yield %>
+        <% unless signed_in? %>
+          <div class="">
+            <#%#= image_tag "cta-concreto1.png" %>
+          </div>
+        <% end %>
+        <div class="container flex-col">
+          <%= yield %>
+        </div>
       </div>
     </div>
 

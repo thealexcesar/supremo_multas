@@ -25,6 +25,10 @@
     <%= form.label :car_type_id %>
     <%= form.select :car_type_id, options_from_collection_for_select(@car_types, :id, :name) %>
   </div>
+  <div class="field">
+    <%= form.label :company_id %>
+    <%= form.select :company_id, options_from_collection_for_select(@companies, :id, :name) %>
+  </div>
 
   <div class="actions">
     <%= form.submit t("general.save")%>
