@@ -7,6 +7,10 @@
   </head>
 
   <body class="bg-danger">
+  <header class="container-fluid bg-dark text-light">
+    <%= render 'shared/header' %>
+  </header>
+
   <main class="d-flex justify-content-around" >
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
@@ -16,7 +20,7 @@
     </div>
       <div class="flex">
         <div>
-          <%= render "layouts/menu" if user_signed_in? %>
+          <%= render "shared/nav_menu" if user_signed_in? %>
         </div>
       <div>
         <% unless signed_in? %>

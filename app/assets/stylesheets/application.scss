@@ -5,11 +5,7 @@
 
 /* Default */
 * { padding:0; margin:0; box-sizing:border-box }
-
-a {
-  text-decoration: none;
-  color: inherit;
-}
+a { text-decoration:none; color:inherit; }
 
 /* Display flex */
 .d-flex { display:flex; }
@@ -20,4 +16,9 @@ a {
 .align-items-center { align-items: center }
 .center { text-align:center }
 
+/************************* Colors */
+/* Background-color */
+.bg-dark { background-color:#2E2F30}
 
+/* Text-color */
+.text-light {color:#F5F5F5FF}
