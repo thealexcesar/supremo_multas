@@ -70,6 +70,7 @@ pt-BR:
         updated_at: "Atualizado em"
       user_types:
         admin: "Administrador"
+        manager: "Gerente"
         name: "Nome"
         users: "Usuário"
       statuses:

@@ -25,8 +25,9 @@
     <tbody>
       <% @fines.each do |f| %>
         <tr class="text-center">
-          <td class="text-center"><%= f.user&.name.capitalize %></td>
-          <td class="text-center"><%= f.fine_date %></td>
+          <td title="<%= (f.user&.name).capitalize %>"><%= truncate((f.user&.name).capitalize, length: 16) %></td>
+          <td class="text-center"><%#= f.user&.name.capitalize %></td>
+          <td class="text-center"><%= l(f.fine_date, format: :short) %></td>
           <td class="text-center"><%= f.fine_point&.name %></td>
           <td class="text-center"><%= enum_to_name(f, :fine_status) %></td>
           <td class="text-center"><%= f.fine_number %></td>

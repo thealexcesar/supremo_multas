@@ -3,7 +3,7 @@
 /*@import "will_paginate";*/
 @import 'font_awesome5.css';
 
-/*=== Default =====================*/
+/* === Default ===================== */
 * {
   padding: 0;
   margin: 0;
@@ -11,14 +11,15 @@
 }
 
 a, a:hover,
+a:focus,
 button:hover {
   text-decoration: none;
   color:inherit;
 }
 .no-hover > a:hover { color:white; }
-/*================= Default ends ==*/
+/* ================ Default ends === */
 
-/*=== Display flex ================*/
+/* === Display flex ================ */
 .align-items-center {
   align-items: center
 }
@@ -40,20 +41,30 @@ button:hover {
 .justify-evenly {
   justify-content: space-evenly;
 }
-/*================= Display flex ends ============*/
+/* =========== Display flex ends === */
 
-/*================= Colors =======================*/
+/* === Colors ====================== */
 // Background-color
-.bg-dark { background-color:#2E2F30}
+.bg-dark {
+  background-color: #2E2F30
+}
 
 // Text-color
 .text-light {color:#F5F5F5FF}
-.text-white { color: #FFFFFF; }
+.text-white {color: #FFFFFF;}
 
 // Supremo colors
-.supremo-bg-dark { background-color:#2B3D47; }
-.supremo-bg-gray { background-color:#f8f8f8; }
-.supremo-table-top-color { background-color:#F3F2F7; }
+.supremo-bg-dark {
+  background-color: #2B3D47;
+}
+
+.supremo-bg-gray {
+  background-color: #f8f8f8;
+}
+
+.supremo-table-top-color {
+  background-color: #F3F2F7;
+}
 
 .nav li a:hover {
   background-color: #2B3D47;
@@ -66,33 +77,27 @@ button:hover {
     background-color: black;
   }
 }
-/*================= Colors ends ===================*/
+/* ================== Colors ends === */
 
+/* === Size ======================== */
+.supremo-navbar-size {
+  max-height: 62px;
+}
 
+.supremo-size-actions-button {
+  width: 2px;
+}
 
-  /* ================================== TAMANHO  ======================================== */
+/*.navbar_logo_supremo {
+  max-width: 35%;
+}*/
 
-  .supremo-navbar-size { max-height:62px; }
-  .supremo-size-actions-button { width:2px; }
-  .navbar_logo_supremo { max-width:35%; }
+/* ==================== Size ends === */
 
-  /* ==================================================================================== */
+/* === Spacing ====================== */
+.pad-right-5 { padding-right:5px; }
+.pad-left-5 { padding-left:5px; }
+/* ================== Spacing ends === */
 
-  /* ======================================== FLEX ====================================== */
-
-  .d-flex { display:flex; }
-  .justify-content-center { justify-content:center; }
-  .justify-content-between { justify-content:space-between; }
-  .justify-content-around { justify-content:space-around; }
-  .justify-content-evenly { justify-content:space-evenly; }
-  .align-items-center { align-items:center; }
-  .align-content-center { align-content:center; }
-  /* ================================================================================== */
-
-  .supremo-hover-click { cursor:pointer; }
-  /* ======================================= Spacing ============================== */
-
-  .pad-right-5 { padding-right:5px; }
-  .pad-left-5 { padding-left:5px; }
-
+.supremo-hover-click { cursor:pointer; }
 
