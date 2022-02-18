@@ -4,6 +4,14 @@ class ApplicationController < ActionController::Base
   def current_company
     current_user.company
   end
+  def admin?
+    self.user_type == "admin"
+  end
+  def manager?
+    self.user_type == "manager"
+  end
+
+  protected
 
   def created_msg
     I18n.t("general.messages.created", model: I18n.t("activerecord.models.#{controller_name.classify.underscore}"))

@@ -1,30 +1,22 @@
 class CarModelsController < ApplicationController
   before_action :set_car_model, only: %i[ show edit update destroy ]
-  before_action :set_cars, only: [:new, :create, :edit, :update]
+  before_action :set_cars, only: [:new, :edit]
 
-  # GET /car_models or /car_models.json
   def index
-    @car_models = CarModel.all
+    @car_models = CarModel.all.paginate(page: params[:page], per_page: 2)
   end
-
-  # GET /car_models/1 or /car_models/1.json
-  def show
-  end
-
-  # GET /car_models/new
   def new
     @car_model = CarModel.new
   end
+  def show; end
+  def edit; end
 
-  # GET /car_models/1/edit
-  def edit
-  end
-
-  # POST /car_models or /car_models.json
+  # POST
   def create
     @car_model = CarModel.new(car_model_params)
     @car_model.company = current_company
     @car_model.created_by = current_user
+
     respond_to do |format|
       if @car_model.save
         format.html { redirect_to car_model_url(@car_model), notice: created_msg }
@@ -80,5 +72,4 @@ class CarModelsController < ApplicationController
     def car_model_params
       params.require(:car_model).permit(:name, :car_brand_id, :car_type_id)
     end
-
 end

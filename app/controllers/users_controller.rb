@@ -7,10 +7,11 @@ class UsersController < ApplicationController
   def index
     @users = User.all.paginate(page: params[:page], per_page: 2)
   end
-
   def new
     @user = User.new
   end
+  def show; end
+  def edit; end
 
   def create
     @user = User.new(user_params)
@@ -21,18 +22,13 @@ class UsersController < ApplicationController
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
 =begin
   rescue
     redirect_to new_user_url, alert: I18n.t("errors.rescue.fields"), class: 'alert'
 =end
-  end
-
-  def show
-  end
-
-  def edit
   end
 
   def update
@@ -67,6 +63,7 @@ class UsersController < ApplicationController
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @user.errors, status: :unprocessable_entity }
+        format.js { render layout: false }
       end
     end
   end
@@ -87,6 +84,6 @@ class UsersController < ApplicationController
   #   @test = Cliente.new
   # end
   def user_params
-    params.require(:user).permit(:email, :name, :password, :password_confirmation, :status, :user_type, :company_id)
+    params.require(:user).permit(:email, :name, :password, :password_confirmation, :status, :user_type, :company_id) # add :created_by
   end
 end

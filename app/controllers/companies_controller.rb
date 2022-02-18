@@ -5,24 +5,17 @@ class CompaniesController < ApplicationController
   def index
     @companies = Company.all.paginate(page: params[:page], per_page: 2)
   end
-
-  # GET /companies/1 or /companies/1.json
-  def show
-  end
-
-  # GET /companies/new
   def new
     @company = Company.new
   end
+  def show; end
+  def edit; end
 
-  # GET /companies/1/edit
-  def edit
-  end
-
-  # POST /companies or /companies.json
   def create
     @company = Company.new(company_params)
+    @company.company = current_company
     @company.created_by = current_user
+
     respond_to do |format|
       if @company.save
         format.html { redirect_to company_url(@company), notice: created_msg }
@@ -69,19 +62,18 @@ class CompaniesController < ApplicationController
       @company = Company.find(params[:id])
     end
 
+=begin
+  def set_city
+    state = State.select(:id).where(acronym: ["SC", "PR"])
+    @cities = City.where(state_id: state)
+    @states = State.where(acronym: ["SC","PR"])
+  end
+=end
+
     def get_city
       @states = State.where(acronym: ["SC", "PR"])
       state = State.select(:id).where(acronym: ["SC", "PR"])
-=begin
-      if state = 24
-        puts "SC".inspect
-        state = State.select(:id).where(acronym: "SC")
-      else
-        puts "PR".inspect
-        state = State.select(:id).where(acronym: "PR")
-      end
-      @state_select = @states
-=end
+
       @cities = City.where(state_id: state)
     end
     # Only allow a list of trusted parameters through.

@@ -1,29 +1,21 @@
 class CarTypesController < ApplicationController
   before_action :set_car_type, only: %i[ show edit update destroy ]
 
-  # GET /car_types or /car_types.json
   def index
-    @car_types = CarType.all
+    @car_types = CarType.all.paginate(page: params[:page], per_page: 2)
   end
-
-  # GET /car_types/1 or /car_types/1.json
-  def show
-  end
-
-  # GET /car_types/new
   def new
     @car_type = CarType.new
   end
-
-  # GET /car_types/1/edit
-  def edit
-  end
+  def show; end
+  def edit; end
 
   # POST /car_types or /car_types.json
   def create
     @car_type = CarType.new(car_type_params)
     @car_type.company = current_company
     @car_type.created_by = current_user
+
     respond_to do |format|
       if @car_type.save
         format.html { redirect_to car_type_url(@car_type), notice: created_msg }
@@ -65,13 +57,11 @@ class CarTypesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_car_type
-      @car_type = CarType.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def car_type_params
-      params.require(:car_type).permit(:name)
-    end
+  def set_car_type
+    @car_type = CarType.find(params[:id])
+  end
+  def car_type_params
+    params.require(:car_type).permit(:name)
+  end
 end

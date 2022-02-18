@@ -1,29 +1,20 @@
 class FinePointsController < ApplicationController
   before_action :set_fine_point, only: %i[ show edit update destroy ]
 
-  # GET /fine_points or /fine_points.json
   def index
-    @fine_points = FinePoint.all
+    @fine_points = FinePoint.all.paginate(page: params[:page], per_page: 2)
   end
-
-  # GET /fine_points/1 or /fine_points/1.json
-  def show
-  end
-
-  # GET /fine_points/new
   def new
     @fine_point = FinePoint.new
   end
+  def show; end
+  def edit; end
 
-  # GET /fine_points/1/edit
-  def edit
-  end
-
-  # POST /fine_points or /fine_points.json
   def create
     @fine_point = FinePoint.new(fine_point_params)
     @fine_point.company = current_company
     @fine_point.created_by = current_user
+
     respond_to do |format|
       if @fine_point.save
         format.html { redirect_to fine_point_url(@fine_point), notice: "Fine point was successfully created." }
@@ -35,7 +26,6 @@ class FinePointsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /fine_points/1 or /fine_points/1.json
   def update
     respond_to do |format|
       if @fine_point.update(fine_point_params)
@@ -48,7 +38,6 @@ class FinePointsController < ApplicationController
     end
   end
 
-  # DELETE /fine_points/1 or /fine_points/1.json
   def destroy
     @fine_point.destroy
     @company = current_company
