@@ -1,6 +1,6 @@
 <main>
   <p class="container"><%= user_signed_in? ? (link_to fa_icon('sign-out-alt'), destroy_user_session_path, method: :delete, title: t("general.exit")) : (link_to fa_icon("sign-in-alt"), new_user_session_path, title: t("general.login")) %> </p>
-  <table>
+  <table class="table supremo-table-color">
     <thead>
       <tr>
         <th><%= t('general.name') %></th>
@@ -31,3 +31,57 @@
     <p class="container"> <%= link_to t("general.new"), new_user_path %> </p>
 </main>
 <%#= @test.full_name %>
+
+<div class="row d-flex justify-content-center align-items-center ">
+  <div class="col-lg-10 col-md-10 col-sm-9 col-xs-12">
+    <h1 class=""> <%= t("general.users") %> </h1>
+  </div>
+  <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12 d-flex justify-content-center align-items-center">
+    <button type="button" class="btn supremo-btn-gray no-hover"><%= link_to t("general.buttons.new_user"), new_user_path, class: "text-white" %></button>
+  </div>
+</div>
+
+<table class="table supremo-table-colour">
+  <thead class="">
+  <tr class="supremo-table-top-colour">
+    <th class="text-center"><%= t("activerecord.attributes.user.name") %></th>
+    <th class="text-center"><%= t("activerecord.attributes.user.email") %></th>
+    <th class="text-center"><%= t("activerecord.attributes.user.status") %></th>
+    <th class="text-center"><%= t("activerecord.attributes.user.user_type") %></th>
+    <th class="text-center"><%= t("activerecord.attributes.user.user_type") %></th>
+    <th colspan="3" class="text-center"><%= t("general.actions") %></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <tr class="">
+    <% @users.each do |user| %>
+
+      <td class="text-center"><%= (user&.name).capitalize %></td>
+      <td class="text-center"><%= (user&.email) %></td>
+      <td class="text-center"><%= enum_to_name(user, :status) %></td>
+      <td class="text-center"><%= enum_to_name(user, :user_type) %></td>
+      <td class="text-center"><%= current_user&.company&.name %></td>
+      <td>
+        <div class="dropdown text-center">
+          <button type="button" class="fas fa-ellipsis-v supremo-hover-click" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+          <ul class="dropdown-menu dropdown-menu-right">
+            <li><%= link_to t("general.buttons.show"), user_path(user) %></li>
+            <li role="separator" class="divider"></li>
+            <li><%= link_to user.status == "enabled" ? t("general.buttons.disable") : t("general.buttons.enable"), user_enable_disable_path(user), method: :post, remote: true  if current_user.admin?%></li>
+            <li><%= link_to t("general.buttons.delete"), user_path(user), method: :delete, data: {confirm: I18n.t("general.messages.confirm")} if current_user.admin? %></li>
+          </ul>
+          <%= link_to fa_icon('user-edit'), edit_user_path(user), class: "pad-left-5" %>
+        </div>
+      </td>
+      </tr>
+
+    <% end %>
+    </tbody>
+</table>
+
+<div class="col-md-3 col-md-offset-9">
+  <div class="supremo_pagination">
+    <%= will_paginate @users %>
+  </div>
+</div>

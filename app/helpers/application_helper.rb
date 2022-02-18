@@ -19,9 +19,9 @@ module ApplicationHelper
     model_name = controller_name.classify.underscore
     t("general.editing", model: t("activerecord.models.#{model_name}") )
   end
-  def creating_model
+  def new_model
     model_name = controller_name.classify.underscore
-    t("general.creating", model: t("activerecord.models.#{model_name}") )
+    t("general.new_model_f", model: t("activerecord.models.#{model_name}") )
   end
 
 end

@@ -1,6 +1,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
-
+/*@import "will_paginate";*/
 @import 'font_awesome5.css';
 
 /* Default */
@@ -22,3 +22,74 @@ a { text-decoration:none; color:inherit; }
 
 /* Text-color */
 .text-light {color:#F5F5F5FF}
+
+
+/* ==================================================================================================== */
+
+
+
+/* ================================== RESET CSS =========================================== */
+* {
+  padding:0;
+  margin:0;
+  box-sizing:border-box
+}
+a, a:hover {
+  text-decoration: none;
+  color: inherit;
+}
+
+button:hover, a:hover {
+  text-decoration: none;
+  color: inherit;
+  :hover { color:white; }
+}
+
+/* ==================================================================================== */
+
+
+/* ================================== CORES =========================================== */
+
+.supremo-bg-dark { background-color:#2B3D47; }
+.supremo-bg-gray { background-color:#f8f8f8; }
+.supremo-table-top-color { background-color:#F3F2F7; }
+.supremo-table-color > tbody > tr > td { background-color: #FFFFFF; }
+.supremo-navbar-color { background-color: #2B3D47; }
+.supremo-sidebar-nav-color-hover > a:hover {
+  background-color: #2B3D47;
+  color: #EFEFEF;
+}
+.text-white { color: #FFFFFF; }
+.supremo-btn-gray { background-color: #2B3D47; }
+.supremo-btn-gray:hover { background-color: black; }
+
+/* ==================================================================================== */
+
+
+
+/* ================================== TAMANHO  ======================================== */
+
+.supremo-navbar-size { max-height:62px; }
+.supremo-size-actions-button { width:2px; }
+.navbar_logo_supremo { max-width:35%; }
+
+/* ==================================================================================== */
+
+/* ======================================== FLEX ====================================== */
+
+.d-flex { display:flex; }
+.justify-content-center { justify-content:center; }
+.justify-content-between { justify-content:space-between; }
+.justify-content-around { justify-content:space-around; }
+.justify-content-evenly { justify-content:space-evenly; }
+.align-items-center { align-items:center; }
+.align-content-center { align-content:center; }
+/* ================================================================================== */
+
+.supremo-hover-click { cursor:pointer; }
+/* ======================================= Spacing ============================== */
+
+.pad-right-5 { padding-right:5px; }
+.pad-left-5 { padding-left:5px; }
+
+

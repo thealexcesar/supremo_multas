@@ -3,34 +3,33 @@
   <head>
     <title><%= t("general.supreme") %></title>
     <%= csrf_meta_tags %> <%= csp_meta_tag %>
-    <%= stylesheet_link_tag 'application', media: 'all' %> <%= javascript_include_tag 'application' %>
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= javascript_include_tag 'application'            %>
+    <%= favicon_link_tag asset_path("logo-ico.png")     %>
   </head>
 
-  <body class="bg-danger">
+  <body>
   <header class="container-fluid bg-dark text-light">
     <%= render 'shared/header' %>
   </header>
 
-  <main class="d-flex justify-content-around" >
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+  <main class="container col-lg-10 col-md-10 col-sm-9 col-xs-12 ">
+    <div class="col-lg-10 col-md-10 col-sm-9 col-xs-12 ">
+      <p><%= notice %></p>
+      <p><%= alert %></p>
+    </div>
     <div>
       <br> <%= "#{t("general.welcome")}, #{current_user.name.capitalize}!" if user_signed_in? %>
       <%= "#{t("activerecord.models.company")}: #{current_company&.name}." if user_signed_in? %> <br>
     </div>
       <div class="flex">
-        <div>
+        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12 d-flex align-items-center">
           <%= render "shared/nav_menu" if user_signed_in? %>
         </div>
-      <div>
-        <% unless signed_in? %>
-          <div class="">
-            <#%= image_tag "cta-concreto1.png" %>
-          </div>
-        <% end %>
-        <div class="container flex-col">
-          <%= yield %>
-        </div>
+      </div>
+      <div class="container flex-col">
+        <%= yield %>
+      </div>
       </div>
     </div>
 
