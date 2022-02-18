@@ -3,93 +3,96 @@
 /*@import "will_paginate";*/
 @import 'font_awesome5.css';
 
-/* Default */
-* { padding:0; margin:0; box-sizing:border-box }
-a { text-decoration:none; color:inherit; }
+/*=== Default =====================*/
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box
+}
 
-/* Display flex */
-.d-flex { display:flex; }
-.flex-col { flex-direction:column; }
-.justify-around { justify-content:space-around; }
-.justify-between { justify-content:space-between; }
-.justify-evenly { justify-content:space-evenly; }
-.align-items-center { align-items: center }
+a, a:hover,
+button:hover {
+  text-decoration: none;
+  color:inherit;
+}
+.no-hover > a:hover { color:white; }
+/*================= Default ends ==*/
+
+/*=== Display flex ================*/
+.align-items-center {
+  align-items: center
+}
+
 .center { text-align:center }
 
-/************************* Colors */
-/* Background-color */
+.d-flex { display:flex; }
+
+.flex-col { flex-direction:column; }
+
+.justify-around {
+  justify-content: space-around;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.justify-evenly {
+  justify-content: space-evenly;
+}
+/*================= Display flex ends ============*/
+
+/*================= Colors =======================*/
+// Background-color
 .bg-dark { background-color:#2E2F30}
 
-/* Text-color */
+// Text-color
 .text-light {color:#F5F5F5FF}
+.text-white { color: #FFFFFF; }
 
-
-/* ==================================================================================================== */
-
-
-
-/* ================================== RESET CSS =========================================== */
-* {
-  padding:0;
-  margin:0;
-  box-sizing:border-box
-}
-a, a:hover {
-  text-decoration: none;
-  color: inherit;
-}
-
-button:hover, a:hover {
-  text-decoration: none;
-  color: inherit;
-  :hover { color:white; }
-}
-
-/* ==================================================================================== */
-
-
-/* ================================== CORES =========================================== */
-
+// Supremo colors
 .supremo-bg-dark { background-color:#2B3D47; }
 .supremo-bg-gray { background-color:#f8f8f8; }
 .supremo-table-top-color { background-color:#F3F2F7; }
-.supremo-table-color > tbody > tr > td { background-color: #FFFFFF; }
-.supremo-navbar-color { background-color: #2B3D47; }
-.supremo-sidebar-nav-color-hover > a:hover {
+
+.nav li a:hover {
   background-color: #2B3D47;
   color: #EFEFEF;
 }
-.text-white { color: #FFFFFF; }
-.supremo-btn-gray { background-color: #2B3D47; }
-.supremo-btn-gray:hover { background-color: black; }
 
-/* ==================================================================================== */
+.supremo-btn-gray {
+  background-color: #2B3D47;
+  :hover {
+    background-color: black;
+  }
+}
+/*================= Colors ends ===================*/
 
 
 
-/* ================================== TAMANHO  ======================================== */
+  /* ================================== TAMANHO  ======================================== */
 
-.supremo-navbar-size { max-height:62px; }
-.supremo-size-actions-button { width:2px; }
-.navbar_logo_supremo { max-width:35%; }
+  .supremo-navbar-size { max-height:62px; }
+  .supremo-size-actions-button { width:2px; }
+  .navbar_logo_supremo { max-width:35%; }
 
-/* ==================================================================================== */
+  /* ==================================================================================== */
 
-/* ======================================== FLEX ====================================== */
+  /* ======================================== FLEX ====================================== */
 
-.d-flex { display:flex; }
-.justify-content-center { justify-content:center; }
-.justify-content-between { justify-content:space-between; }
-.justify-content-around { justify-content:space-around; }
-.justify-content-evenly { justify-content:space-evenly; }
-.align-items-center { align-items:center; }
-.align-content-center { align-content:center; }
-/* ================================================================================== */
+  .d-flex { display:flex; }
+  .justify-content-center { justify-content:center; }
+  .justify-content-between { justify-content:space-between; }
+  .justify-content-around { justify-content:space-around; }
+  .justify-content-evenly { justify-content:space-evenly; }
+  .align-items-center { align-items:center; }
+  .align-content-center { align-content:center; }
+  /* ================================================================================== */
 
-.supremo-hover-click { cursor:pointer; }
-/* ======================================= Spacing ============================== */
+  .supremo-hover-click { cursor:pointer; }
+  /* ======================================= Spacing ============================== */
 
-.pad-right-5 { padding-right:5px; }
-.pad-left-5 { padding-left:5px; }
+  .pad-right-5 { padding-right:5px; }
+  .pad-left-5 { padding-left:5px; }
 
 

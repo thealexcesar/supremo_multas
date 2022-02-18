@@ -1,39 +1,32 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= t("general.supreme") %></title>
-    <%= csrf_meta_tags %> <%= csp_meta_tag %>
+    <%= csrf_meta_tags %>              <%= csp_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= javascript_include_tag 'application'            %>
     <%= favicon_link_tag asset_path("logo-ico.png")     %>
+    <title>     <%= t("general.supreme") %>       </title>
   </head>
 
   <body>
-  <header class="container-fluid bg-dark text-light">
-    <%= render 'shared/header' %>
-  </header>
+    <header class="container-fluid supremo-bg-dark text-light align-items-center">
+      <%= render 'shared/header' %>
+    </header>
+    <main class="container-fluid">
+      <div class="row d-flex justify-around">
 
-  <main class="container col-lg-10 col-md-10 col-sm-9 col-xs-12 ">
-    <div class="col-lg-10 col-md-10 col-sm-9 col-xs-12 ">
-      <p><%= notice %></p>
-      <p><%= alert %></p>
-    </div>
-    <div>
-      <br> <%= "#{t("general.welcome")}, #{current_user.name.capitalize}!" if user_signed_in? %>
-      <%= "#{t("activerecord.models.company")}: #{current_company&.name}." if user_signed_in? %> <br>
-    </div>
-      <div class="flex">
-        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12 d-flex align-items-center">
-          <%= render "shared/nav_menu" if user_signed_in? %>
+        <%= image_tag("logo-supremo1.png") unless signed_in? %>
+
+        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12 d-flex justify-center align-items-center">
+          <%= render "shared/nav_left" if user_signed_in? %>
+        </div>
+        <div class="col-lg-10 col-md-10 col-sm-9 col-xs-12 ">
+          <p><%= notice %></p>
+          <p><%= alert %></p>
+          <%= yield %>
         </div>
       </div>
-      <div class="container flex-col">
-        <%= yield %>
-      </div>
-      </div>
-    </div>
-
-    <%#= params.inspect %>
-  </main>
+      <%#= params.inspect %>
+    </main>
   </body>
 </html>
