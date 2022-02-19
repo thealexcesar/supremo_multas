@@ -5668,23 +5668,52 @@ e.cities.create(:name => "Tupiratins")
 e.cities.create(:name => "Wanderlândia")
 e.cities.create(:name => "Xambioá")
 
-#-----------------------------------------------------------------------------------------------------------------------
+#------------------------------------------------
 Curitiba = City.find_by(name: "Curitiba")
 Palhoça  = City.find_by(name: "Palhoça")
 Pomerode = City.find_by(name: "Pomerode")
-main = Company.new name: "ADM", company_type: :main, cnpj: "02.133.480/0001-94", phone: "(47)3242-2128",
-       address: "Zero", number: "1", zipcode: "89000-000", district: "Centro", city: Pomerode
+
+main = Company.new name: "ADM",
+  company_type: :main,
+  cnpj: "02.133.480/0001-94",
+  phone: "(47)3242-2128",
+  address: "Zero",
+  number: "1",
+  zipcode: "89000-000",
+  district: "Centro",
+  city: Pomerode
+
 PASS = "123123"
 
 #------------------------------------------------
-adm = User.new email: "adm@adm.com", name: "ADMIN", password: PASS, password_confirmation: PASS,
-      user_type: :admin, status: :enabled, company: main
-puts adm.save ? ("Usuário admin criado.") : ("Erro ao criar admin: #{adm.errors.full_messages}")
-
+adm = User.new email: "adm@adm.com",
+  name: "ADMIN",
+  password: PASS,
+  password_confirmation: PASS,
+  user_type: :admin,
+  status: :enabled,
+  company: main
+if adm.save
+  puts "Usuário admin criado."
+else
+  puts "Erro ao criar admin: #{adm.errors.full_messages}"
+end
 #------------------------------------------------
-main = Company.new name: "Supremo Multas", company_type: :main, cnpj: "02.133.480/0001-94", phone: "47998375756", address: "Rua dos Atiradores",
-       number: "10809", zipcode: "89107-000", district: "Testo Central", city: Pomerode, created_by: adm
-puts main.save ? ("Empresa matriz #{Company.last.name} criada.") : ("Erro ao criar empresa matriz: #{main.errors.full_messages}")
+main = Company.new name: "Supremo Multas",
+  company_type: :main,
+  cnpj: "02.133.480/0001-94",
+  phone: "47998375756",
+  address: "Rua dos Atiradores",
+  number: "10809",
+  zipcode: "89107-000",
+  district: "Testo Central",
+  city: Pomerode,
+  created_by: adm
+if main.save
+  puts "Empresa matriz #{Company.last.name} criada."
+else
+  puts "Erro ao criar empresa matriz: #{main.errors.full_messages}"
+end
 
 #------------------------------------------------
 branches = [
@@ -5715,7 +5744,11 @@ branches = [
 ]
 branches.each do |b|
   company = Company.new(b)
-  puts company.save ? ("Empresa filial #{Company.last.name} criada.") : ("Erro ao criar empresa filial: #{company.errors.full_messages}")
+  if company.save
+    puts "Empresa filial #{Company.last.name} criada."
+  else
+    puts "Erro ao criar empresa filial: #{company.errors.full_messages}"
+  end
 end
 
 #------------------------------------------------
@@ -5750,34 +5783,83 @@ users = [
 ]
 users.each do |u|
   user = User.new(u)
-  puts user.save ? ("Usuário #{User.last.name.split.first} (tipo: #{User.last.user_type}) criado.") : ("Erro ao criar usuário: #{user.errors.full_messages}")
+  if user.save
+    puts "Usuário #{User.last.name.split.first} (tipo: #{User.last.user_type}) criado."
+  else
+    puts "Erro ao criar usuário: #{user.errors.full_messages}"
+  end
 end
 
 #------------------------------------------------
 car_types = [
-  { name: "Caminhão", company: Company.find(1) },
-  { name: "Automóvel", company: Company.find(1) }
+  { name: "Caminhão", company: Company.find(1), created_by: User.find(1)},
+  { name: "Automóvel", company: Company.find(1), created_by: User.first }
 ]
 car_types.each do |t|
   car_type = CarType.new(t)
-  puts car_type.save ? ("Tipo de veículo: \"#{CarType.last.name}\" criado.") : ("Erro ao criar tipo de veículo: #{car_type.errors.full_messages}")
+  if car_type.save
+    puts "Tipo de veículo: \"#{CarType.last.name}\" criado."
+  else
+    puts "Erro ao criar tipo de veículo: #{car_type.errors.full_messages}"
 end
 
 #------------------------------------------------
 brands = [
-  { name: "Mercedes", company_id: 1 }, { name: "Renaut", company_id: 1 }
+  { name: "Mercedes", company_id: 1, created_by: User.first }, { name: "Renaut", company_id: 1, created_by: User.find(1) }
 ]
 brands.each do |b|
   car_brand = CarBrand.new(b)
-  puts car_brand.save ? ("Marca do veículo: \"#{CarBrand.last.name}\" criada.") : ("Erro ao criar Marca do veículo: #{car_brand.errors.full_messages}")
+  if car_brand.save
+    puts "Marca do veículo: \"#{CarBrand.last.name}\" criada."
+  else
+    puts "Erro ao criar Marca do veículo: #{car_brand.errors.full_messages}"
+  end
 end
-
+#------------------------------------------------
 car_models = [
-  {name: "Logan", car_brand_id: 2, car_type_id: 2, company_id: 1, created_by: 1},
-  {name: "1113", car_brand_id: 1, car_type_id: 1,  company_id: 1, created_by: 1}
+  {
+    name: "Logan", car_brand_id: 2,
+    car_type_id: 2, company_id: 1,
+    created_by: User.first
+  },
+  {
+    name: "1113", car_brand_id: 1,
+    car_type_id: 1,  company_id: 1,
+    created_by_id: 1
+  }
 ]
 car_models.each do |m|
   car_model = CarModel.new(m)
-  puts car_model.save ? ("Modelo do veículo: \"#{CarModel.last.name}\" criado.") : ("Erro ao criar modelo de carro #{car_model.errors.full_messages} ")
+  if car_model.save
+    puts "Modelo do veículo: \"#{CarModel.last.name}\" criado."
+  else
+    puts "Erro. Modelo de carro: #{car_model.errors.full_messages} "
+  end
+end
+#------------------------------------------------
+cars = [
+  {
+    car_model_id: "1",
+    company_id: "1",
+    created_by: User.first,
+    license_plate: "ABC111",
+    year: '2019'
+  },
+  {
+    car_model_id: "1",
+    company_id: "1",
+    created_by: User.first,
+    license_plate: "ABC222",
+    year: '2020'
+  }
+]
+cars.each do |c|
+  car = Car.new(c)
+  if car.save
+    puts "Carro de placa: \"#{Car.last.plate}\" criado."
+  else
+    puts "Erro ao criar carro: \"#{car.errors.full_messages}\"."
+  end
+end
 end
 
