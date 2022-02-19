@@ -12,28 +12,32 @@
   <table class="table bg-white">
     <thead>
       <tr class="supremo-table-top-color">
-        <th class="text-center"><%= t('general.conductor') %></th>
-        <th class="text-center"><%= t('activerecord.attributes.fine.fine_date') %></th>
-        <th class="text-center"><%= t("activerecord.attributes.fine_point.point") %></th>
-        <th class="text-center"><%= t('activerecord.attributes.fine.fine_status') %></th>
-        <th class="text-center"><%= t('activerecord.attributes.fine.fine_number') %></th>
-        <th class="text-center"><%= t('activerecord.attributes.fine.detran_id') %></th>
-        <th class="text-center"><%= t("activerecord.models.company") %></th>
+        <th><%= t('general.conductor') %></th>
+        <th><%= t('activerecord.attributes.fine.fine_date') %></th>
+        <th><%= t("activerecord.attributes.fine_point.point") %></th>
+        <th><%= t('activerecord.attributes.fine.fine_status') %></th>
+        <th><%= t('activerecord.attributes.fine.fine_number') %></th>
+        <th><%= t('activerecord.attributes.fine.detran_id') %></th>
+        <th><%= t("activerecord.models.company") %></th>
         <th colspan="3" class="text-center"><%= t("general.actions") %></th>
       </tr>
     </thead>
+
+
     <tbody>
       <% @fines.each do |f| %>
-        <tr class="text-center">
-          <td title="<%= (f.user&.name).capitalize %>"><%= truncate((f.user&.name).capitalize, length: 16) %></td>
-          <td class="text-center"><%#= f.user&.name.capitalize %></td>
-          <td class="text-center"><%= l(f.fine_date, format: :short) %></td>
-          <td class="text-center"><%= f.fine_point&.name %></td>
-          <td class="text-center"><%= enum_to_name(f, :fine_status) %></td>
-          <td class="text-center"><%= f.fine_number %></td>
-          <td class="text-center"><%= f.fine_point&.name %></td>
-          <td class="text-center"><%= f.detran&.name %></td>
-          <td class="text-center"><%= f.branch&.name %></td>
+        <tr>
+          <%= link_to "" do %>
+          <td title="Visualizar multa de: <%= (f.user&.name).capitalize %>">
+            <%= link_to "#{truncate((f.user&.name).capitalize, length: 16)}", fine_path(f) %>
+          </td>
+          <td><%= l(f.fine_date, format: :short) %></td>
+          <td><%= f.fine_point&.name %></td>
+          <td><%= enum_to_name(f, :fine_status) %></td>
+          <td><%= f.fine_number %></td>
+          <td><%= f.detran&.name %></td>
+          <td><%= f.branch&.name %></td>
+          <% end %>
           <td>
             <div class="dropdown text-center">
               <button type="button" class="fas fa-ellipsis-v supremo-hover-click" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
@@ -46,16 +50,14 @@
               <li><%= link_to t('general.edit'), edit_fine_path(f), class: "pad-left-5" %></li>
             </div>
           </td>
-      <% end %>
+    <% end %>
     </tbody>
   </table>
   <br>
   <%= link_to t("general.new"), new_fine_path %>
 
-<!--
 <div class="col-md-3 col-md-offset-9">
   <div class="supremo_pagination">
     <%#= will_paginate @fines %>
   </div>
 </div>
--->

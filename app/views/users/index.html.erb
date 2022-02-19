@@ -1,9 +1,11 @@
 <div class="row d-flex justify-content-center align-items-center ">
   <div class="col-lg-10 col-md-10 col-sm-9 col-xs-12">
-    <h1 class=""> <%= t("general.users") %> </h1>
+    <h1 class=""> <%= t("activerecord.models.user").pluralize %> </h1>
   </div>
   <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12 d-flex justify-content-center align-items-center">
-    <button type="button" class="btn supremo-btn-gray no-hover"><%= link_to new_model, new_user_path, class: "text-white" %></button>
+    <%= link_to new_user_path do %>
+      <button type="button" class="btn btn-default supremo-btn-gray row text-light"><%= new_model %></button>
+    <% end %>
   </div>
 </div>
 
@@ -20,15 +22,18 @@
   </thead>
 
   <tbody>
-  <tr class="">
+  <tr>
     <% @users.each do |user| %>
 
-      <td title="<%= (user&.name).capitalize %>"><%= truncate((user&.name).capitalize, length: 16) %></td>
-      <td title="Enviar email"><%= mail_to(user&.email) %></td>
+      <td title="<%= t "users.show" %>: <%= (user&.name) %>">
+        <%= link_to"#{truncate((user&.name), length: 16)}", user_path(user) %>
+      </td>
+
+      <td title="<%= t"users.send_mail" %>"><%= mail_to(user&.email) %></td>
 
       <td>
         <% if current_user.admin? %>
-          <button class="btn supremo-btn-gray text-light" title="<%= user.status == "enabled" ? t("general.to_disable") : t("general.to_enable") %>">
+          <button class="btn" title="<%= user.status == "enabled" ? t("general.to_disable") : t("general.to_enable") %>">
             <%=link_to "#{enum_to_name(user, :status)}", user_enable_disable_path(user), method: :post, remote: true %>
           </button>
         <% else %>
@@ -50,7 +55,6 @@
         </div>
       </td>
       </tr>
-
     <% end %>
     </tbody>
 </table>

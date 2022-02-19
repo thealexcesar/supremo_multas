@@ -240,7 +240,7 @@ pt-BR:
       created: "%{model} criado(a) com sucesso."
       destroyed: "%{model} deletado(a) com sucesso."
       updated: "%{model} atualizado(a) com sucesso."
-      confirm: "Tem certeza?"
+      confirm: "Tem certeza que deseja apagar?"
       status: "Status alterado com sucesso para %{status}."
     supreme: "Supremo Multas"
   helpers:
@@ -312,3 +312,6 @@ pt-BR:
       long: "%d de %B de %Y, %H:%M"
       short: "%d de %B, %H:%M"
     pm: 'pm'
+  users:
+    show: "Mostrar detalhes de"
+    send_mail: "Enviar email"

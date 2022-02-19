@@ -1,17 +1,17 @@
+@import "font_awesome5";
 @import "bootstrap-sprockets";
 @import "bootstrap";
-/*@import "will_paginate";*/
-@import 'font_awesome5.css';
+@import "will_paginate";
 
 /* === Default ===================== */
 * {
   padding: 0;
   margin: 0;
-  box-sizing: border-box
+  box-sizing: border-box;
 }
 
 a, a:hover,
-a:focus,
+a:active,
 button:hover {
   text-decoration: none;
   color:inherit;
@@ -27,6 +27,8 @@ button:hover {
 .center { text-align:center }
 
 .d-flex { display:flex; }
+
+.vertical-center {vertical-align: center}
 
 .flex-col { flex-direction:column; }
 
@@ -71,6 +73,11 @@ button:hover {
   color: #EFEFEF;
 }
 
+td button:hover, a:hover {
+  background-color: #EFEFEF;
+  color: #2B3D47;
+}
+
 .supremo-btn-gray {
   background-color: #2B3D47;
   :hover {
@@ -95,8 +102,11 @@ button:hover {
 /* ==================== Size ends === */
 
 /* === Spacing ====================== */
-.pad-right-5 { padding-right:5px; }
-.pad-left-5 { padding-left:5px; }
+.mt-10 {margin:10px}
+.mt-10 {margin-top: 10px}
+.pt-10 {padding-top: 10px}
+.p-right-5 { padding-right:5px; }
+.ml-10 { padding-left:10px; }
 /* ================== Spacing ends === */
 
 .supremo-hover-click { cursor:pointer; }

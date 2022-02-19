@@ -1,21 +1,16 @@
-<nav class="navbar supremo-navbar-size bg-dark">
-  <div class="container-fluid">
-    <div class="navbar-header" style="padding-top:.1rem;" >
-      <a class="" href="#"><%= image_tag ("logo-ico.png"), size:"48x41" %></a>
-    </div>
-    <ul class="nav navbar-nav navbar-right">
-      <li role="presentation" class="dropdown">
-        <a class="dropdown-toggle text-white" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-          <p class="text-dark"><%= ("#{current_user&.name}") %><span class="caret"></span></p>
-        </a>
-        <ul class="dropdown-menu no-hover">
-          <li><%= link_to fa_icon('user-edit' , text: t("general.edit")), edit_user_path(current_user) %></li>
-          <li><%= link_to fa_icon('sign-out-alt' , text: "sair"), destroy_user_session_path, method: :delete %></li>
-        </ul>
-      </li>
-    </ul>
+<nav class="container-fluid navbar supremo-bg-dark">
+  <div class="navbar-header">
+    <a href="#"><%= image_tag ("logo-ico.png"), size:"48x41", class: 'mt-10' %></a>
   </div>
+  <ul class="nav navbar-nav navbar-right">
+    <li role="presentation" class="dropdown">
+      <a class="dropdown-toggle text-white" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+        <p class="text-dark"><%= ("#{current_user&.name}") %><span class="caret"></span></p>
+      </a>
+      <ul class="dropdown-menu no-hover">
+        <li><%= link_to fa_icon('user-edit' , text: t("general.edit")), edit_user_path(current_user) %></li>
+        <li><%= link_to fa_icon('sign-out-alt' , text: "sair"), destroy_user_session_path, method: :delete %></li>
+      </ul>
+    </li>
+  </ul>
 </nav>
-
-
-

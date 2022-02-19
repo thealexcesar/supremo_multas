@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <%= csrf_meta_tags %>              <%= csp_meta_tag %>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
-    <%= javascript_include_tag 'application'            %>
-    <%= favicon_link_tag asset_path("logo-ico.png")     %>
-    <title>     <%= t("general.supreme") %>       </title>
+    <%= javascript_include_tag 'application' %>
+    <%= favicon_link_tag asset_path("logo-ico.png") %>
+    <title><%= t("general.supreme") %></title>
   </head>
 
   <body>
-    <header class="container-fluid supremo-bg-dark">
+    <header class="supremo-bg-dark">
       <%= render 'shared/header' if signed_in? %>
     </header>
     <main class="container-fluid">

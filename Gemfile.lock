@@ -247,7 +247,7 @@ DEPENDENCIES
   tzinfo-data
   uglifier (= 4.2.0)
   web-console (>= 3.3.0)
-  will_paginate (= 3.3)
+  will_paginate (~> 3.3)
 
 RUBY VERSION
    ruby 2.6.3p62
