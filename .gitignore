@@ -7,6 +7,11 @@
 # Ignore bundler config.
 /.bundle
 
+# security
+./Gemfile.lock
+/config/database.yml
+./.idea
+
 # Ignore all logfiles and tempfiles.
 /log/*
 /tmp/*
@@ -26,6 +31,3 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 afile
-./Gemfile.lock
-/config/database.yml
-./.idea
