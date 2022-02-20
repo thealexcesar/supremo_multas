@@ -5696,7 +5696,7 @@ adm = User.new email: "adm@adm.com",
 if adm.save
   puts "Usuário admin criado."
 else
-  puts "Erro ao criar admin: #{adm.errors.full_messages}"
+  puts "Erro ao criar admin: #{adm.errors.full_messages}."
 end
 #------------------------------------------------
 main = Company.new name: "Supremo Multas",
@@ -5712,7 +5712,7 @@ main = Company.new name: "Supremo Multas",
 if main.save
   puts "Empresa matriz #{Company.last.name} criada."
 else
-  puts "Erro ao criar empresa matriz: #{main.errors.full_messages}"
+  puts "Erro ao criar matriz: #{main.errors.full_messages}."
 end
 
 #------------------------------------------------
@@ -5747,7 +5747,7 @@ branches.each do |b|
   if company.save
     puts "Empresa filial #{Company.last.name} criada."
   else
-    puts "Erro ao criar empresa filial: #{company.errors.full_messages}"
+    puts "Erro ao criar filial: #{company.errors.full_messages}."
   end
 end
 
@@ -5791,75 +5791,51 @@ users.each do |u|
 end
 
 #------------------------------------------------
-car_types = [
-  { name: "Caminhão", company: Company.find(1), created_by: User.find(1)},
-  { name: "Automóvel", company: Company.find(1), created_by: User.first }
-]
-car_types.each do |t|
-  car_type = CarType.new(t)
-  if car_type.save
-    puts "Tipo de veículo: \"#{CarType.last.name}\" criado."
-  else
-    puts "Erro ao criar tipo de veículo: #{car_type.errors.full_messages}"
+t = CarType.new name: "Automóvel", company_id: 1, created_by: User.find(1)
+if t.save
+  puts "Tipo de veículo: \"#{CarType.last.name}\" criado."
+else
+  puts "Erro ao criar tipo de veículo: #{car_type.errors.full_messages}."
 end
 
 #------------------------------------------------
-brands = [
-  { name: "Mercedes", company_id: 1, created_by: User.first }, { name: "Renaut", company_id: 1, created_by: User.find(1) }
-]
-brands.each do |b|
-  car_brand = CarBrand.new(b)
-  if car_brand.save
-    puts "Marca do veículo: \"#{CarBrand.last.name}\" criada."
-  else
-    puts "Erro ao criar Marca do veículo: #{car_brand.errors.full_messages}"
-  end
+b = CarBrand.new name: "Renault", company_id: 1, created_by: User.find(1)
+if b.save
+  puts "Marca do veículo: \"#{CarBrand.last.name}\" criada."
+else
+  puts "Erro ao criar Marca do veículo: #{car_brand.errors.full_messages}."
 end
 #------------------------------------------------
-car_models = [
-  {
-    name: "Logan", car_brand_id: 2,
-    car_type_id: 2, company_id: 1,
-    created_by: User.first
-  },
-  {
-    name: "1113", car_brand_id: 1,
-    car_type_id: 1,  company_id: 1,
-    created_by_id: 1
-  }
-]
-car_models.each do |m|
-  car_model = CarModel.new(m)
-  if car_model.save
-    puts "Modelo do veículo: \"#{CarModel.last.name}\" criado."
-  else
-    puts "Erro. Modelo de carro: #{car_model.errors.full_messages} "
-  end
-end
-#------------------------------------------------
-cars = [
-  {
-    car_model_id: "1",
-    company_id: "1",
-    created_by: User.first,
-    license_plate: "ABC111",
-    year: '2019'
-  },
-  {
-    car_model_id: "1",
-    company_id: "1",
-    created_by: User.first,
-    license_plate: "ABC222",
-    year: '2020'
-  }
-]
-cars.each do |c|
-  car = Car.new(c)
-  if car.save
-    puts "Carro de placa: \"#{Car.last.plate}\" criado."
-  else
-    puts "Erro ao criar carro: \"#{car.errors.full_messages}\"."
-  end
-end
+m = CarModel.new name: "Logan", car_brand_id: 1, car_type_id: 1,
+  company_id: 1, created_by: User.first
+if m.save(m)
+  puts "Modelo do veículo: \"#{CarModel.last.name}\" criado."
+else
+  puts "Erro ao criar modelo de carro: #{car_model.errors.full_messages}."
 end
 
+#------------------------------------------------
+car = Car.new car_model_id: "1", company_id: "1", created_by: User.first,
+  license_plate: "ABC111", status: "enabled", year: '2019'
+if car.save
+  puts "Carro de placa: \"#{Car.last.license_plate}\" criado."
+else
+  puts "Erro ao criar carro: \"#{car.errors.full_messages}\"."
+end
+
+#------------------------------------------------
+point = FinePoint.new name: "Gravíssima", point: 7, company_id: 1, created_by: User.first
+if point.save
+  puts "Tipo de multa: \"#{FinePoint.last.name}\" criado."
+else
+  puts "Erro ao criar tipo de multa: \"#{FinePoint.errors.full_messages}\"."
+end
+
+#------------------------------------------------
+f = Fine.new user_id: 1, fine_status: "identified", fine_number: 171171, branch_id: 2,
+  fine_date: created_at, detran_id: 24, fine_point_id: 1, company_id: 1, created_by: User.first
+if f.save
+  puts "Multa numero: \"#{Fine.last.fine_number}\" criada."
+else
+  puts "Erro ao criar multa: \"#{Fine.errors.full_messages}\"."
+end
