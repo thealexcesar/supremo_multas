@@ -1,5 +1,5 @@
-<nav class="container-fluid navbar supremo-bg-dark">
-  <div class="navbar-header">
+<nav class="navbar container-fluid supremo-bg-dark">
+  <div class="navbar-header container-fluid">
     <a href="#"><%= image_tag ("logo-ico.png"), size:"48x41", class: 'mt-10' %></a>
   </div>
   <ul class="nav navbar-nav navbar-right">
@@ -9,7 +9,7 @@
       </a>
       <ul class="dropdown-menu no-hover">
         <li><%= link_to fa_icon('user-edit' , text: t("general.edit")), edit_user_path(current_user) %></li>
-        <li><%= link_to fa_icon('sign-out-alt' , text: "sair"), destroy_user_session_path, method: :delete %></li>
+        <li><%= link_to fa_icon('sign-out-alt' , text: t("general.exit")), destroy_user_session_path, method: :delete %></li>
       </ul>
     </li>
   </ul>
