@@ -8,7 +8,7 @@ class FinesController < ApplicationController
 
   # GET /fines or /fines.json
   def index
-    @fines = Fine.all
+    @fines = Fine.all.paginate(page: params[:page], per_page: 2)
   end
 
   # GET /fines/1 or /fines/1.json

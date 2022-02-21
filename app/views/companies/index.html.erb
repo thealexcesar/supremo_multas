@@ -37,5 +37,9 @@
   </tbody>
 </table>
 <br>
-<%= will_paginate @paginate, previous_label: "primeira", next_label: "última" %>
+<div class="col-md-3 col-md-offset-9">
+  <div class="supremo_pagination">
+    <%= will_paginate @paginate, previous_label: "primeira", next_label: "última" %>
+  </div>
+</div>
 <%= link_to t("general.new"), new_company_path %>
