@@ -5795,7 +5795,7 @@ t = CarType.new name: "Automóvel", company_id: 1, created_by: User.find(1)
 if t.save
   puts "Tipo de veículo: \"#{CarType.last.name}\" criado."
 else
-  puts "Erro ao criar tipo de veículo: #{car_type.errors.full_messages}."
+  puts "Erro ao criar tipo de veículo: #{t.errors.full_messages}."
 end
 
 #------------------------------------------------
@@ -5803,7 +5803,7 @@ b = CarBrand.new name: "Renault", company_id: 1, created_by: User.find(1)
 if b.save
   puts "Marca do veículo: \"#{CarBrand.last.name}\" criada."
 else
-  puts "Erro ao criar Marca do veículo: #{car_brand.errors.full_messages}."
+  puts "Erro ao criar Marca do veículo: #{b.errors.full_messages}."
 end
 #------------------------------------------------
 m = CarModel.new name: "Logan", car_brand_id: 1, car_type_id: 1,
@@ -5811,7 +5811,7 @@ m = CarModel.new name: "Logan", car_brand_id: 1, car_type_id: 1,
 if m.save(m)
   puts "Modelo do veículo: \"#{CarModel.last.name}\" criado."
 else
-  puts "Erro ao criar modelo de carro: #{car_model.errors.full_messages}."
+  puts "Erro ao criar modelo de carro: #{m.errors.full_messages}."
 end
 
 #------------------------------------------------
@@ -5820,7 +5820,7 @@ c = Car.new car_model_id: "1", company_id: "1", created_by: User.first,
 if c.save
   puts "Carro de placa: \"#{Car.last.license_plate}\" criado."
 else
-  puts "Erro ao criar carro: \"#{car.errors.full_messages}\"."
+  puts "Erro ao criar carro: \"#{c.errors.full_messages}\"."
 end
 
 #------------------------------------------------
@@ -5828,7 +5828,7 @@ p = FinePoint.new name: "Gravíssima", point: 7, company_id: 1, created_by: User
 if p.save
   puts "Tipo de multa: \"#{FinePoint.last.name}\" criado."
 else
-  puts "Erro ao criar tipo de multa: \"#{FinePoint.errors.full_messages}\"."
+  puts "Erro ao criar tipo de multa: \"#{p.errors.full_messages}\"."
 end
 
 #------------------------------------------------
@@ -5837,5 +5837,5 @@ f = Fine.new user_id: 1, fine_status: "identified", fine_number: 171171, branch_
 if f.save
   puts "Multa numero: \"#{Fine.last.fine_number}\" criada."
 else
-  puts "Erro ao criar multa: \"#{Fine.errors.full_messages}\"."
+  puts "Erro ao criar multa: \"#{f.errors.full_messages}\"."
 end
