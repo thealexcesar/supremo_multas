@@ -5670,7 +5670,7 @@ e.cities.create(:name => "Xambioá")
 
 #------------------------------------------------
 Curitiba = City.find_by(name: "Curitiba")
-Palhoça  = City.find_by(name: "Palhoça")
+Palhoca  = City.find_by(name: "Palhoça")
 Pomerode = City.find_by(name: "Pomerode")
 
 main = Company.new name: "ADM",
@@ -5738,14 +5738,14 @@ branches = [
     number: "40",
     zipcode: "89107-000",
     district: " Jardim Eldorado",
-    city: Palhoça,
+    city: Palhoca,
     created_by: adm
   }
 ]
 branches.each do |b|
   company = Company.new(b)
   if company.save
-    puts "Empresa filial #{Company.last.name} criada."
+    puts "Empresa filial: #{Company.last.name} criada."
   else
     puts "Erro ao criar filial: #{company.errors.full_messages}."
   end
@@ -5784,7 +5784,7 @@ users = [
 users.each do |u|
   user = User.new(u)
   if user.save
-    puts "Usuário #{User.last.name.split.first} (tipo: #{User.last.user_type}) criado."
+    puts "Usuário: #{User.last.name.split.first} (tipo: #{User.last.user_type}) criado."
   else
     puts "Erro ao criar usuário: #{user.errors.full_messages}"
   end
@@ -5815,17 +5815,17 @@ else
 end
 
 #------------------------------------------------
-car = Car.new car_model_id: "1", company_id: "1", created_by: User.first,
+c = Car.new car_model_id: "1", company_id: "1", created_by: User.first,
   license_plate: "ABC111", status: "enabled", year: '2019'
-if car.save
+if c.save
   puts "Carro de placa: \"#{Car.last.license_plate}\" criado."
 else
   puts "Erro ao criar carro: \"#{car.errors.full_messages}\"."
 end
 
 #------------------------------------------------
-point = FinePoint.new name: "Gravíssima", point: 7, company_id: 1, created_by: User.first
-if point.save
+p = FinePoint.new name: "Gravíssima", point: 7, company_id: 1, created_by: User.first
+if p.save
   puts "Tipo de multa: \"#{FinePoint.last.name}\" criado."
 else
   puts "Erro ao criar tipo de multa: \"#{FinePoint.errors.full_messages}\"."
@@ -5833,7 +5833,7 @@ end
 
 #------------------------------------------------
 f = Fine.new user_id: 1, fine_status: "identified", fine_number: 171171, branch_id: 2,
-  fine_date: created_at, detran_id: 24, fine_point_id: 1, company_id: 1, created_by: User.first
+  fine_date: Date.today, detran_id: 24, fine_point_id: 1, company_id: 1, created_by: User.first
 if f.save
   puts "Multa numero: \"#{Fine.last.fine_number}\" criada."
 else
