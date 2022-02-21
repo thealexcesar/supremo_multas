@@ -2,12 +2,17 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "will_paginate";
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
 /* === Default ===================== */
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+}
+
+body{
+  font-family: 'Montserrat', sans-serif;
 }
 
 a, a:hover,

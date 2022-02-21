@@ -5,7 +5,10 @@
   <ul class="nav navbar-nav navbar-right">
     <li role="presentation" class="dropdown">
       <a class="dropdown-toggle text-white" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-        <p class="text-dark"><%= ("#{current_user&.name}") %><span class="caret"></span></p>
+        <div class=" d-flex align-items-center">
+          <span class="text-dark"><%= ("#{current_user&.name.downcase}") %> <span class="caret"></span></span>
+          <span><%= fa_icon('user-circle 3x') %></span>
+        </div>
       </a>
       <ul class="dropdown-menu no-hover">
         <li><%= link_to fa_icon('user-edit' , text: t("general.edit")), edit_user_path(current_user) %></li>
