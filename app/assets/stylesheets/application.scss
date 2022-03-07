@@ -20,6 +20,7 @@ a:active,
 button:hover {
   text-decoration: none;
   color:inherit;
+  background-color: transparent;
 }
 .no-hover > a:hover { color:white; }
 /* ================ Default ends === */
@@ -43,6 +44,10 @@ button:hover {
 
 .justify-between {
   justify-content: space-between;
+}
+
+.justify-end {
+  justify-content: flex-end;
 }
 
 .justify-evenly {
@@ -73,7 +78,9 @@ button:hover {
   background-color: #F3F2F7;
 }
 
-.nav li a:hover{
+.nav li a:hover,
+.nav-pills > li.active > a,
+.nav-pills > li.active > a:hover {
   background-color: #2B3D47;
   color: #EFEFEF;
 }
@@ -107,7 +114,6 @@ td button:hover, a:hover {
 /* ==================== Size ends === */
 
 /* === Spacing ====================== */
-.mt-10 {margin:10px}
 .mt-10 {margin-top: 10px}
 .pt-10 {padding-top: 10px}
 .p-right-5 { padding-right:5px; }
@@ -115,3 +121,47 @@ td button:hover, a:hover {
 /* ================== Spacing ends === */
 
 .supremo-hover-click { cursor:pointer; }
+
+.supremo-btn-identified {
+  border-radius: 25px;
+  background: rgba(40, 199, 111,0.2);
+  color: rgb(40, 199, 111);
+  width: 50% ;
+  padding: 2px 15px;
+  display: flex;
+  justify-content: center;
+}
+.supremo-btn-unidentified {
+  border-radius: 25px;
+  background: rgba(255, 159, 67,0.2);
+  color: rgb(255, 159, 67);
+  width: 50% ;
+  padding: 2px 15px;
+  display: flex;
+  justify-content: center;
+}
+.supremo-box-show {
+  border-radius: 10px;
+  box-shadow: 1px 2px 15px 6px rgba(0,0,0,0.15);
+  background: #FFFFFF;
+  padding: 15px 20px 0px 20px;
+  width: 830px;
+  height: 450px;
+}
+.supremo-box-edit {
+  border-radius: 10px;
+  box-shadow: 1px 2px 15px 6px rgba(0,0,0,0.15);
+  background: #FFFFFF;
+  padding: 0px 20px 0px 20px;
+  width: 830px;
+  height: 500px;
+}
+
+.left { float:left; }
+.right { float:right; }
+
+.transparent {
+  background-color: transparent;
+  color: inherit;
+  :hover { background-color:transparent; }
+}

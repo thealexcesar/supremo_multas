@@ -6,6 +6,7 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all.paginate(page: params[:page], per_page: 2)
+    # render :template => 'index'
   end
   def new
     @user = User.new
@@ -71,7 +72,9 @@ class UsersController < ApplicationController
   private
 
   def set_company
-    @companies = Company.where(company_type: :main)
+    @main = Company.where(company_type: :main)
+    @branches = Company.where(company_type: :branch)
+    @Companies = Company.all
   end
 
   def set_user

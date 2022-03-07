@@ -27,8 +27,8 @@
           <p><%= form.select :user_type, options_for_enum(:user_types) %></p>
         </div>
         <div>
-          <h2 class="h6 py-4"><%= form.label :company_id %></h2>
-          <p><%= form.select :company_id, options_from_collection_for_select(@companies, :id, :name) %></p>
+          <h2 class="h6 py-4"><%= form.label :company %></h2>
+          <p><%= form.select :company_id, options_from_collection_for_select(@branches, :id, :name) %></p>
         </div>
       <% end %>
       <div class="py-4">

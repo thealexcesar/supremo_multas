@@ -1,11 +1,11 @@
-<div>
-  <div style="float:left">
-    <h1 class="h3"> <%= t("activerecord.models.user").pluralize %> </h1>
-  </div>
+<span class="text-dark"><%= ("#{current_user&.user_type.split.first.downcase}") %> </span>
 
-  <div style="float:right" class="container-fluid pt-10">
+<div>
+    <h1 class="h3 left"> <%= t("activerecord.models.user").pluralize %> </h1>
+
+  <div class="right mt-10">
     <%= link_to new_user_path do %>
-      <button type="button" class="mt-10 btn btn-default supremo-btn-gray text-light"><%= new_model %></button>
+      <button type="button" class="btn btn-default supremo-btn-gray text-light"><%= new_model %></button>
     <% end %>
   </div>
 </div>
@@ -17,6 +17,7 @@
     <th><%= t("activerecord.attributes.user.email") %></th>
     <th><%= t("activerecord.attributes.user.status") %></th>
     <th><%= t("activerecord.attributes.user.user_type") %></th>
+    <th><%= t("activerecord.attributes.company_types.branch") %></th>
     <th colspan="5" class="text-center"><%= t("general.actions") %></th>
   </tr>
   </thead>
@@ -32,12 +33,31 @@
       <td title="<%= t"users.send_mail" %>"><%= mail_to(user&.email) %></td>
 
       <td>
-        <% if current_user.admin? %>
-          <button class="btn" title="<%= user.status == "enabled" ? t("general.to_disable") : t("general.to_enable") %>">
+        <% if current_user.admin? || current_user.manager? %>
+
+          <% if user.status == "enabled" %>
+
+          <button class="btn supremo-btn-identified" title="<%= t("general.to_disable") %>">
             <%=link_to "#{enum_to_name(user, :status)}", user_enable_disable_path(user), method: :post, remote: true %>
           </button>
+          <% else %>
+            <button class="btn supremo-btn-unidentified" title="<%= t("general.to_enable") %>">
+              <%=link_to "#{enum_to_name(user, :status)}", user_enable_disable_path(user), method: :post, remote: true %>
+            </button>
+          <% end %>
+
         <% else %>
-          <%= enum_to_name(user, :status) %>
+
+          <% if user.status == "enabled" %>
+            <div class="supremo-btn-identified">
+              <%= enum_to_name(user, :status) %>
+            </div>
+          <% else %>
+            <div class="supremo-btn-unidentified">
+              <%= enum_to_name(user, :status) %>
+            </div>
+          <% end %>
+
         <% end %>
       </td>
 
@@ -51,7 +71,7 @@
             <li role="separator" class="divider"></li>
             <li><%= link_to t("general.delete"), user_path(user), method: :delete, data: {confirm: I18n.t("general.messages.confirm")} if current_user.admin? %></li>
           </ul>
-          <%= link_to fa_icon('user-edit'), edit_user_path(user), class: "pad-left-5" %>
+          <%= link_to fa_icon('user-edit'), edit_user_path(user), class: "pad-left-5" if current_user.admin? || current_user.manager? %>
         </div>
       </td>
       </tr>
