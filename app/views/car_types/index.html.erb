@@ -1,10 +1,15 @@
-<p id="notice"><%= notice %></p>
+<div>
+  <h1 class="h3 left"> <%= t('activerecord.models.car_type') %> </h1>
 
-<h1><%= t('activerecord.models.car_type') %></h1>
-
-<table>
+  <div class="right mt-10">
+    <%= link_to new_car_type_path do %>
+      <button type="button" class="btn btn-default supremo-btn-gray text-light"><%= new_model %></button>
+    <% end %>
+  </div>
+</div>
+<table class="table">
   <thead>
-    <tr>
+    <tr class="supremo-table-top-color">
       <th><%= t("general.name") %></th>
       <th colspan="3"><%= t("general.actions") %></th>
     </tr>
@@ -22,6 +27,8 @@
   </tbody>
 </table>
 
-<br>
-
-<%= link_to t('general.new'), new_car_type_path %>
+<div class="right">
+  <div class="supremo_pagination">
+    <%= will_paginate @users, previous_label: fa_icon('angle-left'), next_label: fa_icon('angle-right') %>
+  </div>
+</div>

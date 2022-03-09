@@ -32,7 +32,7 @@ button:hover {
 
 .center { text-align:center }
 
-.d-flex { display:flex; }
+.d-flex { display:flex; flex-wrap:nowrap; }
 
 .vertical-center {vertical-align: center}
 
@@ -115,8 +115,10 @@ td button:hover, a:hover {
 
 /* === Spacing =============================== */
 .mt-10 {margin-top: 10px}
-.ml-10 {margin-top: 10px}
-.mr-10 {margin-top: 10px}
+.ml-10 {margin-left: 10px}
+.pl-10 {padding-left: 10px}
+.mr-10 {margin-right: 10px}
+.pr-10 {padding-right: 10px}
 .pt-10 {padding-top: 10px}
 .p-right-5 { padding-right:5px; }
 .ml-10 { padding-left:10px; }

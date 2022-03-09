@@ -10,7 +10,7 @@
   </head>
 
   <body>
-    <header class="supremo-bg-dark">
+    <header style="margin-bottom:70px" class="supremo-bg-dark">
       <%= render 'shared/header' if signed_in? %>
     </header>
     <main class="container-fluid">
@@ -18,11 +18,11 @@
 
         <%= image_tag("cta-concreto1.png") unless signed_in? %>
 
-        <div class="hidden-sm col-lg-2 col-md-2 col-sm-3 col-xs-12 d-flex justify-center align-items-center">
+        <div class="mt-10 hidden-xs hidden-sm hidden-md col-lg-2 col-md-2 col-sm-3 col-xs-12 d-flex justify-center align-items-center">
           <%= render "shared/nav_left" if signed_in? %>
         </div>
 
-        <div class="container-fluid hidden-md hidden-lg row d-flex align-items-center justify-around">
+        <div class="container-fluid hidden-lg hidden-lg row d-flex align-items-center justify-around">
           <%= render "shared/nav_top" if signed_in? %>
         </div>
 

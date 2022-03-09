@@ -84,9 +84,7 @@ class UsersController < ApplicationController
   def set_user_id
     @user = User.find(params[:user_id])
   end
-  # def set_msg
-  #   @test = Cliente.new
-  # end
+
   def user_params
     params.require(:user).permit(:email, :name, :password, :password_confirmation, :status, :user_type, :company_id, :created_by)
   end

@@ -10,7 +10,7 @@
   </div>
 </div>
 
-<table class="table supremo-table-color">
+<table class="table">
   <thead class="">
   <tr class="supremo-table-top-color">
     <th><%= t("activerecord.attributes.user.name") %></th>
@@ -23,9 +23,8 @@
   </thead>
 
   <tbody>
-  <tr>
     <% @users.each do |user| %>
-
+    <tr>
       <td title="<%= t "users.show" %>: <%= (user&.name) %>">
         <%= link_to"#{truncate((user&.name), length: 16)}", user_path(user) %>
       </td>
@@ -33,31 +32,10 @@
       <td title="<%= t"users.send_mail" %>"><%= mail_to(user&.email) %></td>
 
       <td>
-        <% if current_user.admin? || current_user.manager? %>
-
-          <% if user.status == "enabled" %>
-
-          <button class="btn supremo-btn-identified" title="<%= t("general.to_disable") %>">
-            <%=link_to "#{enum_to_name(user, :status)}", user_enable_disable_path(user), method: :post, remote: true %>
-          </button>
-          <% else %>
-            <button class="btn supremo-btn-unidentified" title="<%= t("general.to_enable") %>">
-              <%=link_to "#{enum_to_name(user, :status)}", user_enable_disable_path(user), method: :post, remote: true %>
-            </button>
-          <% end %>
-
+        <% if user.status == "enabled" %>
+          <div class="btn supremo-btn-identified"> <%= enum_to_name(user, :status) %> </div>
         <% else %>
-
-          <% if user.status == "enabled" %>
-            <div class="supremo-btn-identified">
-              <%= enum_to_name(user, :status) %>
-            </div>
-          <% else %>
-            <div class="supremo-btn-unidentified">
-              <%= enum_to_name(user, :status) %>
-            </div>
-          <% end %>
-
+          <div class="btn supremo-btn-unidentified"> <%= enum_to_name(user, :status) %> </div>
         <% end %>
       </td>
 
@@ -69,17 +47,23 @@
           <ul class="dropdown-menu dropdown-menu-right">
             <li><%= link_to t("general.show"), user_path(user) %></li>
             <li role="separator" class="divider"></li>
+            <li>
+              <%= link_to user.status == "enabled" ? t("general.to_disable") : t("general.to_enable"), user_enable_disable_path(user),
+                          method: :post, remote: true if current_user.admin? %>
+            </li>
+            <li role="separator" class="divider"></li>
             <li><%= link_to t("general.delete"), user_path(user), method: :delete, data: {confirm: I18n.t("general.messages.confirm")} if current_user.admin? %></li>
           </ul>
+          &#160 &#160
           <%= link_to fa_icon('user-edit'), edit_user_path(user), class: "pad-left-5" if current_user.admin? || current_user.manager? %>
         </div>
       </td>
-      </tr>
+    </tr>
     <% end %>
-    </tbody>
+  </tbody>
 </table>
 
-<div style="float: right;" class="">
+<div class="right">
   <div class="supremo_pagination">
       <%= will_paginate @users, previous_label: fa_icon('angle-left'), next_label: fa_icon('angle-right') %>
   </div>

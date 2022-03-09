@@ -1,3 +1,4 @@
+<nav class="supremo-bg-gray">
 <ul class="d-flex nav nav-pills nav-stacked">
   <li class="<%= 'active' if params[:controller] == 'users' %>">
     <%= link_to fa_icon('user', type: :regular, text: t("activerecord.models.user")), users_path %>
@@ -21,3 +22,4 @@
     <%= link_to fa_icon('car-side', text: t("activerecord.models.car_model")), car_models_path %>
   </li>
 </ul>
+</nav>
