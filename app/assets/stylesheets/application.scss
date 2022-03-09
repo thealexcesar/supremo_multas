@@ -4,7 +4,7 @@
 @import "will_paginate";
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
-/* === Default ===================== */
+/* === Default =============================== */
 * {
   padding: 0;
   margin: 0;
@@ -23,9 +23,9 @@ button:hover {
   background-color: transparent;
 }
 .no-hover > a:hover { color:white; }
-/* ================ Default ends === */
+/* ================ Default ends ============= */
 
-/* === Display flex ================ */
+/* === Display flex ========================== */
 .align-items-center {
   align-items: center
 }
@@ -53,9 +53,9 @@ button:hover {
 .justify-evenly {
   justify-content: space-evenly;
 }
-/* =========== Display flex ends === */
+/* =========== Display flex ends ============= */
 
-/* === Colors ====================== */
+/* === Colors ================================ */
 // Background-color
 .bg-dark {
   background-color: #2E2F30
@@ -96,9 +96,9 @@ td button:hover, a:hover {
     background-color: black;
   }
 }
-/* ================== Colors ends === */
+/* ================== Colors ends ============ */
 
-/* === Size ======================== */
+/* === Size ================================== */
 .supremo-navbar-size {
   max-height: 62px;
 }
@@ -111,14 +111,16 @@ td button:hover, a:hover {
   max-width: 35%;
 }*/
 
-/* ==================== Size ends === */
+/* ==================== Size ends ============ */
 
-/* === Spacing ====================== */
+/* === Spacing =============================== */
 .mt-10 {margin-top: 10px}
+.ml-10 {margin-top: 10px}
+.mr-10 {margin-top: 10px}
 .pt-10 {padding-top: 10px}
 .p-right-5 { padding-right:5px; }
 .ml-10 { padding-left:10px; }
-/* ================== Spacing ends === */
+/* ================== Spacing ends =========== */
 
 .supremo-hover-click { cursor:pointer; }
 
@@ -164,4 +166,43 @@ td button:hover, a:hover {
   background-color: transparent;
   color: inherit;
   :hover { background-color:transparent; }
+}
+
+/* === Responsive ============================ */
+
+// Small devices (landscape phones, 576px and up)
+@media (max-width: 576px) {
+
+  body {
+    background-color: #e3cbe2;
+  }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+  body {
+    background-color: #dcbbbb;
+  }
+
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  body {
+    background-color: inherit;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  body {
+    background-color: #ccdede;
+  }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  body {
+    background-color: inherit;
+  }
 }

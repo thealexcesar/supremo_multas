@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   # before_action :set_msg, only: [:new, :create, :edit, :update]
 
   def index
-    @users = User.all.paginate(page: params[:page], per_page: 2)
+    @users = User.all.paginate(page: params[:page], per_page: 22)
     # render :template => 'index'
   end
   def new
@@ -16,6 +16,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    @user.created_by = current_user
     @user.company = current_company unless current_user.admin?
     respond_to do |format|
       if @user.save
@@ -87,6 +88,6 @@ class UsersController < ApplicationController
   #   @test = Cliente.new
   # end
   def user_params
-    params.require(:user).permit(:email, :name, :password, :password_confirmation, :status, :user_type, :company_id) # add :created_by
+    params.require(:user).permit(:email, :name, :password, :password_confirmation, :status, :user_type, :company_id, :created_by)
   end
 end

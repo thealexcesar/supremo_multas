@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  # belongs_to :created_by, class_name: "User", foreign_key: :created_by
   belongs_to :company
 
   enum status: [:enabled, :disabled]
