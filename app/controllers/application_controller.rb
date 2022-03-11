@@ -10,6 +10,9 @@ class ApplicationController < ActionController::Base
   def manager?
     self.user_type == "manager"
   end
+  def root
+    admin? || manager?
+  end
 
   protected
 

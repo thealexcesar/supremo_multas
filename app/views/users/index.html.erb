@@ -12,24 +12,25 @@
 
 <table class="table">
   <thead class="">
-  <tr class="supremo-table-top-color">
+  <tr class="jumbotron">
     <th><%= t("activerecord.attributes.user.name") %></th>
     <th><%= t("activerecord.attributes.user.email") %></th>
     <th><%= t("activerecord.attributes.user.status") %></th>
-    <th><%= t("activerecord.attributes.user.user_type") %></th>
+    <th><%= t("table.type") %></th>
     <th><%= t("activerecord.attributes.company_types.branch") %></th>
-    <th colspan="5" class="text-center"><%= t("general.actions") %></th>
+    <th colspan='5' class='text-center'> <%= t("general.actions")  %> </th>
+    <%#= current_user.root? ? ("<th colspan='5' class='text-center'>#{ t("general.actions") }</th>".html_safe) : ("") %>
   </tr>
   </thead>
 
   <tbody>
     <% @users.each do |user| %>
     <tr>
-      <td title="<%= t "users.show" %>: <%= (user&.name) %>">
-        <%= link_to"#{truncate((user&.name), length: 16)}", user_path(user) %>
+      <td title="<%= t "general.show_details" %>">
+        <%= link_to"#{(user&.name).split.first}", user_path(user) %>
       </td>
 
-      <td title="<%= t"users.send_mail" %>"><%= mail_to(user&.email) %></td>
+      <td title="<%= t("general.send_mailto") %> <%= user&.email %>"><%= mail_to(truncate(user&.email, length: 10)) %></td>
 
       <td>
         <% if user.status == "enabled" %>
@@ -40,24 +41,28 @@
       </td>
 
       <td><%= enum_to_name(user, :user_type) %></td>
-      <td><%= current_user&.company&.name %></td>
-      <td>
-        <div class="dropdown text-center">
-          <button type="button" class="fas fa-ellipsis-v supremo-hover-click" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
-          <ul class="dropdown-menu dropdown-menu-right">
-            <li><%= link_to t("general.show"), user_path(user) %></li>
-            <li role="separator" class="divider"></li>
-            <li>
-              <%= link_to user.status == "enabled" ? t("general.to_disable") : t("general.to_enable"), user_enable_disable_path(user),
-                          method: :post, remote: true if current_user.admin? %>
-            </li>
-            <li role="separator" class="divider"></li>
-            <li><%= link_to t("general.delete"), user_path(user), method: :delete, data: {confirm: I18n.t("general.messages.confirm")} if current_user.admin? %></li>
-          </ul>
-          &#160 &#160
-          <%= link_to fa_icon('user-edit'), edit_user_path(user), class: "pad-left-5" if current_user.admin? || current_user.manager? %>
-        </div>
-      </td>
+      <td><%= user.company&.name %></td>
+
+      <% if current_user.root? %>
+        <td>
+          <div class="dropdown text-center">
+            <button type="button" class="fas fa-ellipsis-v supremo-hover-click" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+            <ul class="dropdown-menu dropdown-menu-right">
+              <li><%= link_to t("general.show"), user_path(user) %></li>
+              <li role="separator" class="divider"></li>
+              <li>
+                <%= link_to user.status == "enabled" ? t("general.to_disable") : t("general.to_enable"), user_enable_disable_path(user), method: :post, remote: true %>
+              </li>
+              <li role="separator" class="divider"></li>
+              <li><%= link_to t("general.delete"), user_path(user), method: :delete, data: {confirm: I18n.t("general.messages.confirm")} %></li>
+            </ul>&#160 &#160
+            <%= link_to fa_icon('user-edit'), edit_user_path(user), class: "pad-left-5" %>
+          </div>
+        </td>
+      <% else %>
+        <td class="text-center"><li><%= link_to t("general.show"), user_path(user) %></li></td>
+      <% end %>
+
     </tr>
     <% end %>
   </tbody>

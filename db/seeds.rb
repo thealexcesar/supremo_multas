@@ -5694,10 +5694,12 @@ adm = User.new email: "adm@adm.com",
   status: :enabled,
   company: main
 if adm.save
-  puts "Usuário admin criado."
+  puts "\nUsuário admin criado."
 else
-  puts "Erro ao criar admin: #{adm.errors.full_messages}."
+  puts "\nErro ao criar admin: #{adm.errors.full_messages}."
 end
+
+
 #------------------------------------------------
 main = Company.new name: "Supremo Multas",
   company_type: :main,
@@ -5710,9 +5712,9 @@ main = Company.new name: "Supremo Multas",
   city: Pomerode,
   created_by: adm
 if main.save
-  puts "Empresa matriz #{Company.last.name} criada."
+  puts "Empresa matriz #{Company.last.name} criada.\n"
 else
-  puts "Erro ao criar matriz: #{main.errors.full_messages}."
+  puts "\nErro ao criar matriz: #{main.errors.full_messages}.\n"
 end
 
 #------------------------------------------------
@@ -5747,9 +5749,10 @@ branches.each do |b|
   if company.save
     puts "Empresa filial: #{Company.last.name} criada."
   else
-    puts "Erro ao criar filial: #{company.errors.full_messages}."
+    puts "\nErro ao criar filial: #{company.errors.full_messages}.\n"
   end
 end
+puts ""
 
 #------------------------------------------------
 users = [
@@ -5760,7 +5763,8 @@ users = [
     password_confirmation: PASS,
     user_type: :manager,
     status: :enabled,
-    company: main
+    company: main,
+    created_by: User.find(1)
   },
   {
     email: "elisa@nucleus.com",
@@ -5769,7 +5773,8 @@ users = [
     password_confirmation: PASS,
     user_type: :users,
     status: :enabled,
-    company: main
+    company: Company.find(2),
+    created_by: User.find(1)
   },
   {
     email: "vicente@nucleus.com",
@@ -5778,7 +5783,8 @@ users = [
     password_confirmation: PASS,
     user_type: :users,
     status: :enabled,
-    company: main
+    company: Company.find(3),
+    created_by: User.find(1)
   }
 ]
 users.each do |u|
@@ -5786,16 +5792,16 @@ users.each do |u|
   if user.save
     puts "Usuário: #{User.last.name.split.first} (tipo: #{User.last.user_type}) criado."
   else
-    puts "Erro ao criar usuário: #{user.errors.full_messages}"
+    puts "\n Erro ao criar usuário: #{user.errors.full_messages}"
   end
 end
 
 #------------------------------------------------
 t = CarType.new name: "Automóvel", company_id: 1, created_by: User.find(1)
 if t.save
-  puts "Tipo de veículo: \"#{CarType.last.name}\" criado."
+  puts "\nTipo de veículo: \"#{CarType.last.name}\" criado."
 else
-  puts "Erro ao criar tipo de veículo: #{t.errors.full_messages}."
+  puts "\nErro ao criar tipo de veículo: #{t.errors.full_messages}."
 end
 
 #------------------------------------------------
@@ -5803,7 +5809,7 @@ b = CarBrand.new name: "Renault", company_id: 1, created_by: User.find(1)
 if b.save
   puts "Marca do veículo: \"#{CarBrand.last.name}\" criada."
 else
-  puts "Erro ao criar Marca do veículo: #{b.errors.full_messages}."
+  puts "\nErro ao criar Marca do veículo: #{b.errors.full_messages}."
 end
 #------------------------------------------------
 m = CarModel.new name: "Logan", car_brand_id: 1, car_type_id: 1,
@@ -5811,7 +5817,7 @@ m = CarModel.new name: "Logan", car_brand_id: 1, car_type_id: 1,
 if m.save(m)
   puts "Modelo do veículo: \"#{CarModel.last.name}\" criado."
 else
-  puts "Erro ao criar modelo de carro: #{m.errors.full_messages}."
+  puts "\nErro ao criar modelo de carro: #{m.errors.full_messages}."
 end
 
 #------------------------------------------------
@@ -5820,22 +5826,43 @@ c = Car.new car_model_id: "1", company_id: "1", created_by: User.first,
 if c.save
   puts "Carro de placa: \"#{Car.last.license_plate}\" criado."
 else
-  puts "Erro ao criar carro: \"#{c.errors.full_messages}\"."
+  puts "\nErro ao criar carro: \"#{c.errors.full_messages}\"."
 end
 
 #------------------------------------------------
 p = FinePoint.new name: "Gravíssima", point: 7, company_id: 1, created_by: User.first
 if p.save
-  puts "Tipo de multa: \"#{FinePoint.last.name}\" criado."
+  puts "\nTipo de multa: \"#{FinePoint.last.name}\" criado."
 else
-  puts "Erro ao criar tipo de multa: \"#{p.errors.full_messages}\"."
+  puts "\nErro ao criar tipo de multa: \"#{p.errors.full_messages}\"."
 end
 
 #------------------------------------------------
 f = Fine.new user_id: 1, fine_status: "identified", fine_number: 171171, branch_id: 2,
   fine_date: Date.today, detran_id: 24, fine_point_id: 1, company_id: 1, created_by: User.first
 if f.save
-  puts "Multa numero: \"#{Fine.last.fine_number}\" criada."
+  puts "Multa numero: \"#{Fine.last.fine_number}\" criada.\n"
 else
-  puts "Erro ao criar multa: \"#{f.errors.full_messages}\"."
+  puts "Erro ao criar multa: \"#{f.errors.full_messages}\".\n"
 end
+
+# Adiciona Company_id à admin -------------------
+c = User.first
+c.company = Company.find 1
+if c.save
+  puts "Company_id adicionado à Admin."
+else
+  puts "\n Não consegue criar \"company_id\" admin. ERRO!"
+end
+
+# Adiciona created_by à admin -------------------
+cb = User.first
+cb.created_by = User.find 1
+if cb.save
+  puts "created_by adicionado à Admin."
+else
+  puts "\nNão consegue criar \"created_by\" admin. ERRO!"
+end
+puts "\n-----------------------------------------------------------------"
+puts "Adicione [belongs_to :created_by...] ao model/user_rb."
+puts "-----------------------------------------------------------------\n"

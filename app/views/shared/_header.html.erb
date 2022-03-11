@@ -1,24 +1,27 @@
-<nav class="container-fluid row-xs-2 navbar form-group navbar-fixed-top supremo-bg-dark">
+<nav class="container-fluid navbar-fixed-top supremo-bg-dark">
   <div class="container-fluid">
-  <div class="navbar-header">
-    <a href="/"><%= image_tag ("logo-ico.png"), size:"48x41", class: 'mt-10' %></a>
+
+    <div class="d-flex justify-between">
+      <a href="/"><%= image_tag ("logo-ico.png"), size:"48x41", class: 'mt-10' %></a>
+
+      <ul>
+        <li role="presentation" class="dropdown">
+
+          <a class="dropdown-toggle text-white container-fluid" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+            <div class=" d-flex align-items-center">
+              <span class="text-dark"><%= ("#{current_user&.name.split.first.downcase}") %> <span class="caret"></span></span>
+              <span><%= fa_icon('user-circle 2x') %></span>
+            </div>
+          </a>
+
+          <ul class="dropdown-menu no-hover">
+            <li><%= link_to fa_icon('user-edit' , text: t("general.edit")), edit_user_path(current_user) %></li>
+            <li><%= link_to fa_icon('sign-out-alt' , text: t("general.exit")), destroy_user_session_path, method: :delete %></li>
+          </ul>
+
+        </li>
+      </ul>
+    </div>
+
   </div>
-    <ul class="nav navbar-nav navbar-right">
-
-      <li role="presentation" class="dropdown">
-        <a class="dropdown-toggle text-white container-fluid" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-          <div class=" d-flex align-items-center">
-            <span class="text-dark"><%= ("#{current_user&.name.split.first.downcase}") %> <span class="caret"></span></span>
-            <span><%= fa_icon('user-circle 2x') %></span>
-          </div>
-        </a>
-        <ul class="dropdown-menu no-hover">
-          <li><%= link_to fa_icon('user-edit' , text: t("general.edit")), edit_user_path(current_user) %></li>
-          <li><%= link_to fa_icon('sign-out-alt' , text: t("general.exit")), destroy_user_session_path, method: :delete %></li>
-        </ul>
-      </li> 
-
-    </ul>
-  </div>
-
 </nav>

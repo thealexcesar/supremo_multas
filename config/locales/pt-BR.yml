@@ -69,7 +69,7 @@ pt-BR:
         user_type: "Tipo de usuário"
         updated_at: "Atualizado em"
       user_types:
-        admin: "Administrador"
+        admin: "Admin"
         manager: "Gerente"
         name: "Nome"
         users: "Usuário"
@@ -232,7 +232,10 @@ pt-BR:
     new: "Novo"
     update: "Atualizar"
     save: "Salvar"
+    send_mail: "Enviar email"
+    send_mailto: "Enviar email para"
     show: "Mostrar"
+    show_details: "Mostrar detalhes"
     to_disable: "Desabilitar"
     to_enable: "Habilitar"
     welcome: "Bem vindo"
@@ -305,6 +308,8 @@ pt-BR:
       last_word_connector: ", e "
       two_words_connector: " e "
       words_connector: ", "
+  table:
+    type: "Tipo"
   time:
     am: 'am'
     formats:
@@ -312,6 +317,3 @@ pt-BR:
       long: "%d de %B de %Y, %H:%M"
       short: "%d de %B, %H:%M"
     pm: 'pm'
-  users:
-    show: "Mostrar detalhes de"
-    send_mail: "Enviar email"
