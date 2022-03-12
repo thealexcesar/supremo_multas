@@ -10,7 +10,7 @@
   </head>
 
   <body>
-    <header style="margin-bottom:90px;" class="container-fluid supremo-bg-dark">
+    <header style="margin-bottom:100px;" class="container-fluid supremo-bg-dark">
       <%= render 'shared/header' if signed_in? %>
     </header>
     <main class="container-fluid">
@@ -19,7 +19,7 @@
         <%= image_tag("cta-concreto1.png") unless signed_in? %>
 
         <!-- Responsive Nav -->
-        <nav class="hidden-xs hidden-sm mt-10 col-sm-2 col-md-3 col-lg-2 d-flex">
+        <nav style="margin-top: 20px" class="hidden-xs hidden-sm mt-10 col-sm-2 col-md-3 col-lg-2 d-flex">
           <%= render "shared/nav_left" if signed_in? %>
         </nav>
         <nav class="hidden-md hidden-lg">

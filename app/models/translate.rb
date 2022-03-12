@@ -12,6 +12,7 @@ class Translate
     I18n.t("general.messages.updated", model: I18n.t("activerecord.models.#{controller_name.underscore}"))
   end
 
+
   # ------ errors ------
   # def self.register_error controller_name = nil
   # end

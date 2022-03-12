@@ -1,40 +1,37 @@
-<div>
-    <h1 class="h3 left"> <%= t("activerecord.models.user").pluralize %> </h1>
+<div class="d-flex flex-col">
+    <h1 class="left"> <%= t("activerecord.models.user").pluralize %> </h1><hr>
+</div>
 
-  <div class="right mt-10">
-    <%= link_to new_user_path do %>
-      <button type="button" class="btn btn-default supremo-btn-gray text-light"><%= new_model %></button>
-    <% end %>
-  </div>
+<div class="mb-10 d-flex justify-between align-items-center">
+  <p class="second-color h6"><%= t'general.show' %> <span class="opacity-50"><%= @users.count %></span></p>
+  <%= link_to new_user_path do %>
+    <button type="button" class="mb-10 btn btn-default supremo-btn-gray text-light"><%= new_model.capitalize %></button>
+  <% end %>
 </div>
 
 <table class="table">
   <thead class="">
   <tr class="jumbotron">
-    <th><%= t("activerecord.attributes.user.name") %></th>
-    <th><%= t("activerecord.attributes.user.email") %></th>
-    <th><%= t("activerecord.attributes.user.status") %></th>
-    <th><%= t("table.type") %></th>
-    <th><%= t("activerecord.attributes.company_types.branch") %></th>
-    <th colspan='5' class='text-center'> <%= t("general.actions")  %> </th>
+    <th><%= t("activerecord.attributes.user.name").upcase %></th>
+    <th><%= t("activerecord.attributes.user.email").upcase %></th>
+    <th style="padding-left: 20px"><%= t("activerecord.attributes.user.status").upcase %></th>
+    <th><%= t("table.type").upcase %></th>
+    <th><%= t("activerecord.attributes.company_types.branch").upcase %></th>
+    <th colspan='5' class='text-center'> <%= t("general.actions").upcase %> </th>
   </tr>
   </thead>
 
   <tbody>
   <% authorized_users.each do |user| %>
-  <tr>
-    <td title="<%= t "general.show_details" %>">
-        <%= link_to"#{(user&.name).split.first}", user_path(user) %>
+    <tr>
+      <td title="<%= t "general.show_details" %>">
+        <%= link_to"#{(user&.name).split.first} #{(user&.name).split.last}", user_path(user),  class: "semi-bold" %>
       </td>
-
       <td title="<%= t("general.send_mailto") %> <%= user&.email %>"><%= mail_to(truncate(user&.email, length: 10)) %></td>
 
       <td>
-        <% if user.status == "enabled" %>
-          <div class="btn supremo-btn-identified"> <%= enum_to_name(user, :status) %> </div>
-        <% else %>
-          <div class="btn supremo-btn-unidentified"> <%= enum_to_name(user, :status) %> </div>
-        <% end %>
+        <% user.status == "enabled" ? statuses = "supremo-btn-identified" : statuses = "supremo-btn-unidentified" %>
+        <div class="<%= statuses %>"> <%= enum_to_name(user, :status) %> </div>
       </td>
 
       <td><%= enum_to_name(user, :user_type) %></td>
@@ -65,7 +62,16 @@
   </tbody>
 </table>
 
-<div class="right">
+<%
+  def page_count
+    count = User.count - 2
+    if params[:page].to_i < 2 && params[:page].to_i >=0
+        User.count <= 3 ? ("#{t('general.show_last')} #{count}") : "#{t('general.show_last').pluralize} #{count}"
+    end
+  end
+%>
+<div class="d-flex justify-between">
+  <span class="opacity-50 h5"><%= page_count %></span>
   <div class="supremo_pagination">
       <%= will_paginate @users, previous_label: fa_icon('angle-left'), next_label: fa_icon('angle-right') %>
   </div>

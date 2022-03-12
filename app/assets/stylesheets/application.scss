@@ -5,10 +5,42 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
 /* === Default =============================== */
+
+:root {
+  --first-color: #5E5873;
+  --second-color: #6E6B7B;
+}
+
+.first-color { color: var(--first-color)}
+.second-color { color: var(--second-color)}
+
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+}
+
+body{
+  font-family: 'Montserrat', sans-serif;
+  color: var(--first-color);
+  font-weight: 600;
+}
+
+h1 {
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+}
+
+th {
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+td {
+  color:var(--second-color);
+  font-size: 14px;
+  font-weight: 400;
 }
 
 a,
@@ -18,10 +50,6 @@ button {
   list-style: none;
 }
 
-body{
-  font-family: 'Montserrat', sans-serif;
-}
-
 a, a:hover,
 a:active,
 button:hover {
@@ -29,6 +57,13 @@ button:hover {
   color:inherit;
   background-color: transparent;
 }
+
+// Font
+.semi-bold {
+  font-weight: 600;
+  line-height: 21px;
+}
+
 .no-hover > a:hover { color:white; }
 /* ================ Default ends ============= */
 
@@ -99,54 +134,41 @@ td button:hover, a:hover {
     background-color: black;
   }
 }
+
+.opacity-50 { opacity: .5 }
 /* ================== Colors ends ============ */
-
-/* === Size ================================== */
-.supremo-navbar-size {
-  max-height: 62px;
-}
-
-.supremo-size-actions-button {
-  width: 2px;
-}
-
-/*.navbar_logo_supremo {
-  max-width: 35%;
-}*/
-
-/* ==================== Size ends ============ */
 
 /* === Spacing =============================== */
 .mt-10 {margin-top: 10px}
-.ml-10 {margin-left: 10px}
-.pl-10 {padding-left: 10px}
 .mr-10 {margin-right: 10px}
+.mb-10 {margin-bottom:10px}
+.ml-10 {margin-left: 10px}
+
 .p-10 {padding: 10px}
-.pr-10 {padding-right: 10px}
 .pt-10 {padding-top: 10px}
-.p-right-5 { padding-right:5px; }
-.ml-10 { padding-left:10px; }
+.pr-10 {padding-right: 10px}
+.pl-10 {padding-left: 10px}
 /* ================== Spacing ends =========== */
 
-.supremo-hover-click { cursor:pointer; }
-
 .supremo-btn-identified {
-  border-radius: 25px;
-  background: rgba(40, 199, 111,0.2);
+  border-radius: 10px;
+  background: rgba(40, 199, 111, 0.2);
   color: rgb(40, 199, 111);
-  width: 105px;
-  height: 32px;
+  width: 100px;
+  height: 25px;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 .supremo-btn-unidentified {
-  border-radius: 25px;
-  background: rgba(255, 159, 67,0.2);
+  border-radius: 10px;
+  background: rgba(255, 159, 67, 0.2);
   color: rgb(255, 159, 67);
-  width: 105px ;
-  height: 32px;
+  width: 100px ;
+  height: 25px;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 .supremo-box-show {
   border-radius: 10px;
@@ -173,12 +195,3 @@ td button:hover, a:hover {
   color: inherit;
   :hover { background-color:transparent; }
 }
-
-//@media (max-width: 576px) {
-//}
-//@media (min-width: 768px) {
-//}
-//@media (min-width: 992px) {
-//}
-//@media (min-width: 1200px) {
-//}

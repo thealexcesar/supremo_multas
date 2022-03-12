@@ -1,5 +1,4 @@
 pt-BR:
-  hello: "<h1>Título usando H1</h1> <p><i>paragráfo em itálico!<i><p>"
   activerecord:
     models:
       car: "Veículo"
@@ -8,7 +7,7 @@ pt-BR:
       car_model: "Modelo do veículo"
       company: "Empresa"
       fine: "Multa"
-      fine_point: "Pontuação da Multa"
+      fine_point: "Pontuação da multa"
       user: "Usuário"
       state: "Estado"
     attributes:
@@ -74,8 +73,10 @@ pt-BR:
         name: "Nome"
         users: "Usuário"
       statuses:
-        disabled: "Desabilitado"
         enabled: "Habilitado"
+        disabled: "Desabilitado"
+        identified: "Identificado"
+        unidentified: "Não identificado"
   date:
     abbr_day_names:
     - dom
@@ -228,6 +229,7 @@ pt-BR:
     editing: "Editando %{model}"
     exit: "Sair"
     fines: "Fluxo de multas"
+    show_last: "Mostrar último"
     login: "Entrar"
     name: "Nome"
     new: "Novo"
