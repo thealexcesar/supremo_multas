@@ -14,7 +14,7 @@
       <%= render 'shared/header' if signed_in? %>
     </header>
     <main class="container-fluid">
-      <div class="">
+      <div>
 
         <%= image_tag("cta-concreto1.png") unless signed_in? %>
 
@@ -22,18 +22,17 @@
         <nav class="hidden-xs hidden-sm mt-10 col-sm-2 col-md-3 col-lg-2 d-flex">
           <%= render "shared/nav_left" if signed_in? %>
         </nav>
-<!--        <nav class="mt-10 hidden-xs hidden-sm hidden-md hidden-lg col-sm-1 col-md-1 d-flex">-->
-          <%#= render "shared/nav_small" if signed_in? %>
-<!--        </nav>-->
         <nav class="hidden-md hidden-lg">
           <%= render "shared/nav_menu" if signed_in? %>
         </nav> <!-- Responsive Nav -->
 
         <div class="col-xs-12 col-sm-12 col-md-9 col-lg-10 right">
-          <p><%= notice %></p>
-          <p><%= alert %></p>
+          <div class="cotainer right col-5">
+            <%= render 'shared/system_alerts' %>
+          </div>
           <%= yield %>
         </div>
+
       </div>
     </main>
     </div>

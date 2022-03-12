@@ -218,6 +218,7 @@ pt-BR:
   general:
     actions: "Ações"
     back: "Voltar"
+    close: "Fechar"
     conductor: "Condutor"
     create: "Criar"
     new_model: "Novo %{model}"

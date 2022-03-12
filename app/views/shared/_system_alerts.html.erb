@@ -1,0 +1,21 @@
+<%
+  alert_class = ""
+  flash.each do |type, message|
+    case type.to_s
+    when "success"
+      alert_class = "alert-success"
+    when "error"
+      alert_class = "alert-danger"
+    when "alert"
+      alert_class = "alert-warning"
+    when "notice"
+      alert_class = "alert-info"
+    else
+      alert_class = "alert-secondary"
+    end
+%>
+  <div class="d-flex justify-between alert px-10 <%= alert_class %>">
+    <%= message %>&#160; &#160;
+    <%= link_to "<span>&times;<span>".html_safe, "data-dismiss": "alert", "aria-hidden": "true" %>
+  </div>
+<% end %>
