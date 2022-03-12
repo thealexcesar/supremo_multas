@@ -4,9 +4,21 @@ class UsersController < ApplicationController
   before_action :set_company, only: [:new, :create, :edit, :update]
   # before_action :set_msg, only: [:new, :create, :edit, :update]
 
+  helper_method :authorized_users
+
+  def authorized_users
+    if current_user.admin?
+      User.all
+    elsif current_user.manager?
+      User.all.where.not(user_type: :admin)
+    else
+      User.all.where(user_type: :users)
+    end
+  end
+
+  # -------------------------------------------------------------
   def index
     @users = User.all.paginate(page: params[:page], per_page: 22)
-    # render :template => 'index'
   end
   def new
     @user = User.new
@@ -20,7 +32,7 @@ class UsersController < ApplicationController
     @user.company = current_company unless current_user.admin?
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, notice: created_msg }
+        format.html { redirect_to @user, notice: Translate.created_msg(controller_name.classify), alert: "alert-success" }
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -36,7 +48,7 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to @user, notice: updated_msg }
+        format.html { redirect_to @user, notice: Translate.updated_msg(controller_name.classify) }
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -50,7 +62,7 @@ class UsersController < ApplicationController
   def destroy
     @user.destroy
     respond_to do |format|
-      format.html { redirect_to users_path, notice: destroyed_msg }
+      format.html { redirect_to users_path, notice: Translate.destroyed_msg(controller_name.classify) }
     end
   end
 

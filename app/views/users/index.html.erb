@@ -1,5 +1,3 @@
-<!--<span class="text-dark"><%#= ("#{current_user&.user_type.split.first.downcase}") %> </span>-->
-
 <div>
     <h1 class="h3 left"> <%= t("activerecord.models.user").pluralize %> </h1>
 
@@ -19,14 +17,13 @@
     <th><%= t("table.type") %></th>
     <th><%= t("activerecord.attributes.company_types.branch") %></th>
     <th colspan='5' class='text-center'> <%= t("general.actions")  %> </th>
-    <%#= current_user.root? ? ("<th colspan='5' class='text-center'>#{ t("general.actions") }</th>".html_safe) : ("") %>
   </tr>
   </thead>
 
   <tbody>
-    <% @users.each do |user| %>
-    <tr>
-      <td title="<%= t "general.show_details" %>">
+  <% authorized_users.each do |user| %>
+  <tr>
+    <td title="<%= t "general.show_details" %>">
         <%= link_to"#{(user&.name).split.first}", user_path(user) %>
       </td>
 

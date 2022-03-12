@@ -20,4 +20,5 @@ class User < ApplicationRecord
   def root?
     admin? || manager?
   end
+
 end
