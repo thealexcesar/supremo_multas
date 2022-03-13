@@ -18,7 +18,7 @@ class UsersController < ApplicationController
 
   # -------------------------------------------------------------
   def index
-    @users = User.paginate(page: params[:page], per_page: 2)
+    @users = User.all.paginate(page: params[:page], per_page: 2)
   end
   def new
     @user = User.new

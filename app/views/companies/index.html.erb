@@ -1,15 +1,16 @@
-<div>
-  <h1 class="h3 left"> <%= t("activerecord.models.company").pluralize %> </h1>
-
-  <div class="right mt-10">
-    <%= link_to new_company_path do %>
-      <button type="button" class="btn btn-default supremo-btn-gray text-light"><%= new_model_f %></button>
-    <% end %>
-  </div>
+<div class="d-flex flex-col">
+  <h1 class="left"><%= t("activerecord.models.company") %></h1>
+</div> <hr>
+<div class="mb-10 d-flex justify-between align-items-center">
+  <p class="second-color h6"><%= t'general.show' %> <span class="opacity-50"><%= @companies.count %></span></p>
+  <%= link_to new_company_path do %>
+    <button type="button" class="mb-10 btn btn-default supremo-btn-gray text-light"><%= new_model_f %></button>
+  <% end %>
 </div>
+
 <table class="table">
   <thead>
-    <tr class="supremo-table-top-color">
+    <tr class="jumbotron">
       <th><%= t("activerecord.attributes.company.name") %></th>
       <th><%= t("activerecord.attributes.company.company_type") %></th>
       <th><%= t("activerecord.attributes.company.cnpj") %></th>
@@ -26,26 +27,46 @@
   <tbody>
     <% @companies.each do |company| %>
       <tr>
-        <td><%= company.name %></td>
+        <td class="semi-bold"><%= truncate(company.name, length: 10) %></td>
         <td><%= enum_to_name(company, :company_type) %></td>
-        <td><%= company.cnpj %></td>
-        <td><%= company.phone %></td>
-        <td><%= company.address %></td>
+        <td><%= truncate(company.cnpj, length: 10) %></td>
+        <td><%= truncate(company.phone, length: 10) %></td>
+        <td><%= truncate(company.address, length: 10) %></td>
         <td><%= company.number %></td>
-        <td><%= company.zipcode %></td>
-        <td><%= company.district %></td>
+        <td><%= truncate(company.zipcode, length: 6) %></td>
+        <td><%= truncate(company.district, length: 10) %></td>
         <td><%= company.city&.name %></td>
-        <td><%= company.city&.state&.name %></td>
-        <td><%= link_to t("general.show"), company %></td>
-        <td><%= link_to t("general.edit"), edit_company_path(company) %></td>
-        <td><%= link_to t("general.delete"), company, method: :delete, data: { confirm: t("general.messages.confirm") } %></td>
+        <td><%= company.city&.state&.acronym %></td>
+
+        <% if current_user.root? %>
+          <td>
+            <div class="dropdown text-center">
+              <button type="button" class="fas fa-ellipsis-v supremo-hover-click" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+              <ul class="dropdown-menu dropdown-menu-right">
+                <li><%= link_to t("general.show"), company_path(company) %></li>
+                <li role="separator" class="divider"></li>
+                <li><%= link_to t("general.delete"), company_path(company), method: :delete, data: {confirm: I18n.t("general.messages.confirm")} %></li>
+              </ul>&#160 &#160
+              <%= link_to fa_icon('user-edit'), edit_company_path(company), class: "pad-left-5" %>
+            </div>
+          </td>
+        <% else %>
+          <td class="text-center"><li><%= link_to t("general.show"), company_path(company) %></li></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
-<br>
-<div class="right">
-  <div class="supremo_pagination">
-    <%= will_paginate @users, previous_label: fa_icon('angle-left'), next_label: fa_icon('angle-right') %>
+
+<% if params[:page].to_i != nil && params[:page].to_i <= 1 %>
+  <div class="d-flex justify-between">
+    <span class="opacity-50 h5"><%= records %></span>
+    <div class="supremo_pagination right">
+      <%= will_paginate @companies, previous_label: fa_icon('angle-left'), next_label: fa_icon('angle-right') %>
+    </div>
   </div>
-</div>
+<% else %>
+  <div class="supremo_pagination right">
+    <%= will_paginate @companies, previous_label: fa_icon('angle-left'), next_label: fa_icon('angle-right') %>
+  </div>
+<% end %>

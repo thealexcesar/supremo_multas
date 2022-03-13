@@ -29,7 +29,7 @@ pt-BR:
         address: "Endereço"
         city_id: "Cidade"
         cnpj: "CNPJ"
-        company_type: "Tipo de empresa"
+        company_type: "T. empresa"
         district: "Bairro"
         name: "Nome"
         number: "Número"
@@ -312,6 +312,10 @@ pt-BR:
       two_words_connector: " e "
       words_connector: ", "
   table:
+    date: "Data"
+    fine_point: "Pontuação"
+    fine_number: "Nº multa"
+    status: "Status"
     type: "Tipo"
   time:
     am: 'am'
@@ -320,3 +324,6 @@ pt-BR:
       long: "%d de %B de %Y, %H:%M"
       short: "%d de %B, %H:%M"
     pm: 'pm'
+
+  will_paginate:
+    records: "Primeiros 2 registros"

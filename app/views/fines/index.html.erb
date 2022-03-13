@@ -1,61 +1,67 @@
-<div>
-  <h1 class="h3 left"><%= t("general.fines") %></h1>
-
-  <div class="right mt-10">
-    <%= link_to new_fine_path do %>
-      <button type="button" class="btn btn-default supremo-btn-gray text-light"><%= link_to new_model_f, new_fine_path, class: "text-white" %></button>
-    <% end %>
-  </div>
+<div class="d-flex flex-col">
+  <h1 class="left"><%= t("general.fines") %></h1>
+</div> <hr>
+<div class="mb-10 d-flex justify-between align-items-center">
+  <p class="second-color h6"><%= t'general.show' %> <span class="opacity-50"><%= @fines.count %></span></p>
+  <%= link_to new_fine_path do %>
+    <button type="button" class="mb-10 btn btn-default supremo-btn-gray text-light"><%= link_to new_model_f, new_fine_path, class: "text-white" %></button>
+  <% end %>
 </div>
 
-  <table class="table">
-    <thead>
-      <tr class="supremo-table-top-color">
-        <th><%= t('general.conductor') %></th>
-        <th><%= t('activerecord.attributes.fine.fine_date') %></th>
-        <th><%= t("activerecord.attributes.fine_point.point") %></th>
-        <th><%= t('activerecord.attributes.fine.fine_status') %></th>
-        <th><%= t('activerecord.attributes.fine.fine_number') %></th>
-        <th><%= t('activerecord.attributes.fine.detran_id') %></th>
-        <th><%= t("activerecord.models.company") %></th>
-        <th colspan="5" class="text-center"><%= t("general.actions") %></th>
-      </tr>
-    </thead>
+<table class="table">
+  <thead>
+    <tr class="jumbotron">
+      <th class="semi-bold"><%= t('general.conductor').upcase %></th>
+      <th><%= t('table.date').upcase %></th>
+      <th><%= t("table.fine_point").upcase %></th>
+      <th><%= t('table.status').upcase %></th>
+      <th><%= t('table.fine_number').upcase %></th>
+      <th><%= t('activerecord.attributes.fine.detran_id').upcase %></th>
+      <th><%= t("activerecord.models.company").upcase %></th>
+      <th colspan="5" class="text-center"><%= t("general.actions") %></th>
+    </tr>
+  </thead>
 
-    <tbody>
-      <% @fines.each do |f| %>
-        <tr>
-          <%= link_to "" do %>
-          <td title="Visualizar multa de <%= (f.user&.name).capitalize %>">
-            <%= link_to "#{truncate((f.user&.name).capitalize, length: 16)}", fine_path(f) %>
-          </td>
-          <td><%= l(f.fine_date, format: :short) %></td>
-          <td><%= f.fine_point&.name %></td>
-          <td><%= enum_to_name(f, :fine_status) %></td>
-          <td><%= f.fine_number %></td>
-          <td><%= f.detran&.name %></td>
-          <td><%= f.branch&.name %></td>
-          <% end %>
-          <td>
-            <div class="dropdown text-center">
-              <button type="button" class="fas fa-ellipsis-v supremo-hover-click" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
-              <ul class="dropdown-menu dropdown-menu-right">
-                <li><%= link_to t('general.show'), f %></li>
-                <li role="separator" class="divider"></li>
-                <li><%= link_to "status", fine_identified_unidentified_path(f), method: :post, remote: true %></li>
-                <li><%= link_to t('general.delete'), fine_path(f), method: :delete, data: { confirm: t("general.messages.confirm") } %></li>
-              </ul>
-              &#160 &#160
-              <%= link_to fa_icon('user-edit'), edit_user_path(f), class: "pad-left-5" if current_user.admin? || current_user.manager? %>
-            </div>
-          </td>
-    <% end %>
-    </tbody>
-  </table>
-  <br>
+  <tbody>
+    <% @fines.each do |f| %>
+      <tr>
+        <%= link_to "" do %>
+        <td title="Visualizar multa de <%= (f.user&.name).capitalize %>">
+          <%= link_to "#{truncate((f.user&.name).capitalize, length: 16)}", fine_path(f), class: "semi-bold" %>
+        </td>
+        <td><%= truncate(l(f.fine_date, format: :short),length: 14) %></td>
+        <td><%= f.fine_point&.name %></td>
+        <td><%= enum_to_name(f, :fine_status) %></td>
+        <td><%= f.fine_number %></td>
+        <td><%= f.detran&.acronym %></td>
+        <td><%= f.branch&.name %></td>
+        <% end %>
+        <td>
+          <div class="dropdown text-center">
+            <button type="button" class="fas fa-ellipsis-v supremo-hover-click" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+            <ul class="dropdown-menu dropdown-menu-right">
+              <li><%= link_to t('general.show'), f %></li>
+              <li role="separator" class="divider"></li>
+              <li><%= link_to "status", fine_identified_unidentified_path(f), method: :post, remote: true %></li>
+              <li><%= link_to t('general.delete'), fine_path(f), method: :delete, data: { confirm: t("general.messages.confirm") } %></li>
+            </ul>
+            &#160 &#160
+            <%= link_to fa_icon('user-edit'), edit_user_path(f), class: "pad-left-5" if current_user.admin? || current_user.manager? %>
+          </div>
+        </td>
+  <% end %>
+  </tbody>
+</table>
 
-<div class="right">
-  <div class="supremo_pagination">
-    <%= will_paginate @fines %>
+<% if params[:page].to_i != nil && params[:page].to_i <= 1 %>
+  <div class="d-flex justify-between">
+    <span class="opacity-50 h5"><%= records %></span>
+    <div class="supremo_pagination right">
+      <%= will_paginate @fines, previous_label: fa_icon('angle-left'), next_label: fa_icon('angle-right') %>
+    </div>
   </div>
-</div>
+  <% else %>
+  <div class="supremo_pagination right">
+    <%= will_paginate @fines, previous_label: fa_icon('angle-left'), next_label: fa_icon('angle-right') %>
+  </div>
+<% end %>

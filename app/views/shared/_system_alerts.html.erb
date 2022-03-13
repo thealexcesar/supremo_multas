@@ -16,6 +16,9 @@
 %>
   <div class="d-flex justify-between alert px-10 <%= alert_class %>">
     <%= message %>&#160; &#160;
-    <%= link_to "<span>&times;<span>".html_safe, "data-dismiss": "alert", "aria-hidden": "true" %>
+    <%= link_to "<span>&times;<span>".html_safe, "data-dismiss": "alert", "aria-hidden": "true", class:"post hide" %>
   </div>
+  <script type="text/javascript" charset="utf-8">
+      $(".alert" ).fadeOut(7000);
+  </script>
 <% end %>

@@ -5814,7 +5814,7 @@ end
 #------------------------------------------------
 m = CarModel.new name: "Logan", car_brand_id: 1, car_type_id: 1,
   company_id: 1, created_by: User.first
-if m.save(m)
+if m.save
   puts "Modelo do veículo: \"#{CarModel.last.name}\" criado."
 else
   puts "\nErro ao criar modelo de carro: #{m.errors.full_messages}."
@@ -5828,22 +5828,75 @@ if c.save
 else
   puts "\nErro ao criar carro: \"#{c.errors.full_messages}\"."
 end
+puts ''
 
 #------------------------------------------------
-p = FinePoint.new name: "Gravíssima", point: 7, company_id: 1, created_by: User.first
-if p.save
-  puts "\nTipo de multa: \"#{FinePoint.last.name}\" criado."
-else
-  puts "\nErro ao criar tipo de multa: \"#{p.errors.full_messages}\"."
+fine_points = [
+  {
+    name: "Gravíssima", point: 7, company_id: 1, created_by: User.first
+  },
+  {
+    name: "Grave", point: 5, company_id: 1, created_by: User.first
+  },
+  {
+    name: "Média", point: 4, company_id: 1, created_by: User.first
+  },
+  {
+    name: "Leve", point: 3, company_id: 1, created_by: User.first
+  }
+]
+fine_points.each do |f|
+  fine_points= FinePoint.new(f)
+  if fine_points.save
+    puts "Tipo de multa: \"#{FinePoint.last.name}\" criado."
+  else
+    puts "Erro ao criar tipo de multa: \"#{fine_points.errors.full_messages}\"."
+  end
 end
 
 #------------------------------------------------
-f = Fine.new user_id: 1, fine_status: "identified", fine_number: 171171, branch_id: 2,
-  fine_date: Date.today, detran_id: 24, fine_point_id: 1, company_id: 1, created_by: User.first
-if f.save
-  puts "Multa numero: \"#{Fine.last.fine_number}\" criada.\n"
-else
-  puts "Erro ao criar multa: \"#{f.errors.full_messages}\".\n"
+fines = [
+  {
+    user_id: 2,
+    fine_status: "identified",
+    fine_number: 171171,
+    branch_id: 2,
+    fine_date: Date.today,
+    detran_id: 24,
+    fine_point_id: 1,
+    company_id: 1,
+    created_by: User.first
+  },
+  {
+    user_id: 3,
+    fine_status: "unidentified",
+    fine_number: 157157,
+    branch_id: 2,
+    fine_date: Date.today,
+    detran_id: 23,
+    fine_point_id: 4,
+    company_id: 3,
+    created_by: User.first
+  },
+  {
+    user_id: 4,
+    fine_status: "identified",
+    fine_number: 222222,
+    branch_id: 2,
+    fine_date: Date.today,
+    detran_id: 18,
+    fine_point_id: 2,
+    company_id: 2,
+    created_by: User.first
+  },
+]
+fines.each do |i|
+  fines = Fine.new(i)
+  if fines.save
+    puts "Multa numero: \"#{Fine.last.fine_number}\" criada.\n"
+  else
+    puts "Erro ao criar multa: \"#{fines.errors.full_messages}\".\n"
+  end
 end
 
 # Adiciona Company_id à admin -------------------
@@ -5854,7 +5907,6 @@ if c.save
 else
   puts "\n Não consegue criar \"company_id\" admin. ERRO!"
 end
-
 # Adiciona created_by à admin -------------------
 cb = User.first
 cb.created_by = User.find 1
@@ -5863,6 +5915,7 @@ if cb.save
 else
   puts "\nNão consegue criar \"created_by\" admin. ERRO!"
 end
+
 puts "\n-----------------------------------------------------------------"
 puts "Adicione [belongs_to :created_by...] ao model/user_rb."
 puts "-----------------------------------------------------------------\n"

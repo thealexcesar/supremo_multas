@@ -19,4 +19,9 @@ class ApplicationController < ActionController::Base
     I18n.t("general.messages.status", model: I18n.t("activerecord.attributes.statuses.#{status}"))
   end
 
+  helper_method :records
+  def records
+    I18n.t("will_paginate.records")
+  end
+
 end

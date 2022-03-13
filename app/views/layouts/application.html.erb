@@ -15,16 +15,16 @@
     </header>
     <main class="container-fluid">
       <div>
-
-        <%= image_tag("cta-concreto1.png") unless signed_in? %>
-
-        <!-- Responsive Nav -->
-        <nav style="margin-top: 20px" class="hidden-xs hidden-sm mt-10 col-sm-2 col-md-3 col-lg-2 d-flex">
-          <%= render "shared/nav_left" if signed_in? %>
-        </nav>
-        <nav class="hidden-md hidden-lg">
-          <%= render "shared/nav_menu" if signed_in? %>
-        </nav> <!-- Responsive Nav -->
+        <div>
+          <%= image_tag("cta-concreto1.png") unless signed_in? %>
+          <!-- Responsive Nav -->
+          <nav style="margin-top: 20px" class="hidden-xs hidden-sm mt-10 col-sm-2 col-md-3 col-lg-2 d-flex">
+            <%= render "shared/nav_left" if signed_in? %>
+          </nav>
+          <nav class="hidden-md hidden-lg">
+            <%= render "shared/nav_menu" if signed_in? %>
+          </nav> <!-- Responsive Nav -->
+        </div>
 
         <div class="col-xs-12 col-sm-12 col-md-9 col-lg-10 right">
           <div class="cotainer right col-5">

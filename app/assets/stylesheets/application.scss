@@ -24,6 +24,7 @@ body{
   font-family: 'Montserrat', sans-serif;
   color: var(--first-color);
   font-weight: 600;
+  position: relative;
 }
 
 h1 {
@@ -56,6 +57,13 @@ button:hover {
   text-decoration: none;
   color:inherit;
   background-color: transparent;
+}
+
+// Flash: _system_alerts
+.alert {
+  position: absolute;
+  top: -12px;
+  right: 10px;
 }
 
 // Font
@@ -194,4 +202,38 @@ td button:hover, a:hover {
   background-color: transparent;
   color: inherit;
   :hover { background-color:transparent; }
+}
+
+@keyframes hide {
+  0% {
+    opacity: 1;
+    height: 100%;
+    line-height: 100%;
+    padding: 20px;
+    margin-bottom: 10px;
+  }
+  75% {
+    opacity: 0;
+    height: 100%;
+    line-height: 100%;
+    padding: 20px;
+    margin-bottom: 10px;
+  }
+  100% {
+    opacity: 0;
+    height: 0px;
+    line-height: 0px;
+    padding: 0px;
+    margin-bottom: 0px;
+  }
+
+}
+.post {
+  background-color: #77dd11;
+  padding: 20px;
+  margin-bottom: 10px;
+  animation-name: hide;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+  animation-play-state: paused;
 }

@@ -25,7 +25,7 @@
   <% authorized_users.each do |user| %>
     <tr>
       <td title="<%= t "general.show_details" %>">
-        <%= link_to"#{(user&.name).split.first} #{(user&.name).split.last}", user_path(user),  class: "semi-bold" %>
+        <%= link_to"#{(user&.name).split.first} #{(user&.name).split.second}", user_path(user),  class: "semi-bold" %>
       </td>
       <td title="<%= t("general.send_mailto") %> <%= user&.email %>"><%= mail_to(truncate(user&.email, length: 10)) %></td>
 
@@ -62,17 +62,15 @@
   </tbody>
 </table>
 
-<%
-  def page_count
-    count = User.count - 2
-    if params[:page].to_i < 2 && params[:page].to_i >=0
-        User.count <= 3 ? ("#{t('general.show_last')} #{count}") : "#{t('general.show_last').pluralize} #{count}"
-    end
-  end
-%>
-<div class="d-flex justify-between">
-  <span class="opacity-50 h5"><%= page_count %></span>
-  <div class="supremo_pagination">
+<% if params[:page].to_i != nil && params[:page].to_i <= 1 %>
+  <div class="d-flex justify-between">
+    <span class="opacity-50 h5"><%= records %></span>
+    <div class="supremo_pagination right">
       <%= will_paginate @users, previous_label: fa_icon('angle-left'), next_label: fa_icon('angle-right') %>
+    </div>
   </div>
-</div>
+<% else %>
+  <div class="supremo_pagination right">
+    <%= will_paginate @users, previous_label: fa_icon('angle-left'), next_label: fa_icon('angle-right') %>
+  </div>
+<% end %>
