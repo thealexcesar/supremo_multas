@@ -1,6 +1,6 @@
 # README
 
-application created to control traffic fines
+### application created to control traffic fines.
 Still in Development.
 
 Technologies:
