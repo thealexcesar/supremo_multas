@@ -44,8 +44,7 @@
               <li role="separator" class="divider"></li>
               <li><%= link_to "status", fine_identified_unidentified_path(f), method: :post, remote: true %></li>
               <li><%= link_to t('general.delete'), fine_path(f), method: :delete, data: { confirm: t("general.messages.confirm") } %></li>
-            </ul>
-            &#160 &#160
+            </ul>&#160; &#160;
             <%= link_to fa_icon('user-edit'), edit_user_path(f), class: "pad-left-5" if current_user.admin? || current_user.manager? %>
           </div>
         </td>

@@ -5704,7 +5704,7 @@ end
 main = Company.new name: "Supremo Multas",
   company_type: :main,
   cnpj: "02.133.480/0001-94",
-  phone: "47998375756",
+  phone: "(47)998375756",
   address: "Rua dos Atiradores",
   number: "10809",
   zipcode: "89107-000",
@@ -5723,7 +5723,7 @@ branches = [
     name: "Supremo",
     company_type: :branch,
     cnpj: "02.133.480/0001-94",
-    phone: "(41) 3123-3900",
+    phone: "(41)3123-3900",
     address: "Alameda Dr. Carlos de Carvalho,",
     number: "555",
     zipcode: "80430-180",
@@ -5735,7 +5735,7 @@ branches = [
     name: "Max Mohr",
     company_type: :branch,
     cnpj: "02.133.480/0001-94",
-    phone: "(48) 99968-0901",
+    phone: "(48)99968-0901",
     address: "Avenida Ivo Lucchi",
     number: "40",
     zipcode: "89107-000",
@@ -5916,6 +5916,5 @@ else
   puts "\nNão consegue criar \"created_by\" admin. ERRO!"
 end
 
-puts "\n-----------------------------------------------------------------"
-puts "Adicione [belongs_to :created_by...] ao model/user_rb."
-puts "-----------------------------------------------------------------\n"
+puts "\n\nAdicione [belongs_to :created_by...] ao model/user_rb."
+puts "-----------------------------------------------------------------"

@@ -5,7 +5,6 @@ class UsersController < ApplicationController
   # before_action :set_msg, only: [:new, :create, :edit, :update]
 
   helper_method :authorized_users
-
   def authorized_users
     if current_user.admin?
       User.all
@@ -18,7 +17,8 @@ class UsersController < ApplicationController
 
   # -------------------------------------------------------------
   def index
-    @users = User.all.paginate(page: params[:page], per_page: 2)
+    #@users = User.all.paginate(page: params[:page], per_page: 2)
+    @users = User.paginate(page: params[:page], per_page: 2)
   end
   def new
     @user = User.new
@@ -39,10 +39,8 @@ class UsersController < ApplicationController
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
-=begin
   rescue
     redirect_to new_user_url, alert: I18n.t("errors.rescue.fields"), class: 'alert'
-=end
   end
 
   def update

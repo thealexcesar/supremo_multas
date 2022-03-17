@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   belongs_to :company
-  # belongs_to :created_by, class_name: "User", foreign_key: :created_by
+  #belongs_to :created_by, class_name: "User", foreign_key: :created_by
 
   enum status: [:enabled, :disabled]
   enum user_type: [:users, :admin, :manager]
