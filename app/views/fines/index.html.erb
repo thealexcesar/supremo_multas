@@ -21,7 +21,11 @@
       <th colspan="5" class="text-center"><%= t("general.actions") %></th>
     </tr>
   </thead>
-
+  <%
+    test = l Time.now - 4.day  %>
+  <%= test %>
+  <br>
+  <br><br><br>
   <tbody>
     <% @fines.each do |f| %>
       <tr>
@@ -29,7 +33,8 @@
         <td title="Visualizar multa de <%= (f.user&.name).capitalize %>">
           <%= link_to "#{truncate((f.user&.name).capitalize, length: 16)}", fine_path(f), class: "semi-bold" %>
         </td>
-        <td><%= truncate(l(f.fine_date, format: :short),length: 14) %></td>
+        <td><%= truncate(l(f.fine_date, format: :long),length: 30) %></td>
+        <p><%= f.fine_date.strftime("%A, %d de %B de %Y") %></p>
         <td><%= f.fine_point&.name %></td>
         <td><%= enum_to_name(f, :fine_status) %></td>
         <td><%= f.fine_number %></td>
