@@ -282,8 +282,8 @@ pt-BR:
     am: 'am'
     formats:
       default: "%a, %d de %B de %Y, %H:%M:%S %z"
-      long: "%d de %B de %Y, %H:%M"
-      short: "%d de %B, %H:%M"
+      long: "%d/%m/%Y às %H:%M"
+      short: "%d/%m/%Y"
     pm: 'pm'
 
   will_paginate:
