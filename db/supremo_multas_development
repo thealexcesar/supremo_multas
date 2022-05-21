@@ -1,0 +1,22 @@
+                                          List of databases
+            Name            |  Owner   | Encoding |   Collate   |    Ctype    |   Access privileges   
+----------------------------+----------+----------+-------------+-------------+-----------------------
+ alex                       | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ answer_development         | alex     | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ answer_test                | alex     | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ aplicativo_development     | alex     | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ aplicativo_test            | alex     | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ crypto_development         | alex     | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ crypto_test                | alex     | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ emperor_development        | alex     | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ postgres                   | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ supremo_multas_development | alex     | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ supremo_multas_test        | alex     | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ template0                  | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 | =c/postgres          +
+                            |          |          |             |             | postgres=CTc/postgres
+ template1                  | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 | =c/postgres          +
+                            |          |          |             |             | postgres=CTc/postgres
+ webtoprint_development     | alex     | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ webtoprint_test            | alex     | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+(15 rows)
+

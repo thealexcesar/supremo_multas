@@ -1,10 +1,9 @@
 class FinesController < ApplicationController
-  before_action :fill_fields, only: [:new, :create, :edit, :update]
-  before_action :get_fine_points, only: [:new, :create, :edit, :update]
-  before_action :get_states, only: [:new, :create, :edit]
-  before_action :set_fine, only: %i[ show edit update destroy ]
+  before_action :fill_fields, only: %i[new create edit update]
+  before_action :getfine_points, only: %i[new create edit update]
+  before_action :getstates, only: %i[new create edit]
+  before_action :set_fine, only: %i[show edit update destroy]
   before_action :set_fine_status, only: :identified_unidentified
-
 
   # GET /fines or /fines.json
   def index
@@ -12,8 +11,7 @@ class FinesController < ApplicationController
   end
 
   # GET /fines/1 or /fines/1.json
-  def show
-  end
+  def show; end
 
   # GET /fines/new
   def new
@@ -21,8 +19,7 @@ class FinesController < ApplicationController
   end
 
   # GET /fines/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /fines or /fines.json
   def create
@@ -38,10 +35,8 @@ class FinesController < ApplicationController
         format.json { render json: @fine.errors, status: :unprocessable_entity }
       end
     end
-=begin
-  rescue
-    redirect_to new_fine_url, alert: I18n.t("errors.rescue.fields"), class: 'alert'
-=end
+    #   rescue
+    #     redirect_to new_fine_url, alert: I18n.t("errors.rescue.fields"), class: 'alert'
   end
 
   # PATCH/PUT /fines/1 or /fines/1.json
@@ -55,8 +50,8 @@ class FinesController < ApplicationController
         format.json { render json: @fine.errors, status: :unprocessable_entity }
       end
     end
-  rescue
-    redirect_to edit_fine_url, alert: I18n.t("errors.rescue.fields"), class: 'alert'
+  rescue StandardError
+    redirect_to edit_fine_url, alert: I18n.t('errors.rescue.fields'), class: 'alert'
   end
 
   # DELETE /fines/1 or /fines/1.json
@@ -70,31 +65,33 @@ class FinesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_fine
-      @fine = Fine.find(params[:id])
-    end
 
-    def get_states
-      @states = State.all # State.where(acronym: ["SC", "PR"])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_fine
+    @fine = Fine.find(params[:id])
+  end
 
-    def get_fine_points
-      @fine_points = FinePoint.all
-    end
+  def getstates
+    @states = State.all # State.where(acronym: ["SC", "PR"])
+  end
 
-    def set_fine_status
-      @fine = Fine.find(params[:fine_id])
-    end
+  def getfine_points
+    @fine_points = FinePoint.all
+  end
 
-    def fill_fields
-      @users = User.all
-      @branches = Company.all
-      #@branches = Company.where(company_type: :branch)
-    end
+  def set_fine_status
+    @fine = Fine.find(params[:fine_id])
+  end
 
-    # Only allow a list of trusted parameters through.
-    def fine_params
-      params.require(:fine).permit(:user_id, :fine_date, :fine_status, :fine_number, :branch_id, :company_type, :detran_id, :fine_point_id)
-    end
+  def fill_fields
+    @users = User.all
+    @branches = Company.all
+    # @branches = Company.where(company_type: :branch)
+  end
+
+  # Only allow a list of trusted parameters through.
+  def fine_params
+    params.require(:fine).permit(:user_id, :fine_date, :fine_status, :fine_number, :branch_id, :company_type,
+                                 :detran_id, :fine_point_id)
+  end
 end

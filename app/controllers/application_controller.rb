@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   def current_company
     current_user.company
   end
+
   def admin?
     self.user_type == "admin"
   end
